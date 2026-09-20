@@ -10,14 +10,16 @@
 
 - 在编辑器标题栏选择 Python、IGCSE Pseudocode 或 AS Pseudocode，再点击 **Run**。
 - 程序执行到输入语句时，在 **Console** 中输入并提交。
-- **Ctrl / ⌘ S** 保存到当前浏览器；工具栏 **Save** 下载代码文件。
+- **Ctrl / ⌘ S** 保存到当前浏览器；工具栏 **Save** 下载代码文件：伪代码为 `.txt`，Python 为 `.py`。
 - 三个工作区分别保存源码、虚拟文件和测试。浏览器存储请配合文件备份使用。
 - **Examples** 提供 16 组三种写法的核心示例、6 个 Python 扩展示例及 3 个 IGCSE 专题示例。
 - 支持追踪、变量查看、虚拟文本文件、自动测试、全屏及拖动分栏。
 
 ## 旧作业与源码文件
 
-首次使用新版会保留并迁移同一浏览器、同一站点保存的 Programming Lab v1 的 Python 和 AS 工作区；旧版保存数据不会被覆盖。IGCSE 是独立新工作区，切换不会转换或覆盖代码。新建文件分别命名为 `.igcse.pseudo` 和 `.as.pseudo`，Open 会自动选择课程；从 Python 打开普通 `.pseudo` 文件时，可选择课程。
+首次使用新版会保留并迁移同一浏览器、同一站点保存的 Programming Lab v1 的 Python 和 AS 工作区；旧版保存数据不会被覆盖。IGCSE 是独立新工作区，切换不会转换或覆盖代码。新建伪代码文件分别命名为 `.igcse.txt` 和 `.as.txt`，Open 会自动选择课程；旧的 `.igcse.pseudo`、`.as.pseudo` 仍可导入。从 Python 打开普通 `.pseudo` 文件时可选择课程，未标注课程的普通 `.txt` 沿用当前语言。
+
+Save 的伪代码文件是 UTF-8 纯文本，兼容 Mac TextEdit 和 Windows 记事本，保留中文、赋值箭头与多行代码。下载副本带编码标记和 Windows 换行，重新导入时自动处理；不会改写编辑区内容。
 
 ## 伪代码教学检查
 
