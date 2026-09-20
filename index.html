@@ -1456,6 +1456,28 @@ SOFTWARE.
 <h3>Zen / Firefox 设置</h3><p>如果 Python 提示不能实时输入，在 Zen 地址栏打开 <code>about:config</code>，搜索 <code>javascript.options.wasm_js_promise_integration</code>。支持该功能但默认关闭的版本可以把它设为 <code>true</code>，然后刷新编辑器。这是浏览器级实验功能，请自行决定是否启用；如仍不支持，请更新 Zen。编辑器会实际测试暂停与恢复，只有通过后才使用 Console 输入。</p><h3>兼容与边界</h3><p>Run 始终在 Console 中接收用户输入。若浏览器缺少 Python 挂起与恢复能力，执行到 input() 时会提示检查浏览器的实时输入能力；不会退回预先填写输入。未调用 input() 的程序仍可运行。核心环境无法启动时仍可编辑和保存。iPad 的文件预览不一定能执行程序，需要能运行 JavaScript、Worker 和 WebAssembly 的打开方式；本版不宣称已经完成 iPad 实机认证。</p><p>不提供桌面文件访问、网络编程、在线包安装或图形窗口。默认活动执行时间上限 30 秒，等待输入不计时；追踪最多 5,000 条，输出最多 10,000 行或 1 MiB。浏览器存储不可用时应及时 Save / Export。</p>
 <p class="reference-sources">课程来源：本地 IGCSE 0478 第 7–8 章 checklist、Pseudocode & Python 对照清单、Week 18 / Week 24 编程材料及文件练习。内置例程均为独立校对版本，使用虚构数据。Python 运行环境 Pyodide 314.0.7；非 Cambridge 官方产品。</p>
 </div><div id="igcseReference" hidden>
+  <details class="teaching-reference"><summary>本编辑器教学规则 · Teaching rules</summary>
+<p>IGCSE 和 AS 工作区的 Check source、Run、Tests 使用同一套规则。它们是本工具采用的课堂规范，不是 Cambridge 对所有试卷排版的唯一要求。Python 仍按真实 Python 语法运行。</p>
+<ul>
+<li>关键字、类型、TRUE/FALSE、AND/OR/NOT 和内置函数必须大写；变量名、字符串和注释保持原样。</li>
+<li>每层缩进四个空格，不使用 Tab。THEN 单独一行时与 IF 对齐；ELSE 和结束语句与对应开头对齐。CASE 标签缩进一层，分支正文再缩进一层；表达式续行增加一层。</li>
+<li>每个显式分支、循环体、过程和函数必须有执行语句。空行、注释或声明不能单独充当执行内容。ELSE 和 OTHERWISE 可以省略；本工具不提供 ELIF/ELSEIF，请用嵌套 IF。</li>
+<li>省略 STEP 表示每次加 1。递减必须写负步长；每次加 2 等情况须明确写 STEP 2。零步长或方向背离终点会报错；起止相等且步长非零时执行一次。</li>
+<li>FOR 运行期间不能修改其计数器，包括 INPUT、嵌套复用及 BYREF 间接写入。仅通过 BYREF 读取仍可使用。需要自定义更新时，改用 WHILE。</li>
+</ul>
+<pre>IF Score &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Try again"
+ENDIF
+
+FOR Index ← 5 TO 1 STEP -2
+    OUTPUT Index
+NEXT Index</pre>
+<p>Format 可修复关键字大小写、Tab 和缩进；它不会替你填入执行语句、STEP 或结束关键字。旧保存代码会原样恢复，出现提示后可自行修正或使用 Format。按 Enter 会对齐当前分支或结束行，整次编辑可一次撤销。</p>
+<p>指南允许默认正步长配递减范围执行零次；本工具为发现课堂误写而报告错误。起点、终点和步长在进入循环时各求值一次。普通循环结束后保留下一计数值；该值若超出精确整数范围且循环已结束，则保留最后一个安全值。这些均是此编辑器的明确约定。</p>
+</details>
+
   <p class="help-text">IGCSE 0478 · 2026–2028 syllabus, version 6. 中英速查 / Bilingual quick reference. This independent teaching tool is not affiliated with Cambridge International.</p>
   <div class="reference-grid syntax-reference">
     <section>
@@ -1513,7 +1535,28 @@ ENDWHILE</pre>
   <p>执行有通用安全限制：默认 1,000,000 步、10,000 行输出，追踪保留 5,000 项。Shared safety limits keep the browser responsive. Unassigned values, invalid types, out-of-bounds indices and file errors stop the run.</p>
   <p class="reference-sources">Official sources: <a href="https://www.cambridgeinternational.org/Images/697167-2026-2028-syllabus.pdf" target="_blank" rel="noopener noreferrer">IGCSE 0478 syllabus, pp. 28, 35–48</a> · <a href="https://www.cambridgeinternational.org/Images/721401-2027-2029-pseudocode-guide.pdf" target="_blank" rel="noopener noreferrer">9618 guide, pp. 7–10, 15–17, 21–25</a>. 外部原文链接需要网络；此速查可离线阅读。Links need a connection; this reference remains available offline.</p>
 </div>
-<div id="asReference" hidden><p class="help-text">A compact checklist for Sections 9–12. This independent tool is not affiliated with Cambridge International.</p><div class="reference-grid"><section><h3>09 <span>Algorithm design</span></h3><p>Abstraction selects relevant details. Decomposition breaks a problem into smaller parts. Use stepwise refinement, identifier tables and input / process / output to plan an algorithm.</p><p>Represent sequence, selection and iteration using pseudocode, structured English or flowcharts. Use logic statements to express conditions.</p></section><section><h3>10 <span>Data & structures</span></h3><p>INTEGER · REAL · CHAR · STRING · BOOLEAN · DATE</p><p>Records group named fields. One- and two-dimensional arrays use declared lower and upper bounds. Practise linear search and bubble sort.</p><p>Stacks are LIFO; queues are FIFO. Linked lists connect nodes through links. Represent these ADTs with arrays and index variables. Text files support READ, WRITE and APPEND.</p></section><section><h3>11 <span>Programming</span></h3><p>DECLARE variables; CONSTANT values cannot change. Assign with <code>←</code>; compare with <code>=</code>. Join text with <code>&amp;</code>.</p><p>IF / CASE · FOR / NEXT · WHILE / ENDWHILE · REPEAT / UNTIL</p><p>Procedures use CALL. Functions RETURN a value. Parameters default to BYVAL; procedures can use BYREF to change the caller’s storage. Functions use BYVAL.</p></section><section><h3>12 <span>Software development</span></h3><p>Analysis → design → coding → testing → maintenance. Compare waterfall, iterative development and RAD. Use structure charts and state-transition diagrams.</p><p>Distinguish syntax, logic and runtime errors. Dry runs and walkthroughs trace an algorithm; stubs stand in for unfinished modules.</p><p>Plan white-box, black-box, integration, alpha, beta and acceptance testing. Use normal, abnormal and boundary / extreme data. Maintenance can be corrective, adaptive or perfective.</p></section></div><h3>Language quick reference</h3><div class="reference-grid syntax-reference"><section><h4>Operators & loops</h4><p><code>+ − * / DIV MOD</code><br><code>= &lt;&gt; &lt; &gt; &lt;= &gt;=</code><br><code>NOT AND OR</code></p><p><code>/</code> returns REAL. FOR bounds are inclusive; STEP defaults to 1. REPEAT stops when UNTIL is TRUE. MID positions start at 1.</p></section><section><h4>Built-in functions</h4><p><code>LENGTH(String)</code><br><code>RIGHT(String, Count)</code><br><code>MID(String, Start, Count)</code><br><code>LCASE(Char) · UCASE(Char)</code><br><code>INT(Real) · RAND(Integer)</code><br><code>EOF(Filename)</code></p></section></div><h3>Using this workspace</h3><p>Run: <kbd>Ctrl / ⌘ Enter</kbd> · Stop: <kbd>Esc</kbd> · Save in browser: <kbd>Ctrl / ⌘ S</kbd> · Toggle line comments: <kbd>Ctrl / ⌘ /</kbd> · Indent: <kbd>Tab</kbd> · Unindent: <kbd>Shift Tab</kbd>. Enter follows pseudocode block indentation. Select multiple lines and use Comment or Ctrl / ⌘ / to toggle // comments. The Save button downloads your program; Ctrl / ⌘ S saves it in this browser. Open loads a .pseudo or .txt file. Drag the divider between the panels to resize them; double-click it to reset. Full screen shows only the editor and results panels; Esc exits full screen. Use Ctrl / ⌘ Enter to run and Ctrl / ⌘ . to stop. Browser storage keeps your current program, files and tests on this device when available.</p><p>Syntax, type, runtime and input errors end the current run automatically. Correct the problem, then run again. Unassigned values raise an error when read. INTEGER values can widen to REAL. Execution stops at 1,000,000 steps, 10,000 output lines or the runtime safety limits. The trace keeps up to 5,000 changes. Very large programs and data structures are bounded to keep the browser responsive.</p><p>A2 enums, pointers, sets, random-access files and object-oriented syntax are outside this version’s scope. Recursion is not presented as an AS syllabus feature.</p><p class="reference-sources">Normative sources: Cambridge 9618 syllabus and pseudocode guide for examinations in 2027, 2028 and 2029. The checklist and examples remain available offline.</p></div></div></dialog>
+<div id="asReference" hidden><details class="teaching-reference"><summary>本编辑器教学规则 · Teaching rules</summary>
+<p>IGCSE 和 AS 工作区的 Check source、Run、Tests 使用同一套规则。它们是本工具采用的课堂规范，不是 Cambridge 对所有试卷排版的唯一要求。Python 仍按真实 Python 语法运行。</p>
+<ul>
+<li>关键字、类型、TRUE/FALSE、AND/OR/NOT 和内置函数必须大写；变量名、字符串和注释保持原样。</li>
+<li>每层缩进四个空格，不使用 Tab。THEN 单独一行时与 IF 对齐；ELSE 和结束语句与对应开头对齐。CASE 标签缩进一层，分支正文再缩进一层；表达式续行增加一层。</li>
+<li>每个显式分支、循环体、过程和函数必须有执行语句。空行、注释或声明不能单独充当执行内容。ELSE 和 OTHERWISE 可以省略；本工具不提供 ELIF/ELSEIF，请用嵌套 IF。</li>
+<li>省略 STEP 表示每次加 1。递减必须写负步长；每次加 2 等情况须明确写 STEP 2。零步长或方向背离终点会报错；起止相等且步长非零时执行一次。</li>
+<li>FOR 运行期间不能修改其计数器，包括 INPUT、嵌套复用及 BYREF 间接写入。仅通过 BYREF 读取仍可使用。需要自定义更新时，改用 WHILE。</li>
+</ul>
+<pre>IF Score &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Try again"
+ENDIF
+
+FOR Index ← 5 TO 1 STEP -2
+    OUTPUT Index
+NEXT Index</pre>
+<p>Format 可修复关键字大小写、Tab 和缩进；它不会替你填入执行语句、STEP 或结束关键字。旧保存代码会原样恢复，出现提示后可自行修正或使用 Format。按 Enter 会对齐当前分支或结束行，整次编辑可一次撤销。</p>
+<p>指南允许默认正步长配递减范围执行零次；本工具为发现课堂误写而报告错误。起点、终点和步长在进入循环时各求值一次。普通循环结束后保留下一计数值；该值若超出精确整数范围且循环已结束，则保留最后一个安全值。这些均是此编辑器的明确约定。</p>
+</details>
+<p class="help-text">A compact checklist for Sections 9–12. This independent tool is not affiliated with Cambridge International.</p><div class="reference-grid"><section><h3>09 <span>Algorithm design</span></h3><p>Abstraction selects relevant details. Decomposition breaks a problem into smaller parts. Use stepwise refinement, identifier tables and input / process / output to plan an algorithm.</p><p>Represent sequence, selection and iteration using pseudocode, structured English or flowcharts. Use logic statements to express conditions.</p></section><section><h3>10 <span>Data & structures</span></h3><p>INTEGER · REAL · CHAR · STRING · BOOLEAN · DATE</p><p>Records group named fields. One- and two-dimensional arrays use declared lower and upper bounds. Practise linear search and bubble sort.</p><p>Stacks are LIFO; queues are FIFO. Linked lists connect nodes through links. Represent these ADTs with arrays and index variables. Text files support READ, WRITE and APPEND.</p></section><section><h3>11 <span>Programming</span></h3><p>DECLARE variables; CONSTANT values cannot change. Assign with <code>←</code>; compare with <code>=</code>. Join text with <code>&amp;</code>.</p><p>IF / CASE · FOR / NEXT · WHILE / ENDWHILE · REPEAT / UNTIL</p><p>Procedures use CALL. Functions RETURN a value. Parameters default to BYVAL; procedures can use BYREF to change the caller’s storage. Functions use BYVAL.</p></section><section><h3>12 <span>Software development</span></h3><p>Analysis → design → coding → testing → maintenance. Compare waterfall, iterative development and RAD. Use structure charts and state-transition diagrams.</p><p>Distinguish syntax, logic and runtime errors. Dry runs and walkthroughs trace an algorithm; stubs stand in for unfinished modules.</p><p>Plan white-box, black-box, integration, alpha, beta and acceptance testing. Use normal, abnormal and boundary / extreme data. Maintenance can be corrective, adaptive or perfective.</p></section></div><h3>Language quick reference</h3><div class="reference-grid syntax-reference"><section><h4>Operators & loops</h4><p><code>+ − * / DIV MOD</code><br><code>= &lt;&gt; &lt; &gt; &lt;= &gt;=</code><br><code>NOT AND OR</code></p><p><code>/</code> returns REAL. FOR bounds are inclusive; STEP defaults to 1. REPEAT stops when UNTIL is TRUE. MID positions start at 1.</p></section><section><h4>Built-in functions</h4><p><code>LENGTH(String)</code><br><code>RIGHT(String, Count)</code><br><code>MID(String, Start, Count)</code><br><code>LCASE(Char) · UCASE(Char)</code><br><code>INT(Real) · RAND(Integer)</code><br><code>EOF(Filename)</code></p></section></div><h3>Using this workspace</h3><p>Run: <kbd>Ctrl / ⌘ Enter</kbd> · Stop: <kbd>Esc</kbd> · Save in browser: <kbd>Ctrl / ⌘ S</kbd> · Toggle line comments: <kbd>Ctrl / ⌘ /</kbd> · Indent: <kbd>Tab</kbd> · Unindent: <kbd>Shift Tab</kbd>. Enter follows pseudocode block indentation. Select multiple lines and use Comment or Ctrl / ⌘ / to toggle // comments. The Save button downloads your program; Ctrl / ⌘ S saves it in this browser. Open loads a .pseudo or .txt file. Drag the divider between the panels to resize them; double-click it to reset. Full screen shows only the editor and results panels; Esc exits full screen. Use Ctrl / ⌘ Enter to run and Ctrl / ⌘ . to stop. Browser storage keeps your current program, files and tests on this device when available.</p><p>Syntax, type, runtime and input errors end the current run automatically. Correct the problem, then run again. Unassigned values raise an error when read. INTEGER values can widen to REAL. Execution stops at 1,000,000 steps, 10,000 output lines or the runtime safety limits. The trace keeps up to 5,000 changes. Very large programs and data structures are bounded to keep the browser responsive.</p><p>A2 enums, pointers, sets, random-access files and object-oriented syntax are outside this version’s scope. Recursion is not presented as an AS syllabus feature.</p><p class="reference-sources">Normative sources: Cambridge 9618 syllabus and pseudocode guide for examinations in 2027, 2028 and 2029. The checklist and examples remain available offline.</p></div></div></dialog>
 <dialog id="lessonDialog"><div class="dialog-heading"><div><span id="lessonGroup" class="eyebrow"></span><h2 id="lessonTitle">Lesson</h2></div><button id="closeLesson" class="icon-button" aria-label="Close lesson">×</button></div><div class="lesson-body"><p id="lessonObjective"></p><p id="lessonPrerequisites" class="help-text"></p><div id="lessonNotes" class="lesson-notes"></div><div class="lesson-code-grid"><section id="lessonIGCSEPane"><h3>IGCSE Pseudocode</h3><pre id="lessonIGCSECode"></pre></section><section id="lessonPseudoPane"><h3>AS Pseudocode</h3><pre id="lessonPseudoCode"></pre></section><section id="lessonPythonPane"><h3>Python</h3><pre id="lessonPythonCode"></pre></section></div><details><summary>Inputs, expected output &amp; source notes</summary><pre id="lessonFixtures"></pre><p id="lessonProvenance" class="help-text"></p></details><div class="dialog-actions"><span id="lessonLoadHint" class="help-text"></span><button id="loadLesson" class="primary">Load current language</button></div></div></dialog>
 <dialog id="dialectDialog"><h2>Open pseudocode</h2><p id="dialectFilename"></p><p>Choose the course for this file. Files named .igcse.pseudo or .as.pseudo select it automatically.</p><div class="dialog-actions"><button id="dialectCancel">Cancel</button><button id="dialectIGCSE">IGCSE 0478</button><button id="dialectAS">AS 9618</button></div></dialog>
 <dialog id="confirmDialog"><h2 id="confirmTitle">Confirm</h2><p id="confirmText"></p><div class="dialog-actions"><button id="confirmCancel">Cancel</button><button id="confirmAccept" class="primary">Continue</button></div></dialog>
@@ -1722,6 +1765,7 @@ globalThis.LabPythonBridge="\"\"\"Teaching runtime bridge. Student code runs as 
     readStatement() {
       const first = this.peek(), key = first.value;
       if (first.kind === 'identifier') {
+        if (['ELIF', 'ELSEIF'].includes(first.value.toUpperCase()) && this.peek(1).value !== '←') this.error("'" + first.raw + "' is not Cambridge pseudocode branch syntax. Use ELSE, then a nested IF ... THEN ... ENDIF; close the outer IF with its own ENDIF.", first);
         const target = this.target();
         this.expect('←', this.is('=') ? "Use '←' or '<-' for assignment. '=' compares values." : "Expected assignment '←' after the target.");
         return this.simple('Assign', {target, value: this.expression()}, first);
@@ -1975,49 +2019,105 @@ globalThis.LabPythonBridge="\"\"\"Teaching runtime bridge. Student code runs as 
     }
   }
   function parse(source, options) { return new Parser(source, options).program(); }
+  const layoutRules = Object.freeze({indentWidth: 4, bodyOffset: 1, branchOffset: 1, branchBodyOffset: 2, continuationOffset: 1});
+  const nonExecutable = new Set(['Declare', 'Constant', 'Record', 'Procedure', 'Function']);
+  function validateExecutableBlocks(ast) {
+    const requireBody = (body, label, loc) => {
+      if (!body.some(node => !nonExecutable.has(node.kind))) throw new PseudoError('EmptyBlockError', label + ' must contain at least one executable statement. Comments, blank lines and declarations do not count; add an assignment, INPUT, OUTPUT, CALL, RETURN or another nonempty control structure.', loc);
+    };
+    const visit = node => {
+      if (node.kind === 'If') {
+        requireBody(node.then, 'IF / THEN branch', node.loc);
+        if (node.elseLoc) requireBody(node.else, 'ELSE branch', node.elseLoc);
+        node.then.forEach(visit); node.else.forEach(visit);
+      } else if (node.kind === 'Case') {
+        if (!node.branches.length && !node.otherwiseLoc) throw new PseudoError('EmptyBlockError', 'CASE must contain at least one case branch with an executable statement.', node.loc);
+        node.branches.forEach(branch => { requireBody(branch.body, 'CASE branch', branch.labelLoc || branch.loc); branch.body.forEach(visit); });
+        if (node.otherwiseLoc) { requireBody(node.otherwise, 'OTHERWISE branch', node.otherwiseLoc); node.otherwise.forEach(visit); }
+      } else if (['For', 'While', 'Repeat', 'Procedure', 'Function'].includes(node.kind)) {
+        requireBody(node.body, node.kind.toUpperCase() + ' body', node.loc);
+        node.body.forEach(visit);
+      }
+    };
+    ast.body.forEach(visit);
+    return ast;
+  }
+  function sourceLayout(source, ast, options = {}) {
+    source = String(source);
+    options = {...options, dialect: options.dialect || ast?.dialect || 'as'};
+    ast = ast || parse(source, options);
+    const tokens = tokenize(source, options), sourceLines = source.split(/\r\n|\n|\r/);
+    const lines = sourceLines.map((text, index) => ({line: index + 1, text, tokens: [], depth: 0, role: 'statement', token: null, expectedSpaces: 0}));
+    tokens.forEach(token => { if (!['newline', 'eof'].includes(token.kind)) lines[token.line - 1].tokens.push(token); });
+    for (const line of lines) line.token = line.tokens.find(token => token.kind !== 'comment') || null;
+    const lineAt = offset => {
+      let low = 0, high = tokens.length - 1;
+      while (low < high) { const mid = Math.ceil((low + high) / 2); if (tokens[mid].startOffset <= offset) low = mid; else high = mid - 1; }
+      return tokens[low].line;
+    };
+    const mark = (line, depth, role) => { const entry = lines[line - 1]; if (entry) { entry.depth = depth; entry.role = role; } };
+    const fill = (from, to, depth, role = 'body') => { for (let line = from; line <= to; line++) mark(line, depth, role); };
+    const visit = (node, depth) => {
+      const endLine = lineAt(Math.max(node.loc.startOffset, node.loc.endOffset - 1));
+      const finalLine = node.endLoc ? node.endLoc.line : endLine;
+      fill(node.loc.line, endLine, depth + layoutRules.continuationOffset, 'continuation');
+      mark(node.loc.line, depth, node.endLoc ? 'opener' : 'statement');
+      if (node.endLoc) mark(finalLine, depth, 'closer');
+      if (node.kind === 'If') {
+        node.then.forEach(n => visit(n, depth + layoutRules.bodyOffset)); node.else.forEach(n => visit(n, depth + layoutRules.bodyOffset));
+        if (node.elseLoc) mark(node.elseLoc.line, depth, 'else');
+        // A separate THEN line belongs with the IF header.
+        for (let line = node.loc.line + 1; line < (node.then[0]?.loc.line || node.elseLoc?.line || finalLine); line++) {
+          if (lines[line - 1].token?.kind === 'keyword' && lines[line - 1].token.value === 'THEN') mark(line, depth, 'then');
+        }
+      } else if (node.kind === 'Case') {
+        fill(node.loc.line + 1, finalLine - 1, depth + layoutRules.branchOffset, 'branch');
+        node.branches.forEach((branch, index) => {
+          const nextLine = node.branches[index + 1]?.loc.line || node.otherwiseLoc?.line || finalLine;
+          fill(branch.loc.line + 1, nextLine - 1, depth + layoutRules.branchBodyOffset);
+          branch.body.forEach(n => visit(n, depth + layoutRules.branchBodyOffset));
+          mark(branch.loc.line, depth + layoutRules.branchOffset, 'branch');
+        });
+        if (node.otherwiseLoc) {
+          fill(node.otherwiseLoc.line + 1, finalLine - 1, depth + layoutRules.branchBodyOffset);
+          node.otherwise.forEach(n => visit(n, depth + layoutRules.branchBodyOffset));
+          mark(node.otherwiseLoc.line, depth + layoutRules.branchOffset, 'otherwise');
+        }
+      } else if (Array.isArray(node.body) || node.kind === 'Record') {
+        (node.body || node.fields).forEach(n => visit(n, depth + layoutRules.bodyOffset));
+      }
+    };
+    ast.body.forEach(node => visit(node, 0));
+    for (const line of lines) {
+      line.expectedSpaces = line.depth * layoutRules.indentWidth;
+      if (!line.token) line.role = line.tokens.length ? 'comment' : 'blank';
+    }
+    return {lines, tokens, ast};
+  }
+  function validateTeaching(source, ast, options = {}) {
+    if (!ast) ast = parse(source, options);
+    if (source !== null && source !== undefined) {
+      const layout = sourceLayout(source, ast, options);
+      for (const token of layout.tokens) if (token.kind === 'keyword' && token.raw !== token.value) throw new PseudoError('KeywordCaseError', "Keyword / built-in '" + token.raw + "' must be uppercase: use '" + token.value + "'. Use Format to fix keyword case and indentation.", token.loc);
+      for (const line of layout.lines) {
+        if (!line.token) continue;
+        const prefix = line.text.slice(0, line.token.column - 1), expected = ' '.repeat(line.expectedSpaces);
+        if (prefix !== expected) {
+          const spaces = [...prefix].filter(character => character === ' ').length, tabs = [...prefix].filter(character => character === '\t').length;
+          const other = [...prefix].filter(character => character !== ' ' && character !== '\t').map(character => 'U+' + character.codePointAt(0).toString(16).toUpperCase().padStart(4, '0'));
+          throw new PseudoError('IndentationError', 'Line ' + line.line + ' requires exactly ' + line.expectedSpaces + ' leading spaces for this ' + line.role + '. Actual indentation: ' + spaces + ' spaces and ' + tabs + ' tab(s)' + (other.length ? '; other whitespace: ' + other.join(', ') : '') + '. Use four spaces per level, align THEN / ELSE / closing keywords with their opener, and use Format to fix indentation. Tabs are not allowed.', line.token.loc);
+        }
+      }
+    }
+    return validateExecutableBlocks(ast);
+  }
   function format(source, options) {
     source = String(source);
     const activeBuiltins = dialectOf(options) === 'igcse' ? igcseBuiltins : builtins;
     let ast;
-    try { ast = parse(source, options); }
-    catch (error) { throw new PseudoError(error.category || 'SyntaxError', 'Cannot safely format because the program contains syntax errors. ' + error.message, error.loc); }
-    const tokens = tokenize(source, options), sourceLines = source.split(/\r\n|\n|\r/);
-    const lines = sourceLines.map(() => []), depths = sourceLines.map(() => 0);
-    tokens.forEach(t => { if (!['newline', 'eof'].includes(t.kind)) lines[t.line - 1].push(t); });
-    const lineAt = offset => { let n = 1; for (const token of tokens) { if (token.startOffset > offset) break; n = token.line; } return n; };
-    const fill = (from, to, depth) => { for (let line = from; line <= to; line++) depths[line - 1] = depth; };
-    const visit = (node, depth) => {
-      const finalLine = node.endLoc ? node.endLoc.line : lineAt(Math.max(node.loc.startOffset, node.loc.endOffset - 1));
-      fill(node.loc.line, finalLine, depth);
-      if (!node.endLoc) fill(node.loc.line + 1, finalLine, depth + 1);
-      if (node.kind === 'Repeat') fill(finalLine + 1, lineAt(Math.max(node.loc.startOffset, node.loc.endOffset - 1)), depth + 1);
-      if (node.kind === 'If') {
-        fill(node.loc.line + 1, finalLine - 1, depth + 1);
-        node.then.forEach(n => visit(n, depth + 1)); node.else.forEach(n => visit(n, depth + 1));
-        if (node.elseLoc) depths[node.elseLoc.line - 1] = depth;
-        // A separate THEN line belongs with the IF header.
-        for (let line = node.loc.line + 1; line < (node.then[0]?.loc.line || finalLine); line++) {
-          if (lines[line - 1][0]?.value === 'THEN') depths[line - 1] = depth;
-        }
-      } else if (node.kind === 'Case') {
-        fill(node.loc.line + 1, finalLine - 1, depth + 1);
-        node.branches.forEach((branch, index) => {
-          const nextLine = node.branches[index + 1]?.loc.line || node.otherwiseLoc?.line || finalLine;
-          fill(branch.loc.line + 1, nextLine - 1, depth + 2);
-          branch.body.forEach(n => visit(n, depth + 2));
-          depths[branch.loc.line - 1] = depth + 1;
-        });
-        if (node.otherwiseLoc) {
-          fill(node.otherwiseLoc.line + 1, finalLine - 1, depth + 2);
-          node.otherwise.forEach(n => visit(n, depth + 2));
-          depths[node.otherwiseLoc.line - 1] = depth + 1;
-        }
-      } else if (Array.isArray(node.body) || node.kind === 'Record') {
-        fill(node.loc.line + 1, finalLine - 1, depth + 1);
-        (node.body || node.fields).forEach(n => visit(n, depth + 1));
-      }
-    };
-    ast.body.forEach(node => visit(node, 0));
+    try { ast = parse(source, options); validateExecutableBlocks(ast); }
+    catch (error) { throw new PseudoError(error.category || 'SyntaxError', 'Cannot safely format because the program contains syntax or block-structure errors. ' + error.message, error.loc); }
+    const layout = sourceLayout(source, ast, options);
     const unarySigns = new Set();
     // Flat left-associative expressions can have very deep ASTs without deep
     // source nesting; use an explicit traversal stack instead of the JS stack.
@@ -2033,8 +2133,9 @@ globalThis.LabPythonBridge="\"\"\"Teaching runtime bridge. Student code runs as 
         } else if (child && typeof child === 'object') pending.push(child);
       }
     }
+    let squareDepth = 0;
     function formatLine(lineTokens) {
-      let result = '', previous = null, squareDepth = 0;
+      let result = '', previous = null;
       for (const token of lineTokens) {
         const text = token.kind === 'keyword' ? token.value : token.value === '←' && token.kind === 'operator' ? '←' : token.raw;
         if (token.kind === 'comment') { result += (result ? ' ' : '') + text; break; }
@@ -2049,11 +2150,14 @@ globalThis.LabPythonBridge="\"\"\"Teaching runtime bridge. Student code runs as 
       }
       return result;
     }
-    return lines.map((tokensOnLine, i) => tokensOnLine.length ? '    '.repeat(Math.max(0, depths[i])) + formatLine(tokensOnLine) : '').join('\n');
+    return layout.lines.map(line => line.tokens.length ? ' '.repeat(line.expectedSpaces) + formatLine(line.tokens) : '').join('\n');
   }
   P.tokenize = tokenize;
   P.parse = parse;
   P.format = format;
+  P.layoutRules = layoutRules;
+  P.sourceLayout = sourceLayout;
+  P.validateTeaching = validateTeaching;
 })();
 
 
@@ -2197,7 +2301,7 @@ function descendants(body, fn) {
     }
 }
 class Analyzer {
-    constructor(ast) { this.ast=ast; this.dialect=ast.dialect||'as'; this.dialectName=this.dialect==='igcse'?'Cambridge IGCSE 0478':'Cambridge AS 9618'; this.builtins=this.dialect==='igcse'?IGCSE_BUILTINS:AS_BUILTINS; this.global=new Scope(null,'global'); this.modules=new Map(); this.records=new Map(); this.types=new WeakMap(); this.scopes=new Map(); this.symbols=[]; this.warnings=[]; this.recordDepth=0; }
+    constructor(ast,options={}) { this.ast=ast; this.teachingChecks=Boolean(options.teachingChecks); this.dialect=ast.dialect||'as'; this.dialectName=this.dialect==='igcse'?'Cambridge IGCSE 0478':'Cambridge AS 9618'; this.builtins=this.dialect==='igcse'?IGCSE_BUILTINS:AS_BUILTINS; this.global=new Scope(null,'global'); this.modules=new Map(); this.records=new Map(); this.types=new WeakMap(); this.scopes=new Map(); this.symbols=[]; this.warnings=[]; this.recordDepth=0; }
     analyze() {
         validateTreeSize(this.ast);
         if(!['as','igcse'].includes(this.dialect)) fail('UnsupportedFeature','Unknown pseudocode dialect. Select Cambridge AS 9618 or Cambridge IGCSE 0478.',this.ast);
@@ -2233,10 +2337,37 @@ class Analyzer {
             this.checkBlock(mod.node.body,mod.scope,mod);
             if (mod.kind==='function' && !this.alwaysReturns(mod.node.body)) this.warnings.push("Function '"+mod.name+"' may reach its end without RETURN; that path causes a runtime error.");
         }
+        if(this.teachingChecks) {
+            this.checkTeachingBlock(this.ast.body,this.global);
+            for(const mod of this.modules.values()) this.checkTeachingBlock(mod.node.body,mod.scope);
+        }
         for (const scope of [this.global,...Array.from(this.modules.values(),m=>m.scope)]) {
             for (const sym of scope.items.values()) this.symbols.push({name:sym.name,kind:sym.kind,type:typeName(sym.type),scope:scope.name});
         }
         return this;
+    }
+    checkTeachingBlock(body,scope,active=new Map()) {
+        for(const s of body) {
+            if(['Assign','Input','ReadFile'].includes(s.kind) && s.target.kind==='Name') {
+                const owner=active.get(scope.find(s.target.name));
+                if(owner) counterMutation(owner,s);
+            }
+            if(s.kind==='For') {
+                const symbol=scope.find(s.name),owner=active.get(symbol);
+                if(owner) counterMutation(owner,s,'reuse');
+                // constantExpression only reads literals/constants and applies
+                // pure operators. It never calls user-defined functions.
+                const known=e=>{try{const v=this.constantExpression(e,scope);return v.type==='INTEGER'?v.data:undefined;}catch(_notConstant){return undefined;}};
+                checkForRange(s,known(s.start),known(s.end),known(s.step));
+                active.set(symbol,s);
+                try{this.checkTeachingBlock(s.body,scope,active);}finally{active.delete(symbol);}
+            }else if(s.kind==='If') {
+                this.checkTeachingBlock(s.then,scope,active);this.checkTeachingBlock(s.else,scope,active);
+            }else if(s.kind==='Case') {
+                for(const branch of s.branches)this.checkTeachingBlock(branch.body,scope,active);
+                this.checkTeachingBlock(s.otherwise,scope,active);
+            }else if(s.kind==='While'||s.kind==='Repeat') this.checkTeachingBlock(s.body,scope,active);
+        }
     }
     collect(body,scope) {
         // Declarations have module scope, including declarations within a selection or loop.
@@ -2435,6 +2566,15 @@ class Analyzer {
         return body.some(s=>s.kind==='Return' || s.kind==='If' && s.else.length>0 && this.alwaysReturns(s.then) && this.alwaysReturns(s.else) || s.kind==='Case' && s.otherwise.length>0 && s.branches.every(b=>this.alwaysReturns(b.body)) && this.alwaysReturns(s.otherwise));
     }
 }
+function checkForRange(node,start,end,step) {
+    if(step===0) fail('ForStepError','FOR STEP cannot be zero. Use a non-zero INTEGER increment.',node.step);
+    if(start===undefined || end===undefined || start===end) return;
+    if(node.step.implicit && start>end) fail('ForStepError','This decreasing FOR range needs an explicit negative STEP in teaching mode, for example STEP -1.',node);
+    if(step!==undefined && (start<end&&step<0 || start>end&&step>0)) fail('ForStepError','FOR STEP points away from the final bound. Use a '+(start<end?'positive':'negative')+' STEP for this range.',node.step);
+}
+function counterMutation(owner,node,action='modify') {
+    fail('CounterMutationError','Cannot '+action+" active FOR counter '"+owner.name+"' (FOR at line "+owner.loc.line+'). Use STEP for the increment, or a separate variable.',node);
+}
 function binaryType(op,a,b,node,integerPower=false,dialect='as') {
     if (['AND','OR'].includes(op)) { expectType(a,'BOOLEAN',node,op+' left operand'); expectType(b,'BOOLEAN',node,op+' right operand'); return 'BOOLEAN'; }
     if (op==='&') { if (!textual(a)||!textual(b)) fail('TypeError','& requires STRING or CHAR operands.',node); return 'STRING'; }
@@ -2572,6 +2712,24 @@ class Engine {
         this.maxTrace=Number.isFinite(options.maxTrace)?Math.max(0,options.maxTrace):5000;
         this.maxTimeMs=Number.isFinite(options.maxTimeMs)?Math.max(100,options.maxTimeMs):120000;
         this.outputChars=0; this.traceTruncated=false;
+        this.activeCounters=new Map();
+    }
+    assertWritable(cell,node,action='modify') {
+        if(!this.options.teachingChecks || this.activeCounters.size===0) return;
+        // Preflight the complete existing target tree before copying any data:
+        // an active BYREF counter may alias one cell of an array/record target.
+        const pending=[cell];
+        while(pending.length) {
+            const current=pending.pop(),lock=this.activeCounters.get(current);
+            if(lock) counterMutation(lock.node,node,action);
+            if(current.type.kind==='ARRAY') for(const child of current.data.cells)pending.push(child);
+            else if(current.type.kind==='RECORD') for(const child of current.data.values())pending.push(child);
+        }
+    }
+    writeCell(cell,v,node) { this.assertWritable(cell,node);assignCell(cell,v); }
+    writeCounter(cell,data,token,node) {
+        if(this.options.teachingChecks && this.activeCounters.get(cell)?.token!==token) fail('RuntimeError','FOR counter ownership was lost.',node);
+        cell.data=data;
     }
     stopped(node) { if (this.options.signal && this.options.signal.aborted) fail('ExecutionStopped','Execution stopped by the user.',node||this.lastNode); }
     async tick(node) {
@@ -2692,6 +2850,7 @@ class Engine {
     }
     async input(s,env) {
         const target=await this.location(s.target,env);
+        this.assertWritable(target,s);
         if (typeof this.options.input!=='function') fail('InputError','This program needs interactive input, but no input provider was supplied.',s);
         for (;;) {
             await this.tick(s); let raw;
@@ -2702,7 +2861,7 @@ class Engine {
                 raw=signal?await Promise.race([waiting,new Promise((resolve,reject)=>{ abort=()=>reject(new P.Error('ExecutionStopped','Execution stopped while waiting for input.',s.loc)); signal.addEventListener('abort',abort,{once:true}); if(signal.aborted)abort(); })]):await waiting;
             } finally { if(signal && abort)signal.removeEventListener('abort',abort); this.started+=Date.now()-began; }
             this.stopped(s);
-            try { const v=parseInput(raw,target.type,s); assignCell(target,v); this.record(s,'INPUT',expressionName(s.target),target); return; }
+            try { const v=parseInput(raw,target.type,s); this.writeCell(target,v,s); this.record(s,'INPUT',expressionName(s.target),target); return; }
             catch(e) { if(e.category==='InputError' && this.options.onInputError) { await this.options.onInputError(e); continue; } throw e; }
         }
     }
@@ -2712,7 +2871,7 @@ class Engine {
     async statement(s,env) {
         switch(s.kind) {
             case 'Declare': case 'Constant': case 'Record': case 'Procedure': case 'Function': return;
-            case 'Assign': { const c=await this.location(s.target,env),v=await this.evaluate(s.value,env); const snapshot={type:v.type,data:copyData(v)}; assignCell(c,snapshot); this.record(s,'Assignment',expressionName(s.target),c); return; }
+            case 'Assign': { const c=await this.location(s.target,env);this.assertWritable(c,s);const v=await this.evaluate(s.value,env); const snapshot={type:v.type,data:copyData(v)}; this.writeCell(c,snapshot,s); this.record(s,'Assignment',expressionName(s.target),c); return; }
             case 'Input': await this.input(s,env); return;
             case 'Output': {
                 let out=''; for(const e of s.values) out+=formatValue(await this.evaluate(e,env));
@@ -2729,15 +2888,28 @@ class Engine {
                 await this.block(s.otherwise,env); return;
             }
             case 'For': {
-                const cell=env.find(s.name),start=await this.evaluate(s.start,env),end=await this.evaluate(s.end,env),step=await this.evaluate(s.step,env);
-                if(step.data===0) fail('RuntimeError','FOR STEP cannot be zero.',s.step);
-                cell.data=start.data;
-                for(let n=start.data;step.data>0?n<=end.data:n>=end.data;n+=step.data) {
-                    await this.tick(s); cell.data=n; this.record(s,'FOR iteration',s.name,cell); await this.block(s.body,env);
-                    const next=n+step.data;
-                    if(!Number.isSafeInteger(next)) fail('RuntimeError','FOR counter exceeds the safe INTEGER range.',s);
-                    cell.data=next;
-                }
+                const cell=env.find(s.name);
+                this.assertWritable(cell,s,'reuse');
+                const start=await this.evaluate(s.start,env),end=await this.evaluate(s.end,env),step=await this.evaluate(s.step,env);
+                if(this.options.teachingChecks) checkForRange(s,start.data,end.data,step.data);
+                else if(step.data===0) fail('RuntimeError','FOR STEP cannot be zero.',s.step);
+                const token=Symbol('FOR owner');
+                if(this.options.teachingChecks)this.activeCounters.set(cell,{token,node:s});
+                try {
+                    this.writeCounter(cell,start.data,token,s);
+                    for(let n=start.data;step.data>0?n<=end.data:n>=end.data;) {
+                        await this.tick(s); this.writeCounter(cell,n,token,s); this.record(s,'FOR iteration',s.name,cell); await this.block(s.body,env);
+                        const next=n+step.data;
+                        if(!Number.isSafeInteger(next)) {
+                            const exactNext=BigInt(n)+BigInt(step.data),finished=step.data>0?exactNext>BigInt(end.data):exactNext<BigInt(end.data);
+                            if(!finished) fail('RuntimeError','FOR counter exceeds the safe INTEGER range.',s);
+                            // No further iteration is due. Retain the last safe
+                            // counter rather than fail while leaving the loop.
+                            this.writeCounter(cell,n,token,s);break;
+                        }
+                        this.writeCounter(cell,next,token,s);n=next;
+                    }
+                }finally{if(this.activeCounters.get(cell)?.token===token)this.activeCounters.delete(cell);}
                 return;
             }
             case 'While':
@@ -2748,7 +2920,7 @@ class Engine {
             case 'Return': { const v=await this.evaluate(s.value,env); throw new ReturnSignal(v); }
             case 'OpenFile': { const name=(await this.evaluate(s.file,env)).data; this.files.openFile(name,s.mode,s); this.record(s,'OPENFILE '+s.mode,name); return; }
             case 'CloseFile': { const name=(await this.evaluate(s.file,env)).data; this.files.close(name,s); this.record(s,'CLOSEFILE',name); return; }
-            case 'ReadFile': { const name=(await this.evaluate(s.file,env)).data,c=await this.location(s.target,env); assignCell(c,value('STRING',this.files.read(name,s))); this.record(s,'READFILE',expressionName(s.target),c); return; }
+            case 'ReadFile': { const name=(await this.evaluate(s.file,env)).data,c=await this.location(s.target,env); this.assertWritable(c,s);this.writeCell(c,value('STRING',this.files.read(name,s)),s); this.record(s,'READFILE',expressionName(s.target),c); return; }
             case 'WriteFile': { const name=(await this.evaluate(s.file,env)).data,text=(await this.evaluate(s.value,env)).data; this.files.write(name,text,s); this.record(s,'WRITEFILE',name,text); return; }
             default: fail('RuntimeError','Unsupported statement '+s.kind+'.',s);
         }
@@ -2784,7 +2956,17 @@ function arrayIndexName(t,offset) {
 }
 P.typeName=typeName; P.formatValue=formatValue; P.parseInput=parseInput;
 P.analyze=function(ast) { const a=new Analyzer(typeof ast==='string'?P.parse(ast):ast).analyze(); return {symbols:a.symbols,warnings:a.warnings}; };
-P.run=async function(sourceOrAST,options={}) { const ast=typeof sourceOrAST==='string'?P.parse(sourceOrAST,{dialect:options.dialect||'as'}):sourceOrAST; const a=new Analyzer(ast).analyze(); return new Engine(a,options).run(); };
+function prepareProgram(sourceOrAST,options) {
+    const source=typeof sourceOrAST==='string'?sourceOrAST:null;
+    const ast=source!==null?P.parse(source,{dialect:options.dialect||'as'}):sourceOrAST;
+    if(options.teachingChecks) {
+        if(typeof P.validateTeaching!=='function') fail('UnsupportedFeature','Teaching validation is not loaded. Reload the complete editor.',ast);
+        P.validateTeaching(source,ast,{dialect:ast.dialect||'as'});
+    }
+    return new Analyzer(ast,options).analyze();
+}
+P.check=function(source,options={}) { const a=prepareProgram(source,options);return {symbols:a.symbols,warnings:a.warnings}; };
+P.run=async function(sourceOrAST,options={}) { const a=prepareProgram(sourceOrAST,options); return new Engine(a,options).run(); };
 P.FEATURES={variables:true,constants:true,basicTypes:true,dateType:true,inputOutput:true,ifStatement:true,caseStatement:true,forLoop:true,whileLoop:true,repeatUntil:true,arrays1D:true,arrays2D:true,records:true,procedures:true,functions:true,byVal:true,byRef:true,textFiles:true,virtualFileSystem:true,trace:true,testRunner:true,enums:false,pointers:false,sets:false,randomFiles:false,oop:false,recursionAsSyllabusFeature:false};
 })(globalThis.Pseudo);
 
@@ -3592,7 +3774,8 @@ ENDIF`}
   function createCommands(options = {}) {
   const igcse = options.dialect === 'igcse';
   const tokenize = text => P.tokenize(text, options);
-  const INDENT = '    ';
+  const rules = P.layoutRules || {indentWidth:4, bodyOffset:1, branchOffset:1, branchBodyOffset:2, continuationOffset:1};
+  const addIndent = (indent, levels = rules.bodyOffset) => indent + ' '.repeat(rules.indentWidth * levels);
   const closingKinds = {
     ENDIF: 'IF', NEXT: 'FOR', ENDWHILE: 'WHILE', UNTIL: 'REPEAT',
     ENDPROCEDURE: 'PROCEDURE', ENDFUNCTION: 'FUNCTION', ENDTYPE: 'TYPE', ENDCASE: 'CASE'
@@ -3643,7 +3826,7 @@ ENDIF`}
   function opener(tokens) {
     if (!tokens?.length || tokens[0].kind !== 'keyword' || !balanced(tokens)) return null;
     const first = tokens[0].value, last = tokens[tokens.length - 1];
-    if (first === 'IF') return keyword(last, 'THEN') || (igcse && tokens.length > 1 && completeOperand(last)) ? first : null;
+    if (first === 'IF') return keyword(last, 'THEN') || (tokens.length > 1 && completeOperand(last)) ? first : null;
     if (first === 'FOR') return tokens.some(t => keyword(t, 'TO')) && tokens.some(t => t.kind === 'operator' && t.value === '←') && completeOperand(last) ? first : null;
     if (first === 'WHILE') return tokens.length > 1 && completeOperand(last) ? first : null;
     if (first === 'REPEAT') return tokens.length === 1 ? first : null;
@@ -3660,16 +3843,65 @@ ENDIF`}
   function closer(tokens) {
     return tokens?.[0]?.kind === 'keyword' ? closingKinds[tokens[0].value] || null : null;
   }
-  function branch(tokens, stack) {
-    if (!tokens?.length || stack[stack.length - 1]?.kind !== 'CASE' || !balanced(tokens) || !punctuation(tokens[tokens.length - 1], ':')) return false;
-    const first = tokens[0];
-    return first.kind !== 'keyword' || keyword(first, 'OTHERWISE') || keyword(first, 'TRUE') || keyword(first, 'FALSE');
+  function caseBranch(tokens, stack) {
+    const owner = stack[stack.length - 1];
+    if (!tokens?.length || owner?.kind !== 'CASE') return null;
+    const first = tokens[0], otherwise = keyword(first, 'OTHERWISE');
+    if (otherwise && (igcse || punctuation(tokens[1], ':'))) {
+      return {owner, body:tokens.slice(punctuation(tokens[1], ':') ? 2 : 1)};
+    }
+    if (first.kind === 'keyword' && !keyword(first, 'TRUE') && !keyword(first, 'FALSE')) return null;
+    let depth = 0;
+    for (let i = 0; i < tokens.length; i++) {
+      if (punctuation(tokens[i], '(') || punctuation(tokens[i], '[')) depth++;
+      else if (punctuation(tokens[i], ')') || punctuation(tokens[i], ']')) depth--;
+      else if (depth === 0 && punctuation(tokens[i], ':')) return {owner, body:tokens.slice(i + 1)};
+    }
+    return null;
   }
-  function updateStack(stack, tokens, indent) {
-    const closed = closer(tokens), match = closed && matching(stack, closed);
-    if (match) stack.splice(match.index);
-    const kind = opener(tokens);
-    if (kind) stack.push({kind, indent});
+  function continues(tokens) {
+    if (!balanced(tokens)) return true;
+    const first = tokens[0], last = tokens[tokens.length - 1];
+    // Match the parser's explicit line-continuation tokens. The pending context
+    // retains the first line's indentation across any number of continuations.
+    if (last?.kind === 'operator' || last?.kind === 'keyword' && ['AND', 'OR', 'NOT', 'DIV', 'MOD', 'ARRAY', 'OF', 'RETURNS'].includes(last.value) || punctuation(last, ',')) return true;
+    // Closing a function's parameter list does not finish its RETURNS clause.
+    if (keyword(first, 'FUNCTION') && (igcse || tokens.some(t => punctuation(t, ')'))) && !tokens.some(t => keyword(t, 'RETURNS'))) return true;
+    if (['DECLARE', 'PROCEDURE', 'FUNCTION'].some(word => keyword(first, word))) {
+      return tokens.filter(t => keyword(t, 'ARRAY')).length > tokens.filter(t => keyword(t, 'OF')).length;
+    }
+    return false;
+  }
+  function transition(stack, tokens, indent) {
+    if (!tokens?.length) return {nextIndent:indent, pending:null};
+    const branch = caseBranch(tokens, stack), statement = branch ? branch.body : tokens;
+    let headerIndent = branch ? addIndent(branch.owner.indent, rules.branchBodyOffset) : indent;
+    let alignIndent = branch ? addIndent(branch.owner.indent, rules.branchOffset) : null;
+    const closed = closer(statement), outer = closed && matching(stack, closed);
+    const separator = statement.length === 1 && (keyword(statement[0], 'THEN') || keyword(statement[0], 'ELSE'));
+    const conditional = separator && matching(stack, 'IF');
+    if (outer || conditional) {
+      headerIndent = (outer || conditional).entry.indent;
+      if (!branch) alignIndent = headerIndent;
+    }
+    if (statement.length && continues(statement)) {
+      return {nextIndent:addIndent(headerIndent, rules.continuationOffset), alignIndent,
+        pending:{tokens:statement, indent:headerIndent}};
+    }
+    if (outer) {
+      stack.splice(outer.index);
+      return {nextIndent:headerIndent, alignIndent, pending:null};
+    }
+    if (conditional) return {nextIndent:addIndent(headerIndent), alignIndent, pending:null};
+    const kind = opener(statement);
+    if (kind) {
+      stack.push({kind, indent:headerIndent});
+      const awaitingThen = kind === 'IF' && !keyword(statement[statement.length - 1], 'THEN');
+      return {nextIndent:awaitingThen ? headerIndent : addIndent(headerIndent, kind === 'CASE' ? rules.branchOffset : rules.bodyOffset), alignIndent, pending:null, kind};
+    }
+    // Preserve useful indentation for an isolated ELSE while the opener is being edited.
+    const standaloneElse = !branch && statement.length === 1 && keyword(statement[0], 'ELSE');
+    return {nextIndent:standaloneElse ? addIndent(headerIndent) : headerIndent, alignIndent, pending:null};
   }
   function contextBefore(lines, currentIndex) {
     const stack = [];
@@ -3677,11 +3909,10 @@ ENDIF`}
     for (let i = 0; i < currentIndex; i++) {
       const tokens = lineTokens(lines[i].text);
       if (tokens === null) { pending = null; continue; }
+      if (!tokens.length) continue;
       const combined = pending ? pending.tokens.concat(tokens) : tokens;
       const indent = pending ? pending.indent : whitespace(lines[i].text);
-      if (!balanced(combined)) { pending = {tokens: combined, indent}; continue; }
-      updateStack(stack, combined, indent);
-      pending = null;
+      pending = transition(stack, combined, indent).pending;
     }
     return {stack, pending};
   }
@@ -3689,20 +3920,18 @@ ENDIF`}
     text = String(text);
     [start, end] = selection(text, start, end);
     const lines = sourceLines(text), currentIndex = lineIndex(lines, start), line = lines[currentIndex];
-    const before = text.slice(0, start), prefix = text.slice(line.start, start), suffix = text.slice(end);
+    let before = text.slice(0, start);
+    const prefix = text.slice(line.start, start), suffix = text.slice(end);
     const eol = text.includes('\r\n') ? '\r\n' : '\n';
     const context = contextBefore(lines, currentIndex), tokens = lineTokens(prefix);
     const logicalTokens = tokens === null ? null : context.pending ? context.pending.tokens.concat(tokens) : tokens;
     const baseIndent = whitespace(prefix), headerIndent = context.pending ? context.pending.indent : baseIndent;
-    const closed = closer(logicalTokens), outer = closed && matching(context.stack, closed);
-    const kind = opener(logicalTokens);
-    const isElse = logicalTokens?.length === 1 && keyword(logicalTokens[0], 'ELSE');
-    const isThen = igcse && logicalTokens?.length === 1 && keyword(logicalTokens[0], 'THEN');
-    const isOtherwise = igcse && logicalTokens?.length === 1 && keyword(logicalTokens[0], 'OTHERWISE');
-    let indent = baseIndent;
-    if (outer) indent = outer.entry.indent;
-    else if (kind || isElse || isThen || isOtherwise || branch(logicalTokens, context.stack)) indent = headerIndent + INDENT;
-    updateStack(context.stack, logicalTokens, headerIndent);
+    const decision = logicalTokens === null ? {nextIndent:baseIndent} : transition(context.stack, logicalTokens, headerIndent);
+    let indent = decision.nextIndent;
+    const alignCurrent = tokens?.length ? (context.pending ? addIndent(context.pending.indent, rules.continuationOffset) : decision.alignIndent) : null;
+    if (alignCurrent !== null && alignCurrent !== undefined && alignCurrent !== baseIndent) {
+      before = text.slice(0, line.start) + alignCurrent + prefix.slice(baseIndent.length);
+    }
     let remaining = suffix;
     let inserted = eol + indent;
     let cursor = before.length + inserted.length;
@@ -3713,17 +3942,26 @@ ENDIF`}
     const onNextLine = !firstSuffix.text.trim() && firstSuffix.next > firstSuffix.end && suffixLines.length > 1;
     const candidate = onNextLine ? suffixLines[1] : firstSuffix;
     const nextTokens = lineTokens(candidate.text);
-    const nextKind = closer(nextTokens) || (nextTokens?.length === 1 && keyword(nextTokens[0], 'ELSE') ? 'IF' : null);
+    const nextThen = nextTokens?.length === 1 && keyword(nextTokens[0], 'THEN');
+    const nextKind = closer(nextTokens) || (nextTokens?.length === 1 && (keyword(nextTokens[0], 'ELSE') || nextThen) ? 'IF' : null);
     const insideComment = tokens !== null && tokenize(prefix).some(t => t.kind === 'comment');
-    const expected = tokens !== null && (onNextLine || !insideComment) && nextKind && matching(context.stack, nextKind);
-    if (expected) {
-      const oldIndent = whitespace(candidate.text), replacement = expected.entry.indent;
+    const nextBranch = caseBranch(nextTokens, context.stack);
+    const expected = nextKind && matching(context.stack, nextKind);
+    const replacement = expected ? expected.entry.indent : nextBranch ? addIndent(nextBranch.owner.indent, rules.branchOffset) : null;
+    if (tokens !== null && (onNextLine || !insideComment) && replacement !== null) {
+      const oldIndent = whitespace(candidate.text);
       if (onNextLine) {
         remaining = remaining.slice(0, candidate.start) + replacement + remaining.slice(candidate.start + oldIndent.length);
       } else if (candidate.text.trim()) {
         // The closing keyword is on the same line as the caret.
         // The active block supplies inner indentation when splitting a header.
-        indent = kind ? headerIndent + INDENT : baseIndent || expected.entry.indent + INDENT;
+        if (nextThen) {
+          inserted = eol + replacement;
+          remaining = remaining.slice(oldIndent.length);
+          cursor = before.length + inserted.length;
+          return {text:before + inserted + remaining, selectionStart:cursor, selectionEnd:cursor, selectionDirection:'none'};
+        }
+        indent = indent || (expected ? addIndent(expected.entry.indent) : addIndent(nextBranch.owner.indent, rules.branchBodyOffset));
         inserted = eol + indent + eol + replacement;
         remaining = remaining.slice(oldIndent.length);
         cursor = before.length + eol.length + indent.length;
@@ -4779,17 +5017,17 @@ OUTPUT "Next year: ", Age + 1
 DECLARE Mark : INTEGER
 INPUT Mark
 IF Mark >= 80
-  THEN
+THEN
     OUTPUT "A"
-  ELSE
+ELSE
     IF Mark >= 70
-      THEN
+    THEN
         OUTPUT "B"
-      ELSE
+    ELSE
         IF Mark >= 60
-          THEN
+        THEN
             OUTPUT "C"
-          ELSE
+        ELSE
             OUTPUT "D"
         ENDIF
     ENDIF
@@ -4883,11 +5121,11 @@ Smallest ← Values[1]
 Largest ← Values[1]
 FOR Index ← 2 TO 5
     IF Values[Index] < Smallest
-      THEN
+    THEN
         Smallest ← Values[Index]
     ENDIF
     IF Values[Index] > Largest
-      THEN
+    THEN
         Largest ← Values[Index]
     ENDIF
 NEXT Index
@@ -4933,15 +5171,15 @@ Position ← 0
 Index ← 1
 WHILE Index <= 5 AND Position = 0 DO
     IF Values[Index] = Target
-      THEN
+    THEN
         Position ← Index
     ENDIF
     Index ← Index + 1
 ENDWHILE
 IF Position = 0
-  THEN
+THEN
     OUTPUT "Not found"
-  ELSE
+ELSE
     OUTPUT "Position: ", Position
 ENDIF
 `, ['9'], 'Position: 2', {
@@ -4966,7 +5204,7 @@ WHILE Swapped AND Last > 1 DO
     Swapped ← FALSE
     FOR Index ← 1 TO Last - 1
         IF Values[Index] > Values[Index + 1]
-          THEN
+        THEN
             Temp ← Values[Index]
             Values[Index] ← Values[Index + 1]
             Values[Index + 1] ← Temp
@@ -5200,7 +5438,7 @@ const entryMode=new URLSearchParams(location.search).get('mode'),entryLanguage=e
 if(entryLanguage)app.activeLanguage=entryLanguage;
 let language=app.activeLanguage,state=Object.assign(app.workspaces[language],app.settings),resultSource=null,pythonCapabilities=null,probePromise=null,probeController=null,probeError='',fullscreenFallback=false,runSerial=0,currentLesson=null;
 const sessions=Object.fromEntries(LANGUAGES.map(lang=>[lang,null]));
-const pseudocodeAdapter=dialect=>({capabilities:{staticTypes:true,interactiveInput:true},tokenize:text=>P.tokenize(text,{dialect}),commands:P.editorCommandsFor({dialect}),check:text=>P.analyze(P.parse(text,{dialect})),format:text=>P.format(text,{dialect}),run:(request,onEvent)=>P.run(request.source,{dialect,files:request.files,signal:request.signal,input:request.input,onOutput:text=>onEvent?.({type:'pseudoOutput',text}),onTrace:entry=>onEvent?.({type:'traceBatch',entries:[entry]})})});
+const pseudocodeAdapter=dialect=>({capabilities:{staticTypes:true,interactiveInput:true},tokenize:text=>P.tokenize(text,{dialect}),commands:P.editorCommandsFor({dialect}),check:text=>P.check(text,{dialect,teachingChecks:true}),format:text=>P.format(text,{dialect}),run:(request,onEvent)=>P.run(request.source,{dialect,teachingChecks:true,files:request.files,signal:request.signal,input:request.input,onOutput:text=>onEvent?.({type:'pseudoOutput',text}),onTrace:entry=>onEvent?.({type:'traceBatch',entries:[entry]})})});
 const adapters=Lab.languages={
  pseudo:pseudocodeAdapter('as'),
  igcse:pseudocodeAdapter('igcse'),
@@ -5235,7 +5473,7 @@ function setStatus(label,cls=''){$('runStatus').textContent=label;$('runStatus')
 function setBusy(value){busy=value;if(value)probeController?.abort();for(const id of ['runBtn','innerRun'])$(id).disabled=value;for(const id of ['stopBtn','innerStop'])$(id).disabled=!value;source.readOnly=value;for(const id of ['formatBtn','commentBtn','newBtn','openBtn','examples','runTestsBtn','newFileBtn','renameFileBtn','deleteFileBtn','resetFilesBtn','importFileBtn','addTestBtn','inspectBtn','languageSelect','loadLesson'])$(id).disabled=value;$('fileText').readOnly=value;document.querySelectorAll('#testCases input,#testCases textarea,#testCases select,#testCases button').forEach(e=>e.disabled=value);}
 function hideInput(){document.documentElement.classList.remove('input-active');inputResolve=null;$('inputForm').hidden=true;$('consoleInput').value='';}
 function askInput(info){if(controller?.signal.aborted)return Promise.reject(new P.Error('ExecutionStopped','Execution stopped.',info.loc));tab('console');flushConsole();setStatus('WAITING FOR INPUT','running');$('inputLabel').textContent=language==='python'?'Python input()':info.name+' · '+(typeof info.type==='string'?info.type:P.typeName(info.type));$('inputForm').hidden=false;document.documentElement.classList.add('input-active');syncViewport();$('consoleInput').value='';$('consoleInput').focus();requestAnimationFrame(()=>$('inputForm').scrollIntoView({block:'nearest'}));return new Promise(resolve=>{inputResolve=resolve;});}
-function showError(e){const label=e.category||e.name||'Error',location=e.loc?'Line '+e.loc.line+', Column '+(e.loc.column||1):'';log(label+': '+e.message+(location?'\n'+location:''),'error');if(e.loc&&label!=='ExecutionStopped'){errorLine=e.loc.line;jumpTo(e.loc.line,e.loc.column||1);}setStatus(label==='ExecutionStopped'?'STOPPED':'ERROR',label==='ExecutionStopped'?'':'error');const help={UnsupportedFeature:/Firefox\//.test(navigator.userAgent)?'Zen / Firefox 尚未启用实时 Python 输入能力。请参考 Reference 中的 Zen 设置，启用后刷新本页；不调用 input() 的程序仍可运行。':'当前浏览器无法暂停 Python 并等待 Console 输入。请使用提供 JSPI 能力的浏览器；不调用 input() 的程序仍可运行。',ValueError:'输入转换失败。input() 返回字符串；可以检查内容或使用 try/except 处理。',IndentationError:'请检查缩进；同一代码块通常使用四个空格。',TabError:'同一代码块不要混用 Tab 和空格。',NameError:'此名称尚未定义，或大小写与前面不一致。',IndexError:'下标超出范围；Python 列表从 0 开始。',EOFError:'预设输入已用完。补充输入行后重新运行。',FileNotFoundError:'请在当前语言的 Files 面板创建或导入这个文件。',ExecutionStopped:language==='python'?'已停止；本轮尚未提交的虚拟文件改动已丢弃。':''};if(help[label])log(help[label],'system');flushConsole();if(e.traceback){const details=node('details',undefined,'traceback');details.append(node('summary','Traceback'),node('pre',e.traceback));$('console').append(details);}}
+function showError(e){const label=e.category||e.name||'Error',location=e.loc?'Line '+e.loc.line+', Column '+(e.loc.column||1):'';log(label+': '+e.message+(location?'\n'+location:''),'error');if(e.loc&&label!=='ExecutionStopped'){errorLine=e.loc.line;jumpTo(e.loc.line,e.loc.column||1);}setStatus(label==='ExecutionStopped'?'STOPPED':'ERROR',label==='ExecutionStopped'?'':'error');const help={KeywordCaseError:'伪代码关键字、类型名和内置函数须使用大写；Format 可修复大小写，变量名、字符串和注释保持原样。',EmptyBlockError:'此代码块需要至少一条执行语句；空行、注释和声明不算执行内容。',ForStepError:'默认 STEP 为 +1。递减请明确写负步长，其他等差增减请写对应的 STEP；方向必须朝向终点。',CounterMutationError:'FOR 计数器由循环自动更新；需要自定义更新时请改用 WHILE。',UnsupportedFeature:language!=='python'?'请检查当前课程的语法范围，详见 Reference。':/Firefox\//.test(navigator.userAgent)?'Zen / Firefox 尚未启用实时 Python 输入能力。请参考 Reference 中的 Zen 设置，启用后刷新本页；不调用 input() 的程序仍可运行。':'当前浏览器无法暂停 Python 并等待 Console 输入。请使用提供 JSPI 能力的浏览器；不调用 input() 的程序仍可运行。',ValueError:'输入转换失败。input() 返回字符串；可以检查内容或使用 try/except 处理。',IndentationError:language==='python'?'请检查缩进；同一代码块通常使用四个空格。':'伪代码每层使用四个空格，分支和结束语句与对应开头对齐。可点击 Format 修复缩进。',TabError:'同一代码块不要混用 Tab 和空格。',NameError:language==='python'?'此名称尚未定义，或大小写与前面不一致。':'请先声明此名称，并检查拼写。伪代码变量名不区分大小写。',IndexError:'下标超出范围；Python 列表从 0 开始。',EOFError:'测试输入已用完，请补充此测试用例的输入序列。',FileNotFoundError:'请在当前语言的 Files 面板创建或导入这个文件。',ExecutionStopped:language==='python'?'已停止；本轮尚未提交的虚拟文件改动已丢弃。':''};if(help[label])log(help[label],'system');flushConsole();if(e.traceback){const details=node('details',undefined,'traceback');details.append(node('summary','Traceback'),node('pre',e.traceback));$('console').append(details);}}
 function absorb(r,commitFiles=true){if(!r)return;result=r;if(commitFiles&&r.files&&typeof r.files==='object'){state.files=r.files;persist();renderFiles();}renderVariables();renderTrace();$('executionStats').textContent=(r.steps||0).toLocaleString()+(language==='python'?' line events':' execution steps');}
 async function run(config={}){if(busy||document.querySelector('dialog[open]'))return;clearTimeout(historyTimer);checkpoint();clearConsole();errorLine=0;resultSource=source.value;result={trace:[],variables:[],output:[],stdout:''};symbols=[];renderTrace();renderVariables();updateStale();tab('console');controller=new AbortController();const signal=controller.signal;setBusy(true);setStatus(language==='python'?'PREPARING':'RUNNING','running');$('executionStats').textContent='';const started=performance.now(),runId='ui-'+(++runSerial);try{if(language!=='python')symbols=adapters[language].check(source.value).symbols;const r=await adapters[language].run({runId,source:source.value,filename:state.name,files:state.files,signal,input:askInput,inputMode:config.inputMode||'interactive',inputs:Array.isArray(config.inputs)?config.inputs:[],limits:{maxSteps:1000000,maxTrace:5000,maxOutputBytes:1048576,maxOutputLines:10000,maxTimeMs:30000}},event=>{if(signal.aborted)return;if(event.type==='pseudoOutput')log(event.text);else if(event.type==='stdout'||event.type==='stderr')log(event.text,event.type);else if(event.type==='traceBatch'){result.trace.push(...(event.entries||[]));traceDirty=true;}else if(event.type==='variables'){result.variables=event.variables||[];}else if(event.type==='ready'){pythonCapabilities=event.capabilities||pythonCapabilities;probeError='';renderCapabilities();setStatus('RUNNING','running');}else if(event.type==='running')setStatus('RUNNING','running');});absorb(r);for(const warning of r.warnings||[])log(warning,'warning');log('Program finished successfully.','system success');setStatus('FINISHED');$('executionStats').textContent=(r.steps||0).toLocaleString()+' '+(language==='python'?'line events':'steps')+' · '+((performance.now()-started)/1000).toFixed(2)+' s';}catch(e){hideInput();setBusy(false);absorb(e.result,e.category!=='ExecutionStopped'||language!=='python');tab('console');showError(e);}finally{hideInput();setBusy(false);controller=null;flushConsole();paintPosition();updateStale();}}
 function stop(){if(controller){controller.abort();hideInput();setStatus('STOPPING');}}
@@ -5250,7 +5488,7 @@ function applyEditorCommand(command){if(busy||composing||document.querySelector(
 function toggleComments(){applyEditorCommand(adapters[language].commands.toggleComment);}
 function saveSource(){const ext=language==='python'?'.py':'.pseudo',name=state.name.endsWith(ext)||state.name.endsWith('.txt')?state.name:state.name.replace(/\.(py|pseudo)$/,'')+ext;download(source.value,name);dirty=false;$('dirtyDot').hidden=true;notice('Source downloaded as '+name+'.');}
 function renderTests(){const frag=document.createDocumentFragment();state.tests.forEach((test,index)=>{const card=node('article',undefined,'test-card'),head=node('div',undefined,'test-card-head'),name=node('input');name.value=test.name;name.setAttribute('aria-label','Test '+(index+1)+' name');name.oninput=()=>{test.name=name.value;queueSave();};const remove=node('button','×','small quiet');remove.setAttribute('aria-label','Remove test '+(index+1));remove.onclick=()=>{state.tests.splice(index,1);renderTests();persist();};head.append(name,remove);card.append(head);const select=node('select');select.setAttribute('aria-label','Test '+(index+1)+' data category');for(const label of ['Normal','Abnormal','Boundary / Extreme']){const o=node('option',label);o.value=label;select.append(o);}select.value=test.label;select.onchange=()=>{test.label=select.value;queueSave();};card.append(select);for(const [key,label] of [['inputs','Test inputs'],['expected','Expected output']]){const id='test-'+index+'-'+key,l=node('label',label),area=node('textarea');l.htmlFor=id;area.id=id;area.value=test[key];area.spellcheck=false;area.oninput=()=>{test[key]=area.value;invalidateTest(test,index);queueSave();};card.append(l,area);}const blankLabel=node('label',undefined,'blank-input'),blank=node('input');blank.type='checkbox';blank.checked=Boolean(test.blankInput);blank.setAttribute('aria-label','Test '+(index+1)+' empty field is one blank input');blank.onchange=()=>{test.blankInput=blank.checked;invalidateTest(test,index);queueSave();};blankLabel.append(blank,document.createTextNode('Empty input field means one blank input'));card.append(blankLabel);const outcome=node('div',test.result||'Not run','test-result '+(test.pass===true?'pass':test.pass===false?'fail':''));outcome.id='test-result-'+index;card.append(outcome);frag.append(card);});$('testCases').replaceChildren(frag);$('testSummary').textContent=state.tests.length+' test case'+(state.tests.length===1?'':'s');}
-async function runTests(){if(busy||document.querySelector('dialog[open]'))return;if(!state.tests.length){notice('Add a test case with inputs and expected output first.');return;}controller=new AbortController();const signal=controller.signal;setBusy(true);let passed=0,finished=0;try{for(let i=0;i<state.tests.length;i++){if(signal.aborted)break;const test=state.tests[i],outcome=$('test-result-'+i);outcome.textContent='Running…';outcome.className='test-result';test.source=source.value;test.fileSnapshot=JSON.stringify(state.files);const inputs=test.inputs===''?(test.blankInput?['']:[]):test.inputs.replace(/\r\n?/g,'\n').split('\n');let at=0;try{const r=await adapters[language].run({runId:'test-'+(++runSerial),source:source.value,filename:state.name,files:state.files,signal,inputMode:'preset',inputs,randomSeed:test.randomSeed,input:info=>{if(at>=inputs.length)throw new P.Error('InputError','No input line remains for '+info.name+'.',info.loc);return inputs[at++];}},()=>{});const actual=(language==='python'?r.stdout:r.output.join('\n')).replace(/\r\n?/g,'\n'),expected=test.expected.replace(/\r\n?/g,'\n');test.pass=actual===expected;test.result=test.pass?'PASS':'FAIL · Output differs';outcome.textContent=test.result;outcome.className='test-result '+(test.pass?'pass':'fail');if(!test.pass){let at=0;while(at<actual.length&&at<expected.length&&actual[at]===expected[at])at++;outcome.append(node('pre','First difference at character '+(at+1)+'\nExpected: '+JSON.stringify(expected)+'\nActual:   '+JSON.stringify(actual),'output-diff'));}else passed++;}catch(e){test.pass=false;test.result=(e.category==='ExecutionStopped'?'STOPPED':'FAIL')+' · '+(e.category||'Error')+': '+e.message;outcome.textContent=test.result;outcome.className='test-result fail';}finished++;$('testSummary').textContent=passed+' / '+finished+' passed';}if(signal.aborted)$('testSummary').textContent+=' · stopped';}finally{controller=null;setBusy(false);persist();}}
+async function runTests(){if(busy||document.querySelector('dialog[open]'))return;if(!state.tests.length){notice('Add a test case with inputs and expected output first.');return;}controller=new AbortController();const signal=controller.signal;setBusy(true);let passed=0,finished=0;try{for(let i=0;i<state.tests.length;i++){if(signal.aborted)break;const test=state.tests[i],outcome=$('test-result-'+i);outcome.textContent='Running…';outcome.className='test-result';test.source=source.value;test.fileSnapshot=JSON.stringify(state.files);const inputs=test.inputs===''?(test.blankInput?['']:[]):test.inputs.replace(/\r\n?/g,'\n').split('\n');let at=0;try{const r=await adapters[language].run({runId:'test-'+(++runSerial),source:source.value,filename:state.name,files:state.files,signal,inputMode:'preset',inputs,randomSeed:test.randomSeed,input:info=>{if(at>=inputs.length)throw new P.Error('InputError','No input line remains for '+info.name+'.',info.loc);return inputs[at++];}},()=>{});const actual=(language==='python'?r.stdout:r.output.join('\n')).replace(/\r\n?/g,'\n'),expected=test.expected.replace(/\r\n?/g,'\n');test.pass=actual===expected;test.result=test.pass?'PASS':'FAIL · Output differs';outcome.textContent=test.result;outcome.className='test-result '+(test.pass?'pass':'fail');if(!test.pass){let at=0;while(at<actual.length&&at<expected.length&&actual[at]===expected[at])at++;outcome.append(node('pre','First difference at character '+(at+1)+'\nExpected: '+JSON.stringify(expected)+'\nActual:   '+JSON.stringify(actual),'output-diff'));}else passed++;}catch(e){test.pass=false;test.result=(e.category==='ExecutionStopped'?'STOPPED':'FAIL')+' · '+(e.category||'Error')+': '+e.message+(e.loc?' · Line '+e.loc.line+', Column '+(e.loc.column||1):'');outcome.textContent=test.result;outcome.className='test-result fail';}finished++;$('testSummary').textContent=passed+' / '+finished+' passed';}if(signal.aborted)$('testSummary').textContent+=' · stopped';}finally{controller=null;setBusy(false);persist();}}
 // Source editing: preserve native selection and IME; custom history makes indentation undoable.
 source.addEventListener('compositionstart',()=>composing=true);source.addEventListener('compositionend',()=>{composing=false;markEdited();});source.addEventListener('input',()=>{if(!composing)markEdited();});source.addEventListener('scroll',syncScroll);source.addEventListener('click',paintPosition);source.addEventListener('keyup',paintPosition);source.addEventListener('select',paintPosition);
 source.addEventListener('keydown',e=>{if(composing||e.isComposing||busy)return;if((e.ctrlKey||e.metaKey)&&!e.altKey&&(e.key==='/'||e.code==='Slash')){e.preventDefault();toggleComments();return;}if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='z'){e.preventDefault();clearTimeout(historyTimer);checkpoint();const next=historyAt+(e.shiftKey?1:-1);if(next>=0&&next<history.length){historyAt=next;const h=history[next];source.value=h.value;source.setSelectionRange(h.start,h.end,h.direction||'none');dirty=true;$('dirtyDot').hidden=false;queueSave();paintEditor();}return;}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'){e.preventDefault();clearTimeout(historyTimer);checkpoint();if(historyAt+1<history.length){const h=history[++historyAt];source.value=h.value;source.setSelectionRange(h.start,h.end,h.direction||'none');dirty=true;$('dirtyDot').hidden=false;queueSave();paintEditor();}return;}if(e.key==='Tab'){e.preventDefault();clearTimeout(historyTimer);checkpoint();const start=source.selectionStart,end=source.selectionEnd,text=source.value,lineStart=text.lastIndexOf('\n',start-1)+1;if(start===end&&!e.shiftKey){const spaces=4-((start-lineStart)%4);source.setRangeText(' '.repeat(spaces),start,end,'end');}else{const selectedEnd=end>start&&text[end-1]==='\n'?end-1:end;let lineEnd=text.indexOf('\n',selectedEnd);if(lineEnd<0)lineEnd=text.length;const block=text.slice(lineStart,lineEnd),lines=block.split('\n');let removed=0;const changed=lines.map((l,i)=>{if(e.shiftKey){const n=l.startsWith('\t')?1:Math.min(4,l.match(/^ */)[0].length);if(i===0)removed=n;return l.slice(n);}return '    '+l;}).join('\n');source.setRangeText(changed,lineStart,lineEnd,'select');const delta=changed.length-block.length;source.setSelectionRange(Math.max(lineStart,start+(e.shiftKey?-removed:4)),Math.max(lineStart,end+delta));}checkpoint();markEdited();paintEditor();}else if(e.key==='Enter'&&!e.metaKey&&!e.ctrlKey){e.preventDefault();applyEditorCommand(adapters[language].commands.newline);}});
