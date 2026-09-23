@@ -1449,8 +1449,8 @@ SOFTWARE.
 </pre></details>
 <p>Python 模式面向 IGCSE 编程教学，使用内嵌 CPython。另有独立的 IGCSE 0478 与 AS 9618 伪代码模式；三个工作区分别保存，切换不会自动翻译代码。</p>
 <div class="reference-grid"><section><h3>输入、输出与类型</h3><p><code>input()</code> 返回字符串；使用 <code>int()</code>、<code>float()</code> 转换。<code>print(a, b)</code> 默认用空格分隔，<code>end=""</code> 可取消末尾换行。支持 f-string、中文和 emoji。</p></section><section><h3>选择与循环</h3><p><code>if / elif / else</code>、<code>for … in range()</code>、<code>while</code>、<code>break</code>、<code>continue</code>。块头使用冒号，缩进四个空格。range 的停止值不包含在内。</p></section><section><h3>列表与字符串</h3><p>索引从 0 开始；<code>s[1:4]</code> 不包含位置 4。二维列表使用 <code>grid[row][col]</code>。<code>[[0]*3 for _ in range(3)]</code> 创建独立行；<code>[[0]*3]*3</code> 共享行对象。</p></section><section><h3>函数与异常</h3><p><code>def</code> 定义函数，<code>return</code> 返回值。列表参数保留 Python 引用行为。<code>try/except</code> 捕获的错误可以继续运行，未捕获异常才结束本次 Run。</p></section><section><h3>虚拟文本文件</h3><p><code>with open("data.txt", "r", encoding="utf-8") as f:</code>。readline 保留换行；EOF 为 <code>""</code>，空行是 <code>"\n"</code>。write 不自动补换行。文件位于此语言的独立工作区。</p></section><section><h3>标准库与算法</h3><p>内含 <code>random</code> 和 <code>math</code>。<code>random.randint(a, b)</code> 包含两端。课程示例包含线性查找、冒泡排序、累计、验证、二维表和文件处理；不依赖在线安装包。</p></section></div>
-<h3>与 AS 伪代码的区别</h3><table><thead><tr><th>主题</th><th>Python</th><th>本工具的 AS 模式</th></tr></thead><tbody><tr><td>赋值 / 相等</td><td>= / ==</td><td>← / =</td></tr><tr><td>注释</td><td>#</td><td>//</td></tr><tr><td>循环终点</td><td>range 不包含 stop</td><td>FOR 包含终点</td></tr><tr><td>字符串位置</td><td>零基切片</td><td>MID 从 1 开始</td></tr><tr><td>负数整除</td><td>// 向下取整</td><td>DIV 向零截断</td></tr><tr><td>大小写转换</td><td>字符串 upper/lower</td><td>UCASE/LCASE 接受 CHAR</td></tr><tr><td>变量</td><td>动态类型，大小写敏感</td><td>显式声明，大小写不敏感</td></tr><tr><td>round 舍入</td><td>保留 Python ties-to-even 与浮点数规则</td><td>AS 模式无 ROUND 内建；IGCSE ROUND 见对应参考</td></tr><tr><td>列表赋值</td><td>可能共享对象</td><td>数组值复制</td></tr></tbody></table>
-<p>IGCSE 模式支持 SUBSTRING，以及对 STRING 或 CHAR 使用 UCASE/LCASE；AS 模式保留 MID 与 CHAR 版本 UCASE/LCASE。请按课程选择工作区。</p><h3>课堂使用</h3><p>Ctrl / ⌘ Enter 运行；Ctrl / ⌘ . 停止；Ctrl / ⌘ S 保存在浏览器；Save 下载源文件。Ctrl / ⌘ / 切换多行注释。拖动分隔条调整宽度，双击恢复。全屏内仍可运行、停止和退出。</p>
+<h3>与 AS 伪代码的区别</h3><table><thead><tr><th>主题</th><th>Python</th><th>本工具的 AS 模式</th></tr></thead><tbody><tr><td>赋值 / 相等</td><td>= / ==</td><td>← / =</td></tr><tr><td>注释</td><td>#</td><td>//</td></tr><tr><td>循环终点</td><td>range 不包含 stop</td><td>FOR 包含终点</td></tr><tr><td>字符串位置</td><td>零基切片</td><td>MID 从 1 开始</td></tr><tr><td>负数整除</td><td>// 向下取整</td><td>DIV 向零截断</td></tr><tr><td>大小写转换</td><td>字符串 upper/lower</td><td>UCASE/LCASE 接受 CHAR</td></tr><tr><td>变量</td><td>动态类型，大小写敏感</td><td>显式声明，用户标识符大小写敏感</td></tr><tr><td>round 舍入</td><td>保留 Python ties-to-even 与浮点数规则</td><td>AS 模式无 ROUND 内建；IGCSE ROUND 见对应参考</td></tr><tr><td>列表赋值</td><td>可能共享对象</td><td>数组值复制</td></tr></tbody></table>
+<p>IGCSE 模式支持 SUBSTRING，以及对 STRING 或 CHAR 使用 UCASE/LCASE；AS 模式保留 MID 与 CHAR 版本 UCASE/LCASE。请按课程选择工作区。</p><h3>课堂使用</h3><p>Ctrl / ⌘ Enter 运行；Ctrl / ⌘ . 停止；Ctrl / ⌘ S 保存在浏览器；Save 下载源文件。Ctrl / ⌘ / 切换多行注释。拖动分隔条调整宽度，双击恢复。光标位于行首缩进中时，Backspace 按四空格缩进级回退。Full screen 在小窗口中仅充满当前窗口；窗口已最大化时保留浏览器全屏，内部仍可运行、停止和退出。</p>
 <p>Trace 的 Python 行事件显示<strong>执行该行前</strong>的变量。修改代码后，旧结果会标记为上次运行。Check syntax 只检查 Python 语法，不会假装提前证明所有变量和类型正确。</p>
 <p>程序正常结束或未捕获异常后同步虚拟文件；强制 Stop 丢弃该轮尚未提交的文件修改。测试用例使用独立文件副本。Python 的预期输出包含 print 产生的末尾换行。</p>
 <h3>Zen / Firefox 设置</h3><p>如果 Python 提示不能实时输入，在 Zen 地址栏打开 <code>about:config</code>，搜索 <code>javascript.options.wasm_js_promise_integration</code>。支持该功能但默认关闭的版本可以把它设为 <code>true</code>，然后刷新编辑器。这是浏览器级实验功能，请自行决定是否启用；如仍不支持，请更新 Zen。编辑器会实际测试暂停与恢复，只有通过后才使用 Console 输入。</p><h3>兼容与边界</h3><p>Run 始终在 Console 中接收用户输入。若浏览器缺少 Python 挂起与恢复能力，执行到 input() 时会提示检查浏览器的实时输入能力；不会退回预先填写输入。未调用 input() 的程序仍可运行。核心环境无法启动时仍可编辑和保存。iPad 的文件预览不一定能执行程序，需要能运行 JavaScript、Worker 和 WebAssembly 的打开方式；本版不宣称已经完成 iPad 实机认证。</p><p>不提供桌面文件访问、网络编程、在线包安装或图形窗口。默认活动执行时间上限 30 秒，等待输入不计时；追踪最多 5,000 条，输出最多 10,000 行或 1 MiB。浏览器存储不可用时应及时 Save / Export。</p>
@@ -1460,6 +1460,7 @@ SOFTWARE.
 <p>IGCSE 和 AS 工作区的 Check source、Run、Tests 使用同一套规则。它们是本工具采用的课堂规范，不是 Cambridge 对所有试卷排版的唯一要求。Python 仍按真实 Python 语法运行。</p>
 <ul>
 <li>关键字、类型、TRUE/FALSE、AND/OR/NOT 和内置函数必须大写；变量名、字符串和注释保持原样。</li>
+<li>两套伪代码的用户标识符均区分大小写：<code>num</code>、<code>Num</code>、<code>NUM</code> 是三个不同名称。变量、常量、参数、过程、函数，以及 AS 记录类型与字段，都必须在声明和使用时保持相同拼写；NEXT 也须与 FOR 计数器名称完全一致。</li>
 <li>每层缩进四个空格，不使用 Tab。THEN 单独一行时与 IF 对齐；ELSE 和结束语句与对应开头对齐。CASE 标签缩进一层，分支正文再缩进一层；表达式续行增加一层。</li>
 <li>每个显式分支、循环体、过程和函数必须有执行语句。空行、注释或声明不能单独充当执行内容。ELSE 和 OTHERWISE 可以省略；本工具不提供 ELIF/ELSEIF，请用嵌套 IF。</li>
 <li>省略 STEP 表示每次加 1。递减必须写负步长；每次加 2 等情况须明确写 STEP 2。零步长或方向背离终点会报错；起止相等且步长非零时执行一次。</li>
@@ -1474,7 +1475,8 @@ ENDIF
 FOR Index ← 5 TO 1 STEP -2
     OUTPUT Index
 NEXT Index</pre>
-<p>Format 可修复关键字大小写、Tab 和缩进；它不会替你填入执行语句、STEP 或结束关键字。旧保存代码会原样恢复，出现提示后可自行修正或使用 Format。按 Enter 会对齐当前分支或结束行，整次编辑可一次撤销。</p>
+<p>Format 可修复关键字大小写、Tab 和缩进；它不会改变用户标识符的大小写，也不会替你填入执行语句、STEP 或结束关键字。旧保存代码会原样恢复，名称大小写不一致时需自行修正。按 Enter 会对齐当前分支或结束行；光标位于行首缩进中时，Backspace 按四空格缩进级回退，整次编辑可一次撤销。</p>
+<p>Full screen 只显示编辑器和结果区：小窗口中仅充满当前窗口；窗口已最大化时保留浏览器全屏。工作区内仍可运行、停止和退出全屏。</p>
 <p>指南允许默认正步长配递减范围执行零次；本工具为发现课堂误写而报告错误。起点、终点和步长在进入循环时各求值一次。普通循环结束后保留下一计数值；该值若超出精确整数范围且循环已结束，则保留最后一个安全值。这些均是此编辑器的明确约定。</p>
 <p>Save 将伪代码下载为 .txt 纯文本，可在 Mac TextEdit 和 Windows 记事本中打开。默认文件名用 .igcse.txt / .as.txt 标记课程，重新 Open 时自动选择；旧 .pseudo 文件仍支持。Ctrl / ⌘ S 继续只保存到浏览器。</p>
 </details>
@@ -1488,7 +1490,7 @@ NEXT Index</pre>
 CONSTANT PassMark ← 50
 Score ← 72
 DECLARE Grid : ARRAY[1:2,1:3] OF INTEGER</pre>
-      <p>声明后使用变量；数组边界明确写出。Declare variables and array bounds. Names are case-insensitive; use letters and digits, beginning with a letter. IGCSE identifiers do not use underscores.</p>
+      <p>声明后使用变量；数组边界明确写出。本编辑器的名称区分大小写：<code>num</code>、<code>Num</code>、<code>NUM</code> 不同。Declare variables and array bounds. User-defined names are case-sensitive in this editor; use letters and digits, beginning with a letter. IGCSE identifiers do not use underscores.</p>
       <p><code>+ − * / ^</code> · <code>DIV(A, B)</code> · <code>MOD(A, B)</code><br><code>= &lt;&gt; &lt; &gt; &lt;= &gt;=</code> · <code>NOT AND OR</code></p>
       <p><code>DIV</code>/<code>MOD</code> 的参数为整数；推荐当前指南的函数形式。Use INTEGER arguments and a nonzero divisor. Infix forms are also accepted for compatibility.</p>
     </section>
@@ -1540,6 +1542,7 @@ ENDWHILE</pre>
 <p>IGCSE 和 AS 工作区的 Check source、Run、Tests 使用同一套规则。它们是本工具采用的课堂规范，不是 Cambridge 对所有试卷排版的唯一要求。Python 仍按真实 Python 语法运行。</p>
 <ul>
 <li>关键字、类型、TRUE/FALSE、AND/OR/NOT 和内置函数必须大写；变量名、字符串和注释保持原样。</li>
+<li>两套伪代码的用户标识符均区分大小写：<code>num</code>、<code>Num</code>、<code>NUM</code> 是三个不同名称。变量、常量、参数、过程、函数，以及 AS 记录类型与字段，都必须在声明和使用时保持相同拼写；NEXT 也须与 FOR 计数器名称完全一致。</li>
 <li>每层缩进四个空格，不使用 Tab。THEN 单独一行时与 IF 对齐；ELSE 和结束语句与对应开头对齐。CASE 标签缩进一层，分支正文再缩进一层；表达式续行增加一层。</li>
 <li>每个显式分支、循环体、过程和函数必须有执行语句。空行、注释或声明不能单独充当执行内容。ELSE 和 OTHERWISE 可以省略；本工具不提供 ELIF/ELSEIF，请用嵌套 IF。</li>
 <li>省略 STEP 表示每次加 1。递减必须写负步长；每次加 2 等情况须明确写 STEP 2。零步长或方向背离终点会报错；起止相等且步长非零时执行一次。</li>
@@ -1554,11 +1557,12 @@ ENDIF
 FOR Index ← 5 TO 1 STEP -2
     OUTPUT Index
 NEXT Index</pre>
-<p>Format 可修复关键字大小写、Tab 和缩进；它不会替你填入执行语句、STEP 或结束关键字。旧保存代码会原样恢复，出现提示后可自行修正或使用 Format。按 Enter 会对齐当前分支或结束行，整次编辑可一次撤销。</p>
+<p>Format 可修复关键字大小写、Tab 和缩进；它不会改变用户标识符的大小写，也不会替你填入执行语句、STEP 或结束关键字。旧保存代码会原样恢复，名称大小写不一致时需自行修正。按 Enter 会对齐当前分支或结束行；光标位于行首缩进中时，Backspace 按四空格缩进级回退，整次编辑可一次撤销。</p>
+<p>Full screen 只显示编辑器和结果区：小窗口中仅充满当前窗口；窗口已最大化时保留浏览器全屏。工作区内仍可运行、停止和退出全屏。</p>
 <p>指南允许默认正步长配递减范围执行零次；本工具为发现课堂误写而报告错误。起点、终点和步长在进入循环时各求值一次。普通循环结束后保留下一计数值；该值若超出精确整数范围且循环已结束，则保留最后一个安全值。这些均是此编辑器的明确约定。</p>
 <p>Save 将伪代码下载为 .txt 纯文本，可在 Mac TextEdit 和 Windows 记事本中打开。默认文件名用 .igcse.txt / .as.txt 标记课程，重新 Open 时自动选择；旧 .pseudo 文件仍支持。Ctrl / ⌘ S 继续只保存到浏览器。</p>
 </details>
-<p class="help-text">A compact checklist for Sections 9–12. This independent tool is not affiliated with Cambridge International.</p><div class="reference-grid"><section><h3>09 <span>Algorithm design</span></h3><p>Abstraction selects relevant details. Decomposition breaks a problem into smaller parts. Use stepwise refinement, identifier tables and input / process / output to plan an algorithm.</p><p>Represent sequence, selection and iteration using pseudocode, structured English or flowcharts. Use logic statements to express conditions.</p></section><section><h3>10 <span>Data & structures</span></h3><p>INTEGER · REAL · CHAR · STRING · BOOLEAN · DATE</p><p>Records group named fields. One- and two-dimensional arrays use declared lower and upper bounds. Practise linear search and bubble sort.</p><p>Stacks are LIFO; queues are FIFO. Linked lists connect nodes through links. Represent these ADTs with arrays and index variables. Text files support READ, WRITE and APPEND.</p></section><section><h3>11 <span>Programming</span></h3><p>DECLARE variables; CONSTANT values cannot change. Assign with <code>←</code>; compare with <code>=</code>. Join text with <code>&amp;</code>.</p><p>IF / CASE · FOR / NEXT · WHILE / ENDWHILE · REPEAT / UNTIL</p><p>Procedures use CALL. Functions RETURN a value. Parameters default to BYVAL; procedures can use BYREF to change the caller’s storage. Functions use BYVAL.</p></section><section><h3>12 <span>Software development</span></h3><p>Analysis → design → coding → testing → maintenance. Compare waterfall, iterative development and RAD. Use structure charts and state-transition diagrams.</p><p>Distinguish syntax, logic and runtime errors. Dry runs and walkthroughs trace an algorithm; stubs stand in for unfinished modules.</p><p>Plan white-box, black-box, integration, alpha, beta and acceptance testing. Use normal, abnormal and boundary / extreme data. Maintenance can be corrective, adaptive or perfective.</p></section></div><h3>Language quick reference</h3><div class="reference-grid syntax-reference"><section><h4>Operators & loops</h4><p><code>+ − * / DIV MOD</code><br><code>= &lt;&gt; &lt; &gt; &lt;= &gt;=</code><br><code>NOT AND OR</code></p><p><code>/</code> returns REAL. FOR bounds are inclusive; STEP defaults to 1. REPEAT stops when UNTIL is TRUE. MID positions start at 1.</p></section><section><h4>Built-in functions</h4><p><code>LENGTH(String)</code><br><code>RIGHT(String, Count)</code><br><code>MID(String, Start, Count)</code><br><code>LCASE(Char) · UCASE(Char)</code><br><code>INT(Real) · RAND(Integer)</code><br><code>EOF(Filename)</code></p></section></div><h3>Using this workspace</h3><p>Run: <kbd>Ctrl / ⌘ Enter</kbd> · Stop: <kbd>Esc</kbd> · Save in browser: <kbd>Ctrl / ⌘ S</kbd> · Toggle line comments: <kbd>Ctrl / ⌘ /</kbd> · Indent: <kbd>Tab</kbd> · Unindent: <kbd>Shift Tab</kbd>. Enter follows pseudocode block indentation. Select multiple lines and use Comment or Ctrl / ⌘ / to toggle // comments. The Save button downloads your program; Ctrl / ⌘ S saves it in this browser. Open loads a .pseudo or .txt file. Drag the divider between the panels to resize them; double-click it to reset. Full screen shows only the editor and results panels; Esc exits full screen. Use Ctrl / ⌘ Enter to run and Ctrl / ⌘ . to stop. Browser storage keeps your current program, files and tests on this device when available.</p><p>Syntax, type, runtime and input errors end the current run automatically. Correct the problem, then run again. Unassigned values raise an error when read. INTEGER values can widen to REAL. Execution stops at 1,000,000 steps, 10,000 output lines or the runtime safety limits. The trace keeps up to 5,000 changes. Very large programs and data structures are bounded to keep the browser responsive.</p><p>A2 enums, pointers, sets, random-access files and object-oriented syntax are outside this version’s scope. Recursion is not presented as an AS syllabus feature.</p><p class="reference-sources">Normative sources: Cambridge 9618 syllabus and pseudocode guide for examinations in 2027, 2028 and 2029. The checklist and examples remain available offline.</p></div></div></dialog>
+<p class="help-text">A compact checklist for Sections 9–12. This independent tool is not affiliated with Cambridge International.</p><div class="reference-grid"><section><h3>09 <span>Algorithm design</span></h3><p>Abstraction selects relevant details. Decomposition breaks a problem into smaller parts. Use stepwise refinement, identifier tables and input / process / output to plan an algorithm.</p><p>Represent sequence, selection and iteration using pseudocode, structured English or flowcharts. Use logic statements to express conditions.</p></section><section><h3>10 <span>Data & structures</span></h3><p>INTEGER · REAL · CHAR · STRING · BOOLEAN · DATE</p><p>Records group named fields. One- and two-dimensional arrays use declared lower and upper bounds. Practise linear search and bubble sort.</p><p>Stacks are LIFO; queues are FIFO. Linked lists connect nodes through links. Represent these ADTs with arrays and index variables. Text files support READ, WRITE and APPEND.</p></section><section><h3>11 <span>Programming</span></h3><p>DECLARE variables; CONSTANT values cannot change. Assign with <code>←</code>; compare with <code>=</code>. Join text with <code>&amp;</code>.</p><p>IF / CASE · FOR / NEXT · WHILE / ENDWHILE · REPEAT / UNTIL</p><p>Procedures use CALL. Functions RETURN a value. Parameters default to BYVAL; procedures can use BYREF to change the caller’s storage. Functions use BYVAL.</p></section><section><h3>12 <span>Software development</span></h3><p>Analysis → design → coding → testing → maintenance. Compare waterfall, iterative development and RAD. Use structure charts and state-transition diagrams.</p><p>Distinguish syntax, logic and runtime errors. Dry runs and walkthroughs trace an algorithm; stubs stand in for unfinished modules.</p><p>Plan white-box, black-box, integration, alpha, beta and acceptance testing. Use normal, abnormal and boundary / extreme data. Maintenance can be corrective, adaptive or perfective.</p></section></div><h3>Language quick reference</h3><div class="reference-grid syntax-reference"><section><h4>Operators & loops</h4><p><code>+ − * / DIV MOD</code><br><code>= &lt;&gt; &lt; &gt; &lt;= &gt;=</code><br><code>NOT AND OR</code></p><p><code>/</code> returns REAL. FOR bounds are inclusive; STEP defaults to 1. REPEAT stops when UNTIL is TRUE. MID positions start at 1.</p></section><section><h4>Built-in functions</h4><p><code>LENGTH(String)</code><br><code>RIGHT(String, Count)</code><br><code>MID(String, Start, Count)</code><br><code>LCASE(Char) · UCASE(Char)</code><br><code>INT(Real) · RAND(Integer)</code><br><code>EOF(Filename)</code></p></section></div><h3>Using this workspace</h3><p>Run: <kbd>Ctrl / ⌘ Enter</kbd> · Stop: <kbd>Esc</kbd> · Save in browser: <kbd>Ctrl / ⌘ S</kbd> · Toggle line comments: <kbd>Ctrl / ⌘ /</kbd> · Indent: <kbd>Tab</kbd> · Unindent: <kbd>Shift Tab</kbd>. Enter follows pseudocode block indentation. Within leading indentation, Backspace moves back by one four-space indentation level. Select multiple lines and use Comment or Ctrl / ⌘ / to toggle // comments. The Save button downloads your program; Ctrl / ⌘ S saves it in this browser. Open loads a .pseudo or .txt file. Drag the divider between the panels to resize them; double-click it to reset. Full screen shows only the editor and results panels. In a smaller window it fills the current window; in a maximized window it uses browser full screen. Esc exits full screen. Use Ctrl / ⌘ Enter to run and Ctrl / ⌘ . to stop. Browser storage keeps your current program, files and tests on this device when available.</p><p>Syntax, type, runtime and input errors end the current run automatically. Correct the problem, then run again. Unassigned values raise an error when read. INTEGER values can widen to REAL. Execution stops at 1,000,000 steps, 10,000 output lines or the runtime safety limits. The trace keeps up to 5,000 changes. Very large programs and data structures are bounded to keep the browser responsive.</p><p>A2 enums, pointers, sets, random-access files and object-oriented syntax are outside this version’s scope. Recursion is not presented as an AS syllabus feature.</p><p class="reference-sources">Normative sources: Cambridge 9618 syllabus and pseudocode guide for examinations in 2027, 2028 and 2029. The checklist and examples remain available offline.</p></div></div></dialog>
 <dialog id="lessonDialog"><div class="dialog-heading"><div><span id="lessonGroup" class="eyebrow"></span><h2 id="lessonTitle">Lesson</h2></div><button id="closeLesson" class="icon-button" aria-label="Close lesson">×</button></div><div class="lesson-body"><p id="lessonObjective"></p><p id="lessonPrerequisites" class="help-text"></p><div id="lessonNotes" class="lesson-notes"></div><div class="lesson-code-grid"><section id="lessonIGCSEPane"><h3>IGCSE Pseudocode</h3><pre id="lessonIGCSECode"></pre></section><section id="lessonPseudoPane"><h3>AS Pseudocode</h3><pre id="lessonPseudoCode"></pre></section><section id="lessonPythonPane"><h3>Python</h3><pre id="lessonPythonCode"></pre></section></div><details><summary>Inputs, expected output &amp; source notes</summary><pre id="lessonFixtures"></pre><p id="lessonProvenance" class="help-text"></p></details><div class="dialog-actions"><span id="lessonLoadHint" class="help-text"></span><button id="loadLesson" class="primary">Load current language</button></div></div></dialog>
 <dialog id="dialectDialog"><h2>Open pseudocode</h2><p id="dialectFilename"></p><p>Choose the course for this file. Files named .igcse.txt or .as.txt select it automatically. Older .igcse.pseudo and .as.pseudo files are also supported.</p><div class="dialog-actions"><button id="dialectCancel">Cancel</button><button id="dialectIGCSE">IGCSE 0478</button><button id="dialectAS">AS 9618</button></div></dialog>
 <dialog id="confirmDialog"><h2 id="confirmTitle">Confirm</h2><p id="confirmText"></p><div class="dialog-actions"><button id="confirmCancel">Cancel</button><button id="confirmAccept" class="primary">Continue</button></div></dialog>
@@ -1722,7 +1726,7 @@ globalThis.LabPythonBridge="\"\"\"Teaching runtime bridge. Student code runs as 
         if (this.tokens[i].kind !== 'keyword' || this.tokens[i].value !== 'FUNCTION' || this.tokens[i + 1].kind !== 'identifier') continue;
         let next = i + 2;
         while (this.tokens[next]?.kind === 'newline') next++;
-        if (this.tokens[next]?.value === 'RETURNS' || this.tokens[next]?.value === '(' && this.tokens[next + 1]?.value === ')') this.zeroArgFunctions.add(this.tokens[i + 1].value.toUpperCase());
+        if (this.tokens[next]?.value === 'RETURNS' || this.tokens[next]?.value === '(' && this.tokens[next + 1]?.value === ')') this.zeroArgFunctions.add(this.tokens[i + 1].value);
       }
     }
     peek(n = 0) { return this.tokens[Math.min(this.pos + n, this.tokens.length - 1)]; }
@@ -1893,7 +1897,7 @@ globalThis.LabPythonBridge="\"\"\"Teaching runtime bridge. Student code runs as 
       // The guide recommends repeating the identifier after NEXT, but permits its omission.
       const nextName = this.peek().kind === 'identifier' ? this.take() : null;
       if (this.igcse && !nextName) this.error('IGCSE 0478 NEXT must repeat its FOR control variable.', terminator);
-      if (nextName && nextName.value.toUpperCase() !== name.toUpperCase()) this.error("NEXT identifier '" + nextName.value + "' does not match FOR identifier '" + name + "'.", nextName);
+      if (nextName && nextName.value !== name) this.error("NEXT identifier '" + nextName.value + "' does not match FOR identifier '" + name + "'. Identifier names are case-sensitive.", nextName);
       return this.simple('For', {name, start, end, step, body, endLoc: terminator.loc}, first);
     }
     module(first) {
@@ -2001,7 +2005,7 @@ globalThis.LabPythonBridge="\"\"\"Teaching runtime bridge. Student code runs as 
       else this.error('Expected a value, identifier, function call or parenthesised expression, but found ' + this.describe(first) + '.', first);
       this.take();
       if (first.kind === 'keyword' && this.builtins.has(first.value) && !this.is('(')) this.error("Built-in function '" + first.value + "' requires an argument list in parentheses.", first);
-      if (first.kind === 'identifier' && this.zeroArgFunctions.has(first.value.toUpperCase()) && !this.is('(')) value = this.node('Invoke', {name: first.value, args: []}, first, first);
+      if (first.kind === 'identifier' && this.zeroArgFunctions.has(first.value) && !this.is('(')) value = this.node('Invoke', {name: first.value, args: []}, first, first);
       return this.postfix(value, true);
     }
     postfix(object, allowCalls) {
@@ -2265,9 +2269,11 @@ function formatValue(v, quoted=false, budget=20, state) {
 }
 class Scope {
     constructor(parent,name) { this.parent=parent; this.name=name; this.items=new Map(); }
-    find(name) { return this.items.get(upper(name)) || this.parent && this.parent.find(name); }
+    // User names retain their spelling. Only language keywords, built-ins and
+    // primitive type/input tokens use the separate uppercase normalization.
+    find(name) { return this.items.get(name) || this.parent && this.parent.find(name); }
     add(symbol,node) {
-        const key=upper(symbol.name);
+        const key=symbol.name;
         if (this.items.has(key)) fail('SemanticError',"Identifier '"+symbol.name+"' is already declared in "+this.name+'.',node);
         this.items.set(key,symbol); return symbol;
     }
@@ -2310,14 +2316,14 @@ class Analyzer {
         descendants(this.ast.body,s=>{
             if (s.kind==='Record') {
                 if(this.dialect==='igcse') fail('UnsupportedFeature','Record TYPE declarations belong to Cambridge AS 9618; IGCSE 0478 supports the five basic data types and arrays.',s);
-                const key=upper(s.name);
+                const key=s.name;
                 if (this.records.has(key)) fail('SemanticError',"Record type '"+s.name+"' is already declared.",s);
                 const t={kind:'RECORD',name:s.name,fields:new Map(),node:s,resolving:false,resolved:false};
                 this.records.set(key,t); this.global.add({name:s.name,kind:'record type',type:t,node:s},s);
             }
             if (s.kind==='Procedure' || s.kind==='Function') {
                 const sym={name:s.name,kind:s.kind.toLowerCase(),node:s};
-                this.global.add(sym,s); this.modules.set(upper(s.name),sym);
+                this.global.add(sym,s); this.modules.set(s.name,sym);
             }
         });
         this.collect(this.ast.body,this.global);
@@ -2398,7 +2404,7 @@ class Analyzer {
         for (const field of t.node.fields) {
             const type=this.resolveType(field.type,this.global,field);
             for (const name of field.names) {
-                const key=upper(name);
+                const key=name;
                 if (t.fields.has(key)) fail('SemanticError',"Duplicate record field '"+name+"'.",field);
                 t.fields.set(key,{name,type});
             }
@@ -2412,8 +2418,8 @@ class Analyzer {
             const name=upper(syntax);
             if(this.dialect==='igcse' && name==='DATE') fail('UnsupportedFeature','DATE belongs to Cambridge AS 9618; IGCSE 0478 supports INTEGER, REAL, CHAR, STRING and BOOLEAN.',node);
             if (PRIMITIVES.has(name)) return name;
-            const record=this.records.get(name);
-            if (!record) fail('TypeError',"Unknown data type '"+syntax+"'.",node);
+            const record=this.records.get(syntax);
+            if (!record) fail('TypeError',"Unknown data type '"+syntax+"'. Custom type names are case-sensitive.",node);
             return this.resolveRecord(record);
         }
         if (!syntax || syntax.kind!=='ARRAY') fail('TypeError','Invalid data type.',node);
@@ -2433,8 +2439,8 @@ class Analyzer {
     constantExpression(e,scope) {
         if (e.kind==='Literal') { this.checkLiteral(e); return literal(e); }
         if (e.kind==='Name') {
-            const sym=scope.find(e.name);
-            if (!sym || sym.kind!=='constant') fail('SemanticError','Array bounds must be INTEGER literals or constant expressions.',e);
+            const sym=this.symbol(e.name,scope,e);
+            if (sym.kind!=='constant') fail('SemanticError','Array bounds must be INTEGER literals or constant expressions.',e);
             return sym.value;
         }
         if (e.kind==='Unary') return unary(e.op,this.constantExpression(e.expr,scope),e);
@@ -2450,7 +2456,7 @@ class Analyzer {
     }
     symbol(name,scope,node) {
         const s=scope.find(name);
-        if (!s) fail('NameError',"Identifier '"+name+"' has not been declared.",node);
+        if (!s) fail('NameError',"Identifier '"+name+"' has not been declared. Identifier names are case-sensitive.",node);
         return s;
     }
     target(e,scope) {
@@ -2519,8 +2525,8 @@ class Analyzer {
                 if(this.dialect==='igcse') fail('UnsupportedFeature','Record field access belongs to Cambridge AS 9618, not IGCSE 0478.',e);
                 const r=this.expression(e.object,scope);
                 if (!r || r.kind!=='RECORD') fail('TypeError','Field access requires a record.',e);
-                const field=r.fields.get(upper(e.name));
-                if (!field) fail('NameError',"Record type '"+r.name+"' has no field named '"+e.name+"'.",e);
+                const field=r.fields.get(e.name);
+                if (!field) fail('NameError',"Record type '"+r.name+"' has no field named '"+e.name+"'. Field names are case-sensitive.",e);
                 t=field.type; break;
             }
             default: fail('SemanticError','Unknown expression '+e.kind+'.',e);
@@ -2659,7 +2665,7 @@ class Environment {
             if (s.kind==='constant') this.cells.set(key,{type:s.type,data:copyData(s.value),constant:true});
         }
     }
-    find(name) { return this.cells.get(upper(name)) || this.parent && this.parent.find(name); }
+    find(name) { return this.cells.get(name) || this.parent && this.parent.find(name); }
 }
 class VirtualFiles {
     constructor(files) {
@@ -2763,7 +2769,7 @@ class Engine {
             }
             return c.data.cells[offset];
         }
-        if (e.kind==='Field') { const c=await this.container(e.object,env); return c.data.get(upper(e.name)); }
+        if (e.kind==='Field') { const c=await this.container(e.object,env); return c.data.get(e.name); }
         fail('RuntimeError','Expected an assignable storage location.',e);
     }
     async container(e,env) { return ['Name','Index','Field'].includes(e.kind)?this.location(e,env):this.evaluate(e,env); }
@@ -2791,7 +2797,7 @@ class Engine {
             const values=[]; for (const arg of args) values.push(await this.evaluate(arg,env));
             return this.builtin(key,values,node);
         }
-        const mod=this.analysis.modules.get(key),bindings=[],cellsBefore=this.cells;
+        const mod=this.analysis.modules.get(name),bindings=[],cellsBefore=this.cells;
         for (let i=0;i<args.length;i++) {
             const p=mod.params[i];
             if (p.mode==='BYREF') bindings.push(await this.location(args[i],env));
@@ -2799,7 +2805,7 @@ class Engine {
         }
         if (++this.depth>128) fail('RuntimeError','Module call depth safety limit reached in '+this.analysis.dialectName+'.',node);
         const local=new Environment(mod.scope,this.global,this,node);
-        mod.params.forEach((p,i)=>local.cells.set(upper(p.name),bindings[i]));
+        mod.params.forEach((p,i)=>local.cells.set(p.name,bindings[i]));
         this.record(node,mod.kind==='function'?'Function call':'Procedure call',mod.name);
         try {
             await this.block(mod.node.body,local);
@@ -3333,9 +3339,10 @@ ENDIF`}
     bad('RAND requires a positive range', 'OUTPUT RAND(0)', 'RuntimeError');
     bad('Pointer caret is not exponentiation', 'OUTPUT 2 ^ 3', 'LexerError|SyntaxError');
 
-    add('Identifiers are case insensitive', 'declare Score : integer\nscore <- 12\noutput SCORE', ['12']);
+    add('Keywords remain case insensitive in permissive parsing', 'declare Score : integer\nScore <- 12\noutput Score', ['12']);
+    bad('Variable references are case sensitive', 'DECLARE num : INTEGER\nNum ← 10\nOUTPUT NUM', 'NameError');
     add('Identifier underscore after first letter', 'DECLARE Score_2 : INTEGER\nScore_2 ← 9\nOUTPUT Score_2', ['9']);
-    bad('Duplicate case-insensitive identifier', 'DECLARE Score : INTEGER\nDECLARE score : REAL', 'SemanticError|NameError');
+    add('Identifiers differing only in case have separate storage', 'DECLARE Score : INTEGER\nDECLARE score : REAL\nScore ← 4\nscore ← 2.5\nOUTPUT Score, ":", score', ['4:2.5']);
     bad('Identifier cannot begin with underscore', 'DECLARE _Score : INTEGER', 'LexerError|SyntaxError');
     bad('Keyword cannot be an identifier', 'DECLARE IF : INTEGER', 'SyntaxError');
     add('Literal constants', 'CONSTANT MaxSize = 100\nCONSTANT Pi = 3.14\nCONSTANT Message = "Hello"\nOUTPUT MaxSize, " ", Pi, " ", Message', ['100 3.14 Hello']);
@@ -3424,7 +3431,7 @@ ENDIF`}
 
     add('Record field assignment', record + 'DECLARE Student : Person\nStudent.Name ← "Alice"\nStudent.Age ← 90\nOUTPUT Student.Name\nOUTPUT Student.Age', ['Alice', '90']);
     add('Array of records', record + 'DECLARE Students : ARRAY[1:2] OF Person\nStudents[1].Name ← "Alice"\nStudents[1].Age ← 90\nStudents[2].Name ← "Bob"\nStudents[2].Age ← 80\nOUTPUT Students[2].Name', ['Bob']);
-    add('Record fields are case insensitive', record + 'DECLARE Student : Person\nStudent.nAME ← "Alice"\nOUTPUT student.NAME', ['Alice']);
+    bad('Record field references are case sensitive', record + 'DECLARE Student : Person\nStudent.nAME ← "Alice"', 'NameError');
     add('Whole record assignment is a value copy', record + 'DECLARE A : Person\nDECLARE B : Person\nA.Name ← "Alice"\nA.Age ← 17\nB ← A\nB.Name ← "Bob"\nOUTPUT A.Name, ":", B.Name', ['Alice:Bob']);
     add('Array of records copy is deep', record + 'DECLARE A : ARRAY[1:1] OF Person\nDECLARE B : ARRAY[1:1] OF Person\nA[1].Name ← "Alice"\nA[1].Age ← 17\nB ← A\nB[1].Age ← 18\nOUTPUT A[1].Age, ":", B[1].Age', ['17:18']);
     add('Record containing an array', 'TYPE Group\nDECLARE Scores : ARRAY[1:2] OF INTEGER\nENDTYPE\nDECLARE A : Group\nDECLARE B : Group\nA.Scores[1] ← 1\nA.Scores[2] ← 2\nB ← A\nB.Scores[1] ← 9\nOUTPUT A.Scores[1], ":", B.Scores[1]', ['1:9']);
@@ -3432,7 +3439,7 @@ ENDIF`}
     bad('Record field type mismatch', record + 'DECLARE Student : Person\nStudent.Age ← "old"', 'TypeError');
     bad('Uninitialised record field', record + 'DECLARE Student : Person\nOUTPUT Student.Name', 'RuntimeError');
     bad('Different record types are incompatible', 'TYPE First\nDECLARE Value : INTEGER\nENDTYPE\nTYPE Second\nDECLARE Value : INTEGER\nENDTYPE\nDECLARE A : First\nDECLARE B : Second\nA ← B', 'TypeError');
-    bad('Duplicate case-insensitive record fields', 'TYPE First\nDECLARE Name : STRING\nDECLARE name : INTEGER\nENDTYPE', 'SemanticError|NameError');
+    add('Record fields differing only in case are distinct', 'TYPE First\nDECLARE Name : STRING\nDECLARE name : INTEGER\nENDTYPE\nDECLARE Item : First\nItem.Name ← "A"\nItem.name ← 2\nOUTPUT Item.Name, ":", Item.name', ['A:2']);
 
     add('No-argument procedure', 'PROCEDURE Hello()\nOUTPUT "Hello"\nENDPROCEDURE\nCALL Hello()', ['Hello']);
     add('Procedure can be defined after call', 'CALL Hello()\nPROCEDURE Hello()\nOUTPUT "Hello"\nENDPROCEDURE', ['Hello']);
@@ -3684,8 +3691,8 @@ ENDIF`}
     add('String contents cannot masquerade as block terminators', 'DECLARE Choice : STRING\nChoice ← "ENDCASE"\nCASE OF Choice\n"ENDCASE" : OUTPUT "ELSE", "ENDIF", "NEXT"\nOTHERWISE : OUTPUT "wrong"\nENDCASE', ['ELSEENDIFNEXT']);
     add('RETURN exits CASE nested within REPEAT', 'FUNCTION GetValue() RETURNS INTEGER\nDECLARE Choice : INTEGER\nChoice ← 2\nREPEAT\nCASE OF Choice\n2 : RETURN 7\nOTHERWISE : RETURN 0\nENDCASE\nUNTIL TRUE\nRETURN 99\nENDFUNCTION\nOUTPUT GetValue()', ['7']);
     bad('FOR rejects a constant control identifier', 'CONSTANT I = 1\nFOR I ← 1 TO 3\nOUTPUT I\nNEXT I', 'TypeError|SemanticError');
-    bad('Same module name with different case is duplicate', 'PROCEDURE Show()\nENDPROCEDURE\nPROCEDURE SHOW()\nENDPROCEDURE', 'SemanticError');
-    bad('Duplicate parameter names ignore case', 'PROCEDURE Show(A : INTEGER, a : INTEGER)\nENDPROCEDURE', 'SemanticError');
+    add('Module names differing only in case are distinct', 'PROCEDURE Show()\nOUTPUT 1\nENDPROCEDURE\nPROCEDURE SHOW()\nOUTPUT 2\nENDPROCEDURE\nCALL Show()\nCALL SHOW()', ['1','2']);
+    add('Parameter names differing only in case are distinct', 'PROCEDURE Show(A : INTEGER, a : INTEGER)\nOUTPUT A, ":", a\nENDPROCEDURE\nCALL Show(1, 2)', ['1:2']);
     add('Function-returned record supports field access', record + 'DECLARE Student : Person\nStudent.Name ← "Alice"\nStudent.Age ← 17\nFUNCTION GetStudent() RETURNS Person\nRETURN Student\nENDFUNCTION\nOUTPUT GetStudent().Name', ['Alice']);
     add('BYVAL argument snapshots before later argument side effects', 'DECLARE X : INTEGER\nX ← 1\nFUNCTION Change() RETURNS INTEGER\nX ← 9\nRETURN 0\nENDFUNCTION\nPROCEDURE Show(First : INTEGER, Second : INTEGER)\nOUTPUT First, ":", X\nENDPROCEDURE\nCALL Show(X, Change())', ['1:9']);
     add('Negative DIV truncates toward zero', 'OUTPUT -7 DIV 3, ":", -7 MOD 3', ['-2:-1']);
@@ -5459,7 +5466,14 @@ function applySource(text,name=state.name){if(busy)return;clearTimeout(historyTi
 function setTheme(){document.documentElement.dataset.theme=state.theme;$('themeBtn').textContent=state.theme==='dark'?'☼':'☾';$('themeBtn').setAttribute('aria-label','Switch to '+(state.theme==='dark'?'light':'dark')+' theme');}
 function fullscreenElement(){return document.fullscreenElement||document.webkitFullscreenElement||fullscreenFallback;}
 function syncFullscreen(){const active=Boolean(fullscreenElement()),entered=active&&!document.documentElement.classList.contains('workspace-fullscreen');document.documentElement.classList.toggle('workspace-fullscreen',active);$('fullscreenBtn').setAttribute('aria-pressed',String(active));$('fullscreenBtn').setAttribute('aria-label',active?'Exit full screen':'Enter full screen');$('fullscreenBtn').title=active?'Exit full screen · Esc':'Enter full screen';$('fullscreenLabel').textContent=active?'Exit full screen':'Full screen';syncViewport();requestAnimationFrame(()=>{if(entered&&!document.querySelector('dialog[open]'))($('inputForm').hidden?source:$('consoleInput')).focus({preventScroll:true});syncScroll();});}
-async function toggleFullscreen(){const button=$('fullscreenBtn');if(button.disabled)return;button.disabled=true;try{if(fullscreenElement()){if(fullscreenFallback)fullscreenFallback=false;else{const exit=document.exitFullscreen||document.webkitExitFullscreen;if(exit)await exit.call(document);}}else{const enter=document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen;try{if(!enter)throw new Error('unsupported');await enter.call(document.documentElement);}catch(_){fullscreenFallback=true;}}syncFullscreen();}finally{button.disabled=false;}}
+// Browsers expose window dimensions rather than a reliable OS maximized flag.
+// Allow small differences for window borders; unavailable dimensions stay in-window.
+function windowFillsScreen(){
+ const {outerWidth:width,outerHeight:height,screen:display}=window,tolerance=16;
+ if(!Number.isFinite(width)||!Number.isFinite(height)||width<=0||height<=0||!display)return false;
+ return [[display.availWidth,display.availHeight],[display.width,display.height]].some(([w,h])=>Number.isFinite(w)&&Number.isFinite(h)&&w>0&&h>0&&Math.abs(width-w)<=tolerance&&Math.abs(height-h)<=tolerance);
+}
+async function toggleFullscreen(){const button=$('fullscreenBtn');if(button.disabled)return;button.disabled=true;try{if(fullscreenElement()){if(fullscreenFallback)fullscreenFallback=false;else{const exit=document.exitFullscreen||document.webkitExitFullscreen;if(exit)await exit.call(document);}}else if(!windowFillsScreen()){fullscreenFallback=true;}else{const enter=document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen;try{if(!enter)throw new Error('unsupported');await enter.call(document.documentElement);}catch(_){fullscreenFallback=true;}}syncFullscreen();}finally{button.disabled=false;}}
 function setFont(){document.documentElement.style.setProperty('--code-font',state.fontSize+'px');document.documentElement.style.setProperty('--code-line',Math.round(state.fontSize*1.72)+'px');$('fontSize').value=String(state.fontSize);paintEditor();}
 function highlight(){const text=source.value,target=$('highlight');target.replaceChildren();let tokens;try{tokens=adapters[language].tokenize(text);}catch(_){target.textContent=text+'\n';return;}const frag=document.createDocumentFragment();let at=0;for(let i=0;i<tokens.length;i++){const t=tokens[i];if(t.startOffset>at)frag.append(document.createTextNode(text.slice(at,t.startOffset)));if(t.endOffset<=t.startOffset||t.startOffset<at)continue;let kind=t.kind;if(['integer','real'].includes(kind))kind='number';if(language!=='python'&&kind==='keyword'){if(['INTEGER','REAL','CHAR','STRING','BOOLEAN','DATE','ARRAY'].includes(t.value))kind='type';if(['TRUE','FALSE'].includes(t.value))kind='boolean';}const cls=['string','char','date','comment','number','keyword','type','boolean','operator','call'].includes(kind)?'tok-'+kind:'';const raw=text.slice(t.startOffset,t.endOffset);frag.append(cls?node('span',raw,cls):document.createTextNode(raw));at=t.endOffset;}if(at<text.length)frag.append(document.createTextNode(text.slice(at)));frag.append(document.createTextNode('\n'));target.append(frag);}
 function paintEditor(){updateStale();clearTimeout(paintTimer);highlight();paintPosition();syncScroll();}
@@ -5475,7 +5489,7 @@ function setStatus(label,cls=''){$('runStatus').textContent=label;$('runStatus')
 function setBusy(value){busy=value;if(value)probeController?.abort();for(const id of ['runBtn','innerRun'])$(id).disabled=value;for(const id of ['stopBtn','innerStop'])$(id).disabled=!value;source.readOnly=value;for(const id of ['formatBtn','commentBtn','newBtn','openBtn','examples','runTestsBtn','newFileBtn','renameFileBtn','deleteFileBtn','resetFilesBtn','importFileBtn','addTestBtn','inspectBtn','languageSelect','loadLesson'])$(id).disabled=value;$('fileText').readOnly=value;document.querySelectorAll('#testCases input,#testCases textarea,#testCases select,#testCases button').forEach(e=>e.disabled=value);}
 function hideInput(){document.documentElement.classList.remove('input-active');inputResolve=null;$('inputForm').hidden=true;$('consoleInput').value='';}
 function askInput(info){if(controller?.signal.aborted)return Promise.reject(new P.Error('ExecutionStopped','Execution stopped.',info.loc));tab('console');flushConsole();setStatus('WAITING FOR INPUT','running');$('inputLabel').textContent=language==='python'?'Python input()':info.name+' · '+(typeof info.type==='string'?info.type:P.typeName(info.type));$('inputForm').hidden=false;document.documentElement.classList.add('input-active');syncViewport();$('consoleInput').value='';$('consoleInput').focus();requestAnimationFrame(()=>$('inputForm').scrollIntoView({block:'nearest'}));return new Promise(resolve=>{inputResolve=resolve;});}
-function showError(e){const label=e.category||e.name||'Error',location=e.loc?'Line '+e.loc.line+', Column '+(e.loc.column||1):'';log(label+': '+e.message+(location?'\n'+location:''),'error');if(e.loc&&label!=='ExecutionStopped'){errorLine=e.loc.line;jumpTo(e.loc.line,e.loc.column||1);}setStatus(label==='ExecutionStopped'?'STOPPED':'ERROR',label==='ExecutionStopped'?'':'error');const help={KeywordCaseError:'伪代码关键字、类型名和内置函数须使用大写；Format 可修复大小写，变量名、字符串和注释保持原样。',EmptyBlockError:'此代码块需要至少一条执行语句；空行、注释和声明不算执行内容。',ForStepError:'默认 STEP 为 +1。递减请明确写负步长，其他等差增减请写对应的 STEP；方向必须朝向终点。',CounterMutationError:'FOR 计数器由循环自动更新；需要自定义更新时请改用 WHILE。',UnsupportedFeature:language!=='python'?'请检查当前课程的语法范围，详见 Reference。':/Firefox\//.test(navigator.userAgent)?'Zen / Firefox 尚未启用实时 Python 输入能力。请参考 Reference 中的 Zen 设置，启用后刷新本页；不调用 input() 的程序仍可运行。':'当前浏览器无法暂停 Python 并等待 Console 输入。请使用提供 JSPI 能力的浏览器；不调用 input() 的程序仍可运行。',ValueError:'输入转换失败。input() 返回字符串；可以检查内容或使用 try/except 处理。',IndentationError:language==='python'?'请检查缩进；同一代码块通常使用四个空格。':'伪代码每层使用四个空格，分支和结束语句与对应开头对齐。可点击 Format 修复缩进。',TabError:'同一代码块不要混用 Tab 和空格。',NameError:language==='python'?'此名称尚未定义，或大小写与前面不一致。':'请先声明此名称，并检查拼写。伪代码变量名不区分大小写。',IndexError:'下标超出范围；Python 列表从 0 开始。',EOFError:'测试输入已用完，请补充此测试用例的输入序列。',FileNotFoundError:'请在当前语言的 Files 面板创建或导入这个文件。',ExecutionStopped:language==='python'?'已停止；本轮尚未提交的虚拟文件改动已丢弃。':''};if(help[label])log(help[label],'system');flushConsole();if(e.traceback){const details=node('details',undefined,'traceback');details.append(node('summary','Traceback'),node('pre',e.traceback));$('console').append(details);}}
+function showError(e){const label=e.category||e.name||'Error',location=e.loc?'Line '+e.loc.line+', Column '+(e.loc.column||1):'';log(label+': '+e.message+(location?'\n'+location:''),'error');if(e.loc&&label!=='ExecutionStopped'){errorLine=e.loc.line;jumpTo(e.loc.line,e.loc.column||1);}setStatus(label==='ExecutionStopped'?'STOPPED':'ERROR',label==='ExecutionStopped'?'':'error');const help={KeywordCaseError:'伪代码关键字、类型名和内置函数须使用大写；Format 可修复大小写，变量名、字符串和注释保持原样。',EmptyBlockError:'此代码块需要至少一条执行语句；空行、注释和声明不算执行内容。',ForStepError:'默认 STEP 为 +1。递减请明确写负步长，其他等差增减请写对应的 STEP；方向必须朝向终点。',CounterMutationError:'FOR 计数器由循环自动更新；需要自定义更新时请改用 WHILE。',UnsupportedFeature:language!=='python'?'请检查当前课程的语法范围，详见 Reference。':/Firefox\//.test(navigator.userAgent)?'Zen / Firefox 尚未启用实时 Python 输入能力。请参考 Reference 中的 Zen 设置，启用后刷新本页；不调用 input() 的程序仍可运行。':'当前浏览器无法暂停 Python 并等待 Console 输入。请使用提供 JSPI 能力的浏览器；不调用 input() 的程序仍可运行。',ValueError:'输入转换失败。input() 返回字符串；可以检查内容或使用 try/except 处理。',IndentationError:language==='python'?'请检查缩进；同一代码块通常使用四个空格。':'伪代码每层使用四个空格，分支和结束语句与对应开头对齐。可点击 Format 修复缩进。',TabError:'同一代码块不要混用 Tab 和空格。',NameError:language==='python'?'此名称尚未定义，或大小写与前面不一致。':'请先声明此名称，并检查拼写与大小写。num、Num 和 NUM 是不同的变量名。',IndexError:'下标超出范围；Python 列表从 0 开始。',EOFError:'测试输入已用完，请补充此测试用例的输入序列。',FileNotFoundError:'请在当前语言的 Files 面板创建或导入这个文件。',ExecutionStopped:language==='python'?'已停止；本轮尚未提交的虚拟文件改动已丢弃。':''};if(help[label])log(help[label],'system');flushConsole();if(e.traceback){const details=node('details',undefined,'traceback');details.append(node('summary','Traceback'),node('pre',e.traceback));$('console').append(details);}}
 function absorb(r,commitFiles=true){if(!r)return;result=r;if(commitFiles&&r.files&&typeof r.files==='object'){state.files=r.files;persist();renderFiles();}renderVariables();renderTrace();$('executionStats').textContent=(r.steps||0).toLocaleString()+(language==='python'?' line events':' execution steps');}
 async function run(config={}){if(busy||document.querySelector('dialog[open]'))return;clearTimeout(historyTimer);checkpoint();clearConsole();errorLine=0;resultSource=source.value;result={trace:[],variables:[],output:[],stdout:''};symbols=[];renderTrace();renderVariables();updateStale();tab('console');controller=new AbortController();const signal=controller.signal;setBusy(true);setStatus(language==='python'?'PREPARING':'RUNNING','running');$('executionStats').textContent='';const started=performance.now(),runId='ui-'+(++runSerial);try{if(language!=='python')symbols=adapters[language].check(source.value).symbols;const r=await adapters[language].run({runId,source:source.value,filename:state.name,files:state.files,signal,input:askInput,inputMode:config.inputMode||'interactive',inputs:Array.isArray(config.inputs)?config.inputs:[],limits:{maxSteps:1000000,maxTrace:5000,maxOutputBytes:1048576,maxOutputLines:10000,maxTimeMs:30000}},event=>{if(signal.aborted)return;if(event.type==='pseudoOutput')log(event.text);else if(event.type==='stdout'||event.type==='stderr')log(event.text,event.type);else if(event.type==='traceBatch'){result.trace.push(...(event.entries||[]));traceDirty=true;}else if(event.type==='variables'){result.variables=event.variables||[];}else if(event.type==='ready'){pythonCapabilities=event.capabilities||pythonCapabilities;probeError='';renderCapabilities();setStatus('RUNNING','running');}else if(event.type==='running')setStatus('RUNNING','running');});absorb(r);for(const warning of r.warnings||[])log(warning,'warning');log('Program finished successfully.','system success');setStatus('FINISHED');$('executionStats').textContent=(r.steps||0).toLocaleString()+' '+(language==='python'?'line events':'steps')+' · '+((performance.now()-started)/1000).toFixed(2)+' s';}catch(e){hideInput();setBusy(false);absorb(e.result,e.category!=='ExecutionStopped'||language!=='python');tab('console');showError(e);}finally{hideInput();setBusy(false);controller=null;flushConsole();paintPosition();updateStale();}}
 function stop(){if(controller){controller.abort();hideInput();setStatus('STOPPING');}}
@@ -5488,6 +5502,17 @@ function download(text,name){const a=node('a');const url=URL.createObjectURL(new
 function saveInBrowser(){clearTimeout(saveTimer);if(persist()){dirty=false;$('dirtyDot').hidden=true;notice('Code saved in this browser.');}}
 function applyEditorCommand(command){if(busy||composing||document.querySelector('dialog[open]'))return;clearTimeout(historyTimer);checkpoint();const edit=command(source.value,source.selectionStart,source.selectionEnd,source.selectionDirection);if(edit.text===source.value)return;const scrollTop=source.scrollTop,scrollLeft=source.scrollLeft;source.value=edit.text;source.scrollTop=scrollTop;source.scrollLeft=scrollLeft;source.setSelectionRange(edit.selectionStart,edit.selectionEnd,edit.selectionDirection||'none');checkpoint();markEdited();paintEditor();source.focus({preventScroll:true});const caretOffset=source.selectionDirection==='backward'?source.selectionStart:source.selectionEnd,caretLine=source.value.slice(0,caretOffset).split('\n').length-1,lineHeight=Math.round(state.fontSize*1.72),caretTop=20+caretLine*lineHeight;if(caretTop<source.scrollTop)source.scrollTop=caretTop;else if(caretTop+lineHeight>source.scrollTop+source.clientHeight)source.scrollTop=caretTop+lineHeight-source.clientHeight+20;syncScroll();}
 function toggleComments(){applyEditorCommand(adapters[language].commands.toggleComment);}
+function indentationBackspace(text,start,end,direction){
+ const unchanged={text,selectionStart:start,selectionEnd:end,selectionDirection:direction};
+ if(start!==end)return unchanged;
+ const lineStart=Math.max(text.lastIndexOf('\n',start-1),text.lastIndexOf('\r',start-1))+1,prefix=text.slice(lineStart,start);
+ if(!/^[ \t]+$/.test(prefix))return unchanged;
+ let column=0;for(const ch of prefix)column+=ch==='\t'?4-column%4:1;
+ const target=column-(column%4||4);let keep=0,at=0;
+ for(const ch of prefix){const next=at+(ch==='\t'?4-at%4:1);if(next>target)break;at=next;keep++;}
+ const caret=lineStart+keep;
+ return {text:text.slice(0,caret)+text.slice(start),selectionStart:caret,selectionEnd:caret,selectionDirection:'none'};
+}
 function saveSource(){
  const originalName=state.name||defaultFilename(language);
  const name=language==='python'?(originalName.endsWith('.py')||originalName.endsWith('.txt')?originalName:originalName.replace(/\.(py|pseudo)$/,'')+'.py'):(/\.txt$/i.test(originalName)?originalName:originalName.replace(/\.(py|pseudo)$/i,'')+'.txt');
@@ -5500,7 +5525,7 @@ function renderTests(){const frag=document.createDocumentFragment();state.tests.
 async function runTests(){if(busy||document.querySelector('dialog[open]'))return;if(!state.tests.length){notice('Add a test case with inputs and expected output first.');return;}controller=new AbortController();const signal=controller.signal;setBusy(true);let passed=0,finished=0;try{for(let i=0;i<state.tests.length;i++){if(signal.aborted)break;const test=state.tests[i],outcome=$('test-result-'+i);outcome.textContent='Running…';outcome.className='test-result';test.source=source.value;test.fileSnapshot=JSON.stringify(state.files);const inputs=test.inputs===''?(test.blankInput?['']:[]):test.inputs.replace(/\r\n?/g,'\n').split('\n');let at=0;try{const r=await adapters[language].run({runId:'test-'+(++runSerial),source:source.value,filename:state.name,files:state.files,signal,inputMode:'preset',inputs,randomSeed:test.randomSeed,input:info=>{if(at>=inputs.length)throw new P.Error('InputError','No input line remains for '+info.name+'.',info.loc);return inputs[at++];}},()=>{});const actual=(language==='python'?r.stdout:r.output.join('\n')).replace(/\r\n?/g,'\n'),expected=test.expected.replace(/\r\n?/g,'\n');test.pass=actual===expected;test.result=test.pass?'PASS':'FAIL · Output differs';outcome.textContent=test.result;outcome.className='test-result '+(test.pass?'pass':'fail');if(!test.pass){let at=0;while(at<actual.length&&at<expected.length&&actual[at]===expected[at])at++;outcome.append(node('pre','First difference at character '+(at+1)+'\nExpected: '+JSON.stringify(expected)+'\nActual:   '+JSON.stringify(actual),'output-diff'));}else passed++;}catch(e){test.pass=false;test.result=(e.category==='ExecutionStopped'?'STOPPED':'FAIL')+' · '+(e.category||'Error')+': '+e.message+(e.loc?' · Line '+e.loc.line+', Column '+(e.loc.column||1):'');outcome.textContent=test.result;outcome.className='test-result fail';}finished++;$('testSummary').textContent=passed+' / '+finished+' passed';}if(signal.aborted)$('testSummary').textContent+=' · stopped';}finally{controller=null;setBusy(false);persist();}}
 // Source editing: preserve native selection and IME; custom history makes indentation undoable.
 source.addEventListener('compositionstart',()=>composing=true);source.addEventListener('compositionend',()=>{composing=false;markEdited();});source.addEventListener('input',()=>{if(!composing)markEdited();});source.addEventListener('scroll',syncScroll);source.addEventListener('click',paintPosition);source.addEventListener('keyup',paintPosition);source.addEventListener('select',paintPosition);
-source.addEventListener('keydown',e=>{if(composing||e.isComposing||busy)return;if((e.ctrlKey||e.metaKey)&&!e.altKey&&(e.key==='/'||e.code==='Slash')){e.preventDefault();toggleComments();return;}if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='z'){e.preventDefault();clearTimeout(historyTimer);checkpoint();const next=historyAt+(e.shiftKey?1:-1);if(next>=0&&next<history.length){historyAt=next;const h=history[next];source.value=h.value;source.setSelectionRange(h.start,h.end,h.direction||'none');dirty=true;$('dirtyDot').hidden=false;queueSave();paintEditor();}return;}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'){e.preventDefault();clearTimeout(historyTimer);checkpoint();if(historyAt+1<history.length){const h=history[++historyAt];source.value=h.value;source.setSelectionRange(h.start,h.end,h.direction||'none');dirty=true;$('dirtyDot').hidden=false;queueSave();paintEditor();}return;}if(e.key==='Tab'){e.preventDefault();clearTimeout(historyTimer);checkpoint();const start=source.selectionStart,end=source.selectionEnd,text=source.value,lineStart=text.lastIndexOf('\n',start-1)+1;if(start===end&&!e.shiftKey){const spaces=4-((start-lineStart)%4);source.setRangeText(' '.repeat(spaces),start,end,'end');}else{const selectedEnd=end>start&&text[end-1]==='\n'?end-1:end;let lineEnd=text.indexOf('\n',selectedEnd);if(lineEnd<0)lineEnd=text.length;const block=text.slice(lineStart,lineEnd),lines=block.split('\n');let removed=0;const changed=lines.map((l,i)=>{if(e.shiftKey){const n=l.startsWith('\t')?1:Math.min(4,l.match(/^ */)[0].length);if(i===0)removed=n;return l.slice(n);}return '    '+l;}).join('\n');source.setRangeText(changed,lineStart,lineEnd,'select');const delta=changed.length-block.length;source.setSelectionRange(Math.max(lineStart,start+(e.shiftKey?-removed:4)),Math.max(lineStart,end+delta));}checkpoint();markEdited();paintEditor();}else if(e.key==='Enter'&&!e.metaKey&&!e.ctrlKey){e.preventDefault();applyEditorCommand(adapters[language].commands.newline);}});
+source.addEventListener('keydown',e=>{if(composing||e.isComposing||busy)return;if((e.ctrlKey||e.metaKey)&&!e.altKey&&(e.key==='/'||e.code==='Slash')){e.preventDefault();toggleComments();return;}if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='z'){e.preventDefault();clearTimeout(historyTimer);checkpoint();const next=historyAt+(e.shiftKey?1:-1);if(next>=0&&next<history.length){historyAt=next;const h=history[next];source.value=h.value;source.setSelectionRange(h.start,h.end,h.direction||'none');dirty=true;$('dirtyDot').hidden=false;queueSave();paintEditor();}return;}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'){e.preventDefault();clearTimeout(historyTimer);checkpoint();if(historyAt+1<history.length){const h=history[++historyAt];source.value=h.value;source.setSelectionRange(h.start,h.end,h.direction||'none');dirty=true;$('dirtyDot').hidden=false;queueSave();paintEditor();}return;}if(e.key==='Backspace'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!e.shiftKey){const edit=indentationBackspace(source.value,source.selectionStart,source.selectionEnd,source.selectionDirection);if(edit.text!==source.value){e.preventDefault();applyEditorCommand(indentationBackspace);}return;}if(e.key==='Tab'){e.preventDefault();clearTimeout(historyTimer);checkpoint();const start=source.selectionStart,end=source.selectionEnd,text=source.value,lineStart=text.lastIndexOf('\n',start-1)+1;if(start===end&&!e.shiftKey){const spaces=4-((start-lineStart)%4);source.setRangeText(' '.repeat(spaces),start,end,'end');}else{const selectedEnd=end>start&&text[end-1]==='\n'?end-1:end;let lineEnd=text.indexOf('\n',selectedEnd);if(lineEnd<0)lineEnd=text.length;const block=text.slice(lineStart,lineEnd),lines=block.split('\n');let removed=0;const changed=lines.map((l,i)=>{if(e.shiftKey){const n=l.startsWith('\t')?1:Math.min(4,l.match(/^ */)[0].length);if(i===0)removed=n;return l.slice(n);}return '    '+l;}).join('\n');source.setRangeText(changed,lineStart,lineEnd,'select');const delta=changed.length-block.length;source.setSelectionRange(Math.max(lineStart,start+(e.shiftKey?-removed:4)),Math.max(lineStart,end+delta));}checkpoint();markEdited();paintEditor();}else if(e.key==='Enter'&&!e.metaKey&&!e.ctrlKey){e.preventDefault();applyEditorCommand(adapters[language].commands.newline);}});
 document.addEventListener('keydown',e=>{if(e.isComposing)return;if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();run();}else if(e.key==='Escape'&&fullscreenElement()&&!document.querySelector('dialog[open]')){e.preventDefault();toggleFullscreen();}else if(e.key==='Escape'||(e.ctrlKey||e.metaKey)&&e.key==='.'){if(busy){e.preventDefault();stop();}}else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveInBrowser();}});
 $('fullscreenBtn').onclick=toggleFullscreen;document.addEventListener('fullscreenchange',syncFullscreen);document.addEventListener('webkitfullscreenchange',syncFullscreen);$('commentBtn').onclick=toggleComments;
 $('runBtn').onclick=run;$('stopBtn').onclick=stop;$('saveBtn').onclick=saveSource;$('clearBtn').onclick=clearConsole;
