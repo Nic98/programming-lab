@@ -75,6 +75,40 @@ html.workspace-fullscreen.keyboard-compact.input-active #inputForm{padding:8px 1
 @media(max-width:500px){.source-tab{min-width:82px;max-width:180px;padding:0 11px}.workspace-fullscreen .pane-heading .pane-controls{width:auto}}
 @media(pointer:coarse){#addSourceTab{flex-basis:40px;width:40px;height:40px}.source-tab{min-height:40px}}
 
+/* Document management and actionable diagnostics. */
+.tab-close{flex:none;margin-left:2px;padding:1px 4px;border-radius:3px;font-size:16px;color:var(--muted)}.tab-close:hover{background:var(--hover);color:var(--danger)}.source-tab.drag-over{box-shadow:inset 3px 0 var(--accent)}
+.tab-actions{position:relative;display:flex;align-items:center;flex:none}.tab-actions>button{padding:4px 8px;font-size:21px;border:0}.tab-actions #tabActionsMenu{position:absolute;top:46px;right:0;z-index:12;width:210px;padding:6px;border:1px solid var(--border);border-radius:8px;background:var(--surface);box-shadow:0 7px 24px #0003}.tab-actions #tabActionsMenu button{display:block;width:100%;text-align:left;border:0;background:none;padding:8px;font-size:13px}.tab-actions #tabActionsMenu button:hover{background:var(--hover)}#tabActionsMenu p{font-size:11px;color:var(--muted);white-space:normal;margin:8px}
+.problem-card{flex:none;max-height:180px;overflow:auto;padding:8px 14px;border-bottom:1px solid var(--border);border-left:3px solid var(--danger);background:var(--surface2);font-size:12px}.problem-heading{display:flex;align-items:center;justify-content:space-between;color:var(--danger)}.problem-heading button{padding:0 6px}.problem-location{font-size:12px;padding:1px 0;border:0;background:none;color:var(--accent);white-space:normal;text-align:left;text-decoration:underline}.problem-card p{margin:5px 0;white-space:pre-wrap;overflow-wrap:anywhere}.problem-location:disabled{text-decoration:none}
+
+/* Editor aids stay inside the workspace in full screen. */
+.editor-aids-bar{flex:none;background:var(--surface);border-bottom:1px solid var(--border);padding:8px 12px;font-size:12px;max-height:42%;overflow:auto}
+.ea-search-row,.ea-replace-row{display:flex;gap:5px;align-items:center;flex-wrap:wrap}.ea-replace-row{margin-top:6px}
+.ea-search-row input,.ea-replace-row input{min-width:90px;flex:1 1 120px;padding:5px 8px;font-size:12px}.editor-aids-bar button{font-size:12px;padding:4px 7px}.ea-count{min-width:58px;color:var(--muted);font-size:11px;white-space:nowrap}
+.ea-options,.ea-view-options{display:flex;align-items:center;gap:8px 13px;flex-wrap:wrap;margin-top:7px}.ea-options label,.ea-view-options label{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;color:var(--muted);cursor:pointer}.ea-options input,.ea-view-options input{margin:0}.ea-view-options{border-top:1px solid var(--border);padding-top:7px}.ea-view-label{color:var(--muted);font-size:11px}.ea-message{font-size:11px;color:var(--accent);margin-top:6px}.ea-message:empty{display:none}
+#editorAidsBtn{margin-left:auto;font-size:11px;padding:0 4px;line-height:1.4}#closeFind{font-size:17px;line-height:1.1}
+.editor-aids-overlay{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;contain:strict;user-select:none}
+.ea-indent-guide{position:absolute;width:1px;background:color-mix(in srgb,var(--muted) 23%,transparent)}
+.ea-whitespace-line{position:absolute;margin:0;padding:0;font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:var(--code-font);line-height:var(--code-line);font-weight:400;font-variant-ligatures:none;letter-spacing:0;tab-size:4;white-space:pre;color:transparent;pointer-events:none}
+.ea-space,.ea-tab::before{color:color-mix(in srgb,var(--muted) 55%,transparent)}.ea-tab{position:relative;color:transparent}.ea-tab::before{content:'→';position:absolute;left:0;top:0}
+.ea-find-match,.ea-block-pair{position:absolute;border-radius:2px;box-sizing:border-box}.ea-find-match{background:color-mix(in srgb,#eeb83a 24%,transparent);border:1px solid color-mix(in srgb,#bd8a11 45%,transparent)}.ea-current-match{background:color-mix(in srgb,#eeb83a 42%,transparent);border-color:#b88208}.ea-block-pair{border-bottom:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+@media(max-width:500px){.editor-aids-bar{padding:6px 9px}.ea-options,.ea-view-options{gap:6px 10px}.ea-count{min-width:46px}.ea-search-row input{flex-basis:100px}.ea-replace-row input{flex-basis:110px}}
+@media(forced-colors:active){.ea-indent-guide{background:GrayText}.ea-space,.ea-tab::before{color:GrayText}.ea-find-match,.ea-block-pair{background:transparent;border-color:Highlight}}
+
+.lab-backup-dialog{width:640px}
+.lab-backup-dialog .dialog-heading{gap:20px}
+.lab-backup-dialog .dialog-heading>button{font-size:24px;line-height:1;padding:6px 10px}
+.lab-backup-body{padding:4px 28px 26px;font-size:14px;line-height:1.65}
+.lab-backup-choices{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.lab-backup-muted{color:var(--muted);font-size:13px}
+.lab-backup-error{color:var(--danger);background:var(--editor);border:1px solid var(--danger);border-radius:6px;padding:10px 12px;overflow-wrap:anywhere}
+.lab-backup-groups{max-height:35vh;overflow:auto;border:1px solid var(--border);border-radius:6px;padding:0 16px;background:var(--editor)}
+.lab-backup-groups section+section{border-top:1px solid var(--border)}
+.lab-backup-groups h3{font-size:14px;margin:14px 0 6px}
+.lab-backup-groups ol{padding-left:22px;margin:0 0 16px}
+.lab-backup-groups li{overflow-wrap:anywhere}
+.lab-backup-dialog .dialog-actions{flex-wrap:wrap}
+@media(max-width:600px){.lab-backup-body{padding:4px 18px 20px}.lab-backup-dialog .dialog-heading{padding:18px}.lab-backup-groups{max-height:30vh}.lab-backup-dialog .dialog-heading h2{font-size:21px}}
+
 </style>
 </head>
 <body>
@@ -83,26 +117,28 @@ html.workspace-fullscreen.keyboard-compact.input-active #inputForm{padding:8px 1
   <div class="header-right"><button id="referenceBtn" class="quiet" title="Open the language and teaching reference">Reference <span aria-hidden="true">↗</span></button><button id="fullscreenBtn" class="quiet" aria-label="Enter full screen" aria-pressed="false" title="Enter full screen"><span aria-hidden="true">⛶</span> <span id="fullscreenLabel">Full screen</span></button><button id="themeBtn" class="icon-button" aria-label="Switch to dark theme" title="Switch theme">☾</button></div>
 </header>
 <div class="toolbar" aria-label="Editor tools">
-  <div class="toolgroup"><button id="newBtn" title="Start a new program">New</button><button id="openBtn" title="Open a .pseudo or .txt source file">Open</button><button id="saveBtn" title="Download source as a local .pseudo file">Save</button></div>
+  <div class="toolgroup"><button id="newBtn" title="New code tab">New</button><button id="openBtn" title="Open a .pseudo or .txt source file">Open</button><button id="saveBtn" title="Download source as a local .pseudo file">Save</button></div>
   <span class="divider"></span>
   <label class="example-label"><span class="sr-only">Load an example</span><select id="examples"><option value="">Examples…</option></select></label>
   <span class="toolbar-spacer"></span>
   <label class="font-label">Font <select id="fontSize" aria-label="Editor font size"><option value="13">13</option><option value="14">14</option><option value="15" selected>15</option><option value="16">16</option><option value="18">18</option><option value="20">20</option></select></label>
   <button id="commentBtn" title="Toggle line comments · Ctrl/⌘ /" aria-label="Toggle line comments">// Comment</button>
   <button id="formatBtn" title="Format using Cambridge indentation">Format</button>
+  <button id="checkBtn" title="Check source">Check</button>
   <button id="stopBtn" disabled title="Stop execution · Esc"><span aria-hidden="true">■</span> Stop</button>
   <button id="runBtn" class="primary" title="Run program · Ctrl/⌘ Enter"><span aria-hidden="true">▶</span> Run <span class="shortcut">⌘ ↵</span></button>
 </div>
 <div id="notice" class="notice" role="status" hidden></div>
 <main class="workspace" id="workspace">
   <section class="editor-pane" id="editorPane" aria-label="Code editor">
-    <div class="pane-heading"><div class="code-tabs-wrap"><div id="sourceTabs" role="tablist" aria-label="Code files"></div><button id="addSourceTab" type="button" class="quiet" aria-label="New code tab" title="New code tab">+</button><span class="current-file-meta sr-only"><span id="sourceName">program.py</span><span id="dirtyDot" aria-label="Modified" hidden>●</span></span></div><div class="pane-controls"><label class="sr-only" for="languageSelect">Programming language</label><select id="languageSelect" aria-label="Programming language"><option value="python">Python</option><option value="igcse">IGCSE Pseudocode</option><option value="pseudo">AS Pseudocode</option></select><div class="fullscreen-actions"><button id="innerRun" class="small primary" title="Run program">▶ Run</button><button id="innerStop" class="small" disabled>■ Stop</button><button id="innerExit" class="small quiet" aria-label="Exit full screen">↙</button></div></div></div>
+    <div class="pane-heading"><div class="code-tabs-wrap"><div id="sourceTabs" role="tablist" aria-label="Code files"></div><button id="addSourceTab" type="button" class="quiet" aria-label="New code tab" title="New code tab">+</button><div class="tab-actions"><button id="tabActionsBtn" class="quiet" aria-label="Tab actions" aria-expanded="false" title="Tab actions">⋯</button><div id="tabActionsMenu" hidden><button id="duplicateTabBtn">Duplicate tab</button><button id="closeTabBtn">Close tab</button><button id="reopenTabBtn">Reopen closed tab</button><button id="moveTabLeftBtn">Move left</button><button id="moveTabRightBtn">Move right</button><p>Reopen up to 20 closed tabs per language.</p></div></div><span class="current-file-meta sr-only"><span id="sourceName">program.py</span><span id="dirtyDot" aria-label="Modified" hidden>●</span></span></div><div class="pane-controls"><label class="sr-only" for="languageSelect">Programming language</label><select id="languageSelect" aria-label="Programming language"><option value="python">Python</option><option value="igcse">IGCSE Pseudocode</option><option value="pseudo">AS Pseudocode</option></select><div class="fullscreen-actions"><button id="innerCheck" class="small" title="Check source">Check</button><button id="innerRun" class="small primary" title="Run program">▶ Run</button><button id="innerStop" class="small" disabled>■ Stop</button><button id="innerExit" class="small quiet" aria-label="Exit full screen">↙</button></div></div></div>
     <div class="editor-body" id="editorBody"><div class="gutter" aria-hidden="true"><div id="lineNumbers"></div></div><div class="code-surface"><div id="currentLine" aria-hidden="true"></div><pre id="highlight" aria-hidden="true"></pre><textarea id="source" aria-label="Source code" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="off"></textarea></div></div>
     <div class="editor-footer"><span id="cursorPosition">Ln 1, Col 1</span><span>4 spaces</span><span>UTF-8</span></div>
   </section>
   <div id="paneResizer" class="pane-resizer" role="separator" tabindex="0" aria-orientation="vertical" aria-label="Resize editor and results panels" aria-controls="editorPane resultsPane" title="Drag to resize · Arrow keys to adjust · Double-click to reset"></div>
   <section class="inspector" id="resultsPane" aria-label="Program results">
     <div class="panel-tabs" role="tablist" aria-label="Results panels"><button role="tab" id="tab-console" aria-controls="panel-console" aria-selected="true" data-tab="console">Console</button><button role="tab" id="tab-trace" aria-controls="panel-trace" aria-selected="false" tabindex="-1" data-tab="trace">Trace</button><button role="tab" id="tab-variables" aria-controls="panel-variables" aria-selected="false" tabindex="-1" data-tab="variables">Variables</button><button role="tab" id="tab-files" aria-controls="panel-files" aria-selected="false" tabindex="-1" data-tab="files">Files</button><button role="tab" id="tab-tests" aria-controls="panel-tests" aria-selected="false" tabindex="-1" data-tab="tests">Tests</button></div>
+    <section id="problemCard" class="problem-card" aria-label="Current code problem" hidden><div class="problem-heading"><strong id="problemTitle"></strong><button id="dismissProblem" class="small quiet" aria-label="Dismiss problem">×</button></div><button id="problemLocation" class="problem-location"></button><p id="problemMessage"></p><p id="problemStale" class="muted" hidden>代码已修改，此错误来自上次检查或运行。请重新 Check 或 Run。</p></section>
     <section id="panel-console" class="panel active" role="tabpanel" aria-labelledby="tab-console"><div class="panel-tools"><span id="runStatus" class="status-label">READY</span><button id="clearBtn" class="small quiet">Clear output</button></div><div id="console" class="console" role="log" aria-live="polite" aria-label="Program console"><div id="consoleEmpty" class="empty-state"><div class="empty-symbol" aria-hidden="true">&gt;_</div><h2>Ready when you are.</h2><p>Run your program. Output and input appear here.</p><span class="key-hint">⌘ / Ctrl + Enter to run</span></div></div><form id="inputForm" hidden><label id="inputLabel" for="consoleInput">Input</label><div class="input-row"><span aria-hidden="true">&gt;</span><input id="consoleInput" autocomplete="off" spellcheck="false" aria-describedby="inputHelp"><button type="submit" class="primary small">Enter ↵</button></div><span id="inputHelp" class="muted">Enter a value to continue.</span></form></section>
     <section id="panel-trace" class="panel" role="tabpanel" aria-labelledby="tab-trace" hidden><div class="panel-tools"><span id="traceCount">Execution trace</span><span class="muted">Select a row to go to its line</span></div><div class="table-scroll" id="traceScroll"><table class="trace-table"><thead id="traceHead"></thead><tbody id="traceRows"></tbody></table><p id="traceEmpty" class="panel-empty">Run a program to follow its changes, one statement at a time.</p></div></section>
     <section id="panel-variables" class="panel" role="tabpanel" aria-labelledby="tab-variables" hidden><div class="panel-tools"><label id="identifierLabel"><input type="checkbox" id="identifierMode"> Identifier table</label><span id="pythonVariablesLabel" hidden>Runtime values</span><button id="inspectBtn" class="small quiet">Check source</button></div><div class="table-scroll"><table><thead id="variableHead"></thead><tbody id="variableRows"></tbody></table><p id="variablesEmpty" class="panel-empty">Variables appear after a run. Check source to view declared identifiers.</p></div></section>
@@ -111,7 +147,7 @@ html.workspace-fullscreen.keyboard-compact.input-active #inputForm{padding:8px 1
   </section>
 </main>
 <footer class="app-footer"><span id="storageStatus">Saved in this browser</span><span id="executionStats"></span></footer>
-<input id="sourceUpload" type="file" accept=".py,.pseudo,.txt,text/plain" hidden><input id="vfsUpload" type="file" accept=".txt,text/plain" multiple hidden>
+<input id="sourceUpload" type="file" multiple accept=".py,.pseudo,.txt,text/plain" hidden><input id="vfsUpload" type="file" accept=".txt,text/plain" multiple hidden>
 <dialog id="referenceDialog"><div class="dialog-heading"><div><span class="eyebrow">OFFLINE LANGUAGE REFERENCE</span><h2 id="referenceTitle">Python reference</h2></div><button id="closeReference" aria-label="Close reference" class="icon-button">×</button></div><div class="reference-body"><div class="reference-mode"><button id="referencePython" class="small">Python</button><button id="referenceIGCSE" class="small">IGCSE Pseudocode</button><button id="referenceAS" class="small">AS Pseudocode</button></div><div id="pythonReference"><details><summary>Runtime versions &amp; open-source licenses</summary><p>Pyodide 314.0.7 / CPython 3.14.2 · autopep8 2.3.2 · pycodestyle 2.14.0</p><p>The unmodified bundled Pyodide runtime is licensed under MPL 2.0. Its corresponding source, build instructions, and dependency recipes are available free of charge: <a href="https://github.com/pyodide/pyodide/tree/314.0.7" target="_blank" rel="noopener noreferrer">browse Pyodide 314.0.7 source</a> or <a href="https://github.com/pyodide/pyodide/archive/refs/tags/314.0.7.tar.gz" target="_blank" rel="noopener noreferrer">download the source archive</a>. These optional source links require an internet connection; the app runs offline.</p><h4>Apache-2.0-LICENSE.txt</h4><pre style="white-space:pre-wrap">
                                  Apache License
                            Version 2.0, January 2004
@@ -5469,11 +5505,11 @@ const STORE='cambridge.programming.lab.v3',PREVIOUS_STORE='cambridge.programming
 const LANGUAGES=['python','igcse','pseudo'],languageNames={python:'Python',igcse:'IGCSE Pseudocode',pseudo:'AS Pseudocode'};
 const defaultFilename=lang=>lang==='python'?'program.py':lang==='igcse'?'program.igcse.txt':'program.as.txt';
 const Lab=globalThis.Lab=globalThis.Lab||{};
-const settingsDefault={theme:'light',fontSize:15,editorShare:0.6124};
+const settingsDefault={theme:'light',fontSize:15,editorShare:0.6124,indentGuides:true,showWhitespace:false,blockPairs:true};
 const freshWorkspace=lang=>({source:LabLessons[0].variants[lang]?.source||P.examples[0].source,name:defaultFilename(lang),files:{},tests:[],selectionStart:0,selectionEnd:0,selectionDirection:'none',scrollTop:0,scrollLeft:0});
 const newDocumentId=()=>globalThis.crypto?.randomUUID?.()||'doc-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
 const freshDocument=lang=>({id:newDocumentId(),...freshWorkspace(lang)});
-const freshGroup=lang=>{const document=freshDocument(lang);return {activeId:document.id,documents:[document]};};
+const freshGroup=lang=>{const document=freshDocument(lang);return {activeId:document.id,documents:[document],closedDocuments:[]};};
 let app={version:3,activeLanguage:'python',settings:{...settingsDefault},workspaces:Object.fromEntries(LANGUAGES.map(lang=>[lang,freshGroup(lang)]))},storageOK=true;
 const activeDocument=lang=>{const group=app.workspaces[lang];return group.documents.find(doc=>doc.id===group.activeId)||group.documents[0];};
 function cleanWorkspace(saved,lang){const w=freshWorkspace(lang);if(!saved||typeof saved!=='object')return w;for(const k of ['source','name'])if(typeof saved[k]==='string')w[k]=saved[k];if(saved.files&&typeof saved.files==='object'&&!Array.isArray(saved.files))w.files=Object.fromEntries(Object.entries(saved.files).filter(([k,v])=>k&&typeof v==='string'));if(Array.isArray(saved.tests))w.tests=saved.tests.filter(t=>t&&typeof t.name==='string').map(t=>({name:t.name,blankInput:t.blankInput===true,inputs:String(t.inputs||''),expected:String(t.expected||''),label:['Normal','Abnormal','Boundary / Extreme'].includes(t.label)?t.label:'Normal',randomSeed:Number.isSafeInteger(t.randomSeed)?t.randomSeed:undefined}));w.selectionDirection=['forward','backward'].includes(saved.selectionDirection)?saved.selectionDirection:'none';for(const k of ['selectionStart','selectionEnd','scrollTop','scrollLeft'])if(Number.isFinite(saved[k]))w[k]=Math.max(0,saved[k]);return w;}
@@ -5481,6 +5517,7 @@ try {
  const raw=localStorage.getItem(STORE)||localStorage.getItem(PREVIOUS_STORE)||localStorage.getItem(LEGACY_STORE);
  if(raw){const x=JSON.parse(raw);if([1,2,3].includes(x.version)){
   app.activeLanguage=LANGUAGES.includes(x.activeLanguage)?x.activeLanguage:'python';const v=x.settings||{};
+  for(const key of ['indentGuides','showWhitespace','blockPairs'])if(typeof v[key]==='boolean')app.settings[key]=v[key];
   if(['dark','light'].includes(v.theme))app.settings.theme=v.theme;
   if([13,14,15,16,18,20].includes(v.fontSize))app.settings.fontSize=v.fontSize;
   if(Number.isFinite(v.editorShare)&&v.editorShare>=.2&&v.editorShare<=.8)app.settings.editorShare=v.editorShare;
@@ -5489,7 +5526,8 @@ try {
    const saved=x.workspaces?.[lang];
    if(x.version===3&&Array.isArray(saved?.documents)&&saved.documents.length){
     const documents=saved.documents.map(item=>{let id=typeof item?.id==='string'&&/^[A-Za-z0-9_-]{1,80}$/.test(item.id)?item.id:newDocumentId();if(usedIds.has(id))id=newDocumentId();usedIds.add(id);return {id,...cleanWorkspace(item,lang)};});
-    app.workspaces[lang]={activeId:documents.some(doc=>doc.id===saved.activeId)?saved.activeId:documents[0].id,documents};
+    const closedDocuments=(Array.isArray(saved.closedDocuments)?saved.closedDocuments:[]).slice(-20).filter(entry=>entry?.document&&typeof entry.document.source==='string').map(entry=>{let id=entry.document.id;if(typeof id!=='string'||usedIds.has(id)||!/^[A-Za-z0-9_-]{1,80}$/.test(id))id=newDocumentId();usedIds.add(id);return {index:Number.isInteger(entry.index)?Math.max(0,entry.index):0,document:{id,...cleanWorkspace(entry.document,lang)}};});
+    app.workspaces[lang]={activeId:documents.some(doc=>doc.id===saved.activeId)?saved.activeId:documents[0].id,documents,closedDocuments};
    }else if(x.version!==3){const document={id:newDocumentId(),...cleanWorkspace(saved,lang)};usedIds.add(document.id);app.workspaces[lang]={activeId:document.id,documents:[document]};}
   }
  }}
@@ -5498,7 +5536,8 @@ try {
 const entryMode=new URLSearchParams(location.search).get('mode'),entryLanguage=entryMode==='as'?'pseudo':['igcse','python'].includes(entryMode)?entryMode:null;
 if(entryLanguage)app.activeLanguage=entryLanguage;
 let language=app.activeLanguage,state=Object.assign(activeDocument(language),app.settings),resultSource=null,pythonCapabilities=null,probePromise=null,probeController=null,probeError='',fullscreenFallback=false,runSerial=0,currentLesson=null;
-const sessions=new Map();
+const sessions=new Map();let dragDocumentId=null;
+const emitUI=(name,detail={})=>document.dispatchEvent(new CustomEvent('lab:'+name,{detail}));
 const pseudocodeAdapter=dialect=>({capabilities:{staticTypes:true,interactiveInput:true},tokenize:text=>P.tokenize(text,{dialect}),commands:P.editorCommandsFor({dialect}),check:text=>P.check(text,{dialect,teachingChecks:true}),format:text=>P.format(text,{dialect}),run:(request,onEvent)=>P.run(request.source,{dialect,teachingChecks:true,files:request.files,signal:request.signal,input:request.input,onOutput:text=>onEvent?.({type:'pseudoOutput',text}),onTrace:entry=>onEvent?.({type:'traceBatch',entries:[entry]})})});
 const adapters=Lab.languages={
  pseudo:pseudocodeAdapter('as'),
@@ -5507,21 +5546,21 @@ const adapters=Lab.languages={
 };
 // The original standalone AS workspace is never read or written.
 // v3 stores independent document tabs. v1 and v2 are read only for migration.
-let activeTab='console', controller=null, busy=false, inputResolve=null, result=null, symbols=[], selectedFile='', errorLine=0, saveTimer=null, consoleQueue=[], consoleFrame=0, traceDirty=false, paintTimer=0, noticeTimer=0, dirty=false, history=[], historyAt=-1, historyTimer=0, composing=false;
+let activeTab='console', controller=null, busy=false, inputResolve=null, result=null, symbols=[], selectedFile='', errorLine=0, saveTimer=null, consoleQueue=[], consoleFrame=0, traceDirty=false, paintTimer=0, noticeTimer=0, dirty=false, history=[], historyAt=-1, historyTimer=0, composing=false, problem=null;
 const node=(tag,text,className)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;};
 const emptyConsoleContent=[...$('console').childNodes].map(n=>n.cloneNode(true));
 function notice(message,persistent=false){clearTimeout(noticeTimer);$('notice').textContent=message;$('notice').hidden=false;if(!persistent)noticeTimer=setTimeout(()=>$('notice').hidden=true,6500);}
-function serialiseDocument(w){return {id:w.id,source:w.source,name:w.name,files:w.files,tests:w.tests.map(({name,inputs,expected,label,blankInput,randomSeed})=>({name,inputs,expected,label,blankInput,randomSeed})),selectionStart:w.selectionStart,selectionEnd:w.selectionEnd,selectionDirection:w.selectionDirection,scrollTop:w.scrollTop,scrollLeft:w.scrollLeft};}
+function serialiseDocument(w){return {id:w.id,source:w.source,name:w.name,files:w.files,tests:w.tests.map(({name,inputs,expected,label,blankInput,randomSeed})=>({name,inputs,expected,label,blankInput:Boolean(blankInput),randomSeed})),selectionStart:w.selectionStart,selectionEnd:w.selectionEnd,selectionDirection:w.selectionDirection,scrollTop:w.scrollTop,scrollLeft:w.scrollLeft};}
 function persist(){
  updateStale();state.source=source.value;state.selectionStart=source.selectionStart;state.selectionEnd=source.selectionEnd;state.selectionDirection=source.selectionDirection;state.scrollTop=source.scrollTop;state.scrollLeft=source.scrollLeft;
- app.activeLanguage=language;app.settings={theme:state.theme,fontSize:state.fontSize,editorShare:state.editorShare};
+ app.activeLanguage=language;app.settings={...app.settings,theme:state.theme,fontSize:state.fontSize,editorShare:state.editorShare};
  const saved={version:3,activeLanguage:language,settings:app.settings,workspaces:{}};
- for(const lang of LANGUAGES){const group=app.workspaces[lang];saved.workspaces[lang]={activeId:group.activeId,documents:group.documents.map(serialiseDocument)};}
+ for(const lang of LANGUAGES){const group=app.workspaces[lang];saved.workspaces[lang]={activeId:group.activeId,documents:group.documents.map(serialiseDocument),closedDocuments:(group.closedDocuments||[]).map(entry=>({index:entry.index,document:serialiseDocument(entry.document)}))};}
  try{localStorage.setItem(STORE,JSON.stringify(saved));storageOK=true;$('storageStatus').textContent='Saved in this browser';return true;}catch(_){storageOK=false;$('storageStatus').textContent='Memory only · use Save / Export';notice('浏览器存储不可用或已满。内容仍在本页，请用 Save / Export 保存副本。',true);return false;}
 }
 function queueSave(){updateStale();clearTimeout(saveTimer);$('storageStatus').textContent=storageOK?'Saving…':'Memory only';saveTimer=setTimeout(persist,350);}
 function checkpoint(){const entry={value:source.value,start:source.selectionStart,end:source.selectionEnd,direction:source.selectionDirection};if(history[historyAt]?.value===entry.value){history[historyAt]=entry;return;}history.splice(historyAt+1);history.push(entry);if(history.length>100)history.shift();historyAt=history.length-1;}
-function markEdited(){history.splice(historyAt+1);dirty=true;$('dirtyDot').hidden=false;updateSourceTabState();errorLine=0;queueSave();clearTimeout(historyTimer);historyTimer=setTimeout(checkpoint,450);schedulePaint();updateStale();}
+function markEdited(){history.splice(historyAt+1);dirty=true;$('dirtyDot').hidden=false;updateSourceTabState();errorLine=0;queueSave();clearTimeout(historyTimer);historyTimer=setTimeout(checkpoint,450);schedulePaint();updateStale();emitUI('source-change',{id:state.id});}
 function applySource(text,name=state.name){if(busy)return;clearTimeout(historyTimer);checkpoint();source.value=text;state.name=name;$('sourceName').textContent=name;renderSourceTabs();source.scrollTop=0;source.scrollLeft=0;source.setSelectionRange(0,0);errorLine=0;checkpoint();markEdited();paintEditor();}
 function setTheme(){document.documentElement.dataset.theme=state.theme;$('themeBtn').textContent=state.theme==='dark'?'☼':'☾';$('themeBtn').setAttribute('aria-label','Switch to '+(state.theme==='dark'?'light':'dark')+' theme');}
 function fullscreenElement(){return document.fullscreenElement||document.webkitFullscreenElement||fullscreenFallback;}
@@ -5536,22 +5575,30 @@ function windowFillsScreen(){
 async function toggleFullscreen(){const button=$('fullscreenBtn');if(button.disabled)return;button.disabled=true;try{if(fullscreenElement()){if(fullscreenFallback)fullscreenFallback=false;else{const exit=document.exitFullscreen||document.webkitExitFullscreen;if(exit)await exit.call(document);}}else if(!windowFillsScreen()){fullscreenFallback=true;}else{const enter=document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen;try{if(!enter)throw new Error('unsupported');await enter.call(document.documentElement);}catch(_){fullscreenFallback=true;}}syncFullscreen();}finally{button.disabled=false;}}
 function setFont(){document.documentElement.style.setProperty('--code-font',state.fontSize+'px');document.documentElement.style.setProperty('--code-line',Math.round(state.fontSize*1.72)+'px');$('fontSize').value=String(state.fontSize);paintEditor();}
 function highlight(){const text=source.value,target=$('highlight');target.replaceChildren();let tokens;try{tokens=adapters[language].tokenize(text);}catch(_){target.textContent=text+'\n';return;}const frag=document.createDocumentFragment();let at=0;for(let i=0;i<tokens.length;i++){const t=tokens[i];if(t.startOffset>at)frag.append(document.createTextNode(text.slice(at,t.startOffset)));if(t.endOffset<=t.startOffset||t.startOffset<at)continue;let kind=t.kind;if(['integer','real'].includes(kind))kind='number';if(language!=='python'&&kind==='keyword'){if(['INTEGER','REAL','CHAR','STRING','BOOLEAN','DATE','ARRAY'].includes(t.value))kind='type';if(['TRUE','FALSE'].includes(t.value))kind='boolean';}const cls=['string','char','date','comment','number','keyword','type','boolean','operator','call'].includes(kind)?'tok-'+kind:'';const raw=text.slice(t.startOffset,t.endOffset);frag.append(cls?node('span',raw,cls):document.createTextNode(raw));at=t.endOffset;}if(at<text.length)frag.append(document.createTextNode(text.slice(at)));frag.append(document.createTextNode('\n'));target.append(frag);}
-function paintEditor(){updateStale();clearTimeout(paintTimer);highlight();paintPosition();syncScroll();}
+function paintEditor(){updateStale();clearTimeout(paintTimer);highlight();paintPosition();syncScroll();emitUI('source-change',{id:state.id});}
 function schedulePaint(){clearTimeout(paintTimer);paintTimer=setTimeout(paintEditor,40);}
-function paintPosition(){const before=source.value.slice(0,source.selectionStart),ln=before.split('\n').length,col=before.length-before.lastIndexOf('\n');$('cursorPosition').textContent='Ln '+ln+', Col '+col;const count=source.value.split('\n').length, frag=document.createDocumentFragment();for(let i=1;i<=count;i++){const line=node('div',String(i),i===errorLine?'error-number':i===ln?'active-number':'');frag.append(line);}$('lineNumbers').replaceChildren(frag);$('editorBody').style.setProperty('--gutter-width',Math.max(52,String(count).length*10+26)+'px');$('currentLine').style.top=(20+(ln-1)*Math.round(state.fontSize*1.72)-source.scrollTop)+'px';}
-function syncScroll(){$('highlight').style.transform='translate('+(-source.scrollLeft)+'px,'+(-source.scrollTop)+'px)';$('lineNumbers').style.transform='translateY('+(-source.scrollTop)+'px)';const ln=source.value.slice(0,source.selectionStart).split('\n').length;$('currentLine').style.top=(20+(ln-1)*Math.round(state.fontSize*1.72)-source.scrollTop)+'px';}
+function paintPosition(){const before=source.value.slice(0,source.selectionStart),ln=before.split('\n').length,col=before.length-before.lastIndexOf('\n');$('cursorPosition').textContent='Ln '+ln+', Col '+col;const count=source.value.split('\n').length, frag=document.createDocumentFragment();for(let i=1;i<=count;i++){const line=node('div',String(i),i===errorLine?'error-number':i===ln?'active-number':'');frag.append(line);}$('lineNumbers').replaceChildren(frag);$('editorBody').style.setProperty('--gutter-width',Math.max(52,String(count).length*10+26)+'px');$('currentLine').style.top=(20+(ln-1)*Math.round(state.fontSize*1.72)-source.scrollTop)+'px';emitUI('paint');}
+function syncScroll(){$('highlight').style.transform='translate('+(-source.scrollLeft)+'px,'+(-source.scrollTop)+'px)';$('lineNumbers').style.transform='translateY('+(-source.scrollTop)+'px)';const ln=source.value.slice(0,source.selectionStart).split('\n').length;$('currentLine').style.top=(20+(ln-1)*Math.round(state.fontSize*1.72)-source.scrollTop)+'px';emitUI('paint');}
 function jumpTo(line,column=1){const lines=source.value.split('\n');line=Math.max(1,Math.min(lines.length,line));let offset=lines.slice(0,line-1).reduce((sum,s)=>sum+s.length+1,0)+Math.max(0,column-1);source.focus();source.setSelectionRange(offset,offset);source.scrollTop=Math.max(0,(line-4)*Math.round(state.fontSize*1.72));paintPosition();syncScroll();}
 function tab(name){activeTab=name;document.querySelectorAll('[data-tab]').forEach(b=>{const selected=b.dataset.tab===name;b.setAttribute('aria-selected',String(selected));b.tabIndex=selected?0:-1;});document.querySelectorAll('.panel').forEach(p=>{p.hidden=p.id!=='panel-'+name;p.classList.toggle('active',!p.hidden);});if(name==='trace')renderTrace();if(name==='variables')renderVariables();}
 function log(text,kind='output'){consoleQueue.push({text,kind});if(!consoleFrame)consoleFrame=requestAnimationFrame(flushConsole);}
 function flushConsole(){if(consoleFrame)cancelAnimationFrame(consoleFrame);consoleFrame=0;if(!consoleQueue.length)return;$('consoleEmpty')?.remove();const frag=document.createDocumentFragment();for(const item of consoleQueue)frag.append(node(['stdout','stderr'].includes(item.kind)?'span':'div',item.text,'console-entry '+item.kind));consoleQueue=[];$('console').append(frag);$('console').scrollTop=$('console').scrollHeight;}
 function clearConsole(){consoleQueue=[];$('console').replaceChildren();}
 function setStatus(label,cls=''){$('runStatus').textContent=label;$('runStatus').className='status-label '+cls;}
-function setBusy(value){busy=value;if(value)probeController?.abort();for(const id of ['runBtn','innerRun'])$(id).disabled=value;for(const id of ['stopBtn','innerStop'])$(id).disabled=!value;source.readOnly=value;for(const id of ['formatBtn','commentBtn','newBtn','openBtn','examples','runTestsBtn','newFileBtn','renameFileBtn','deleteFileBtn','resetFilesBtn','importFileBtn','addTestBtn','inspectBtn','languageSelect','loadLesson','addSourceTab'])$(id).disabled=value;$('fileText').readOnly=value;document.querySelectorAll('#testCases input,#testCases textarea,#testCases select,#testCases button,#sourceTabs button').forEach(e=>e.disabled=value);}
+function setBusy(value){busy=value;if(value)probeController?.abort();for(const id of ['runBtn','innerRun'])$(id).disabled=value;for(const id of ['stopBtn','innerStop'])$(id).disabled=!value;source.readOnly=value;for(const id of ['formatBtn','commentBtn','newBtn','openBtn','examples','runTestsBtn','newFileBtn','renameFileBtn','deleteFileBtn','resetFilesBtn','importFileBtn','addTestBtn','inspectBtn','checkBtn','innerCheck','tabActionsBtn','languageSelect','loadLesson','addSourceTab'])$(id).disabled=value;$('fileText').readOnly=value;document.querySelectorAll('#testCases input,#testCases textarea,#testCases select,#testCases button,#sourceTabs button').forEach(e=>e.disabled=value);if(value)$('tabActionsMenu').hidden=true;emitUI('busy-change',{busy:value});}
 function hideInput(){document.documentElement.classList.remove('input-active');inputResolve=null;$('inputForm').hidden=true;$('consoleInput').value='';}
 function askInput(info){if(controller?.signal.aborted)return Promise.reject(new P.Error('ExecutionStopped','Execution stopped.',info.loc));tab('console');flushConsole();setStatus('WAITING FOR INPUT','running');$('inputLabel').textContent=language==='python'?'Python input()':info.name+' · '+(typeof info.type==='string'?info.type:P.typeName(info.type));$('inputForm').hidden=false;document.documentElement.classList.add('input-active');syncViewport();$('consoleInput').value='';$('consoleInput').focus();requestAnimationFrame(()=>$('inputForm').scrollIntoView({block:'nearest'}));return new Promise(resolve=>{inputResolve=resolve;});}
-function showError(e){const label=e.category||e.name||'Error',location=e.loc?'Line '+e.loc.line+', Column '+(e.loc.column||1):'';log(label+': '+e.message+(location?'\n'+location:''),'error');if(e.loc&&label!=='ExecutionStopped'){errorLine=e.loc.line;jumpTo(e.loc.line,e.loc.column||1);}setStatus(label==='ExecutionStopped'?'STOPPED':'ERROR',label==='ExecutionStopped'?'':'error');const help={KeywordCaseError:'伪代码关键字、类型名和内置函数须使用大写；Format 可修复大小写，变量名、字符串和注释保持原样。',EmptyBlockError:'此代码块需要至少一条执行语句；空行、注释和声明不算执行内容。',ForStepError:'默认 STEP 为 +1。递减请明确写负步长，其他等差增减请写对应的 STEP；方向必须朝向终点。',CounterMutationError:'FOR 计数器由循环自动更新；需要自定义更新时请改用 WHILE。',UnsupportedFeature:language!=='python'?'请检查当前课程的语法范围，详见 Reference。':/Firefox\//.test(navigator.userAgent)?'Zen / Firefox 尚未启用实时 Python 输入能力。请参考 Reference 中的 Zen 设置，启用后刷新本页；不调用 input() 的程序仍可运行。':'当前浏览器无法暂停 Python 并等待 Console 输入。请使用提供 JSPI 能力的浏览器；不调用 input() 的程序仍可运行。',ValueError:'输入转换失败。input() 返回字符串；可以检查内容或使用 try/except 处理。',IndentationError:language==='python'?'请检查缩进；同一代码块通常使用四个空格。':'伪代码每层使用四个空格，分支和结束语句与对应开头对齐。可点击 Format 修复缩进。',TabError:'同一代码块不要混用 Tab 和空格。',NameError:language==='python'?'此名称尚未定义，或大小写与前面不一致。':'请先声明此名称，并检查拼写与大小写。num、Num 和 NUM 是不同的变量名。',IndexError:'下标超出范围；Python 列表从 0 开始。',EOFError:'测试输入已用完，请补充此测试用例的输入序列。',FileNotFoundError:'请在当前语言的 Files 面板创建或导入这个文件。',ExecutionStopped:language==='python'?'已停止；本轮尚未提交的虚拟文件改动已丢弃。':''};if(help[label])log(help[label],'system');flushConsole();if(e.traceback){const details=node('details',undefined,'traceback');details.append(node('summary','Traceback'),node('pre',e.traceback));$('console').append(details);}}
+function renderProblem(){
+ const card=$('problemCard');if(!card)return;card.hidden=!problem;if(!problem)return;
+ const stale=problem.source!==source.value;$('problemTitle').textContent=problem.category;$('problemMessage').textContent=problem.message;
+ $('problemLocation').textContent=state.name+(problem.loc?' · Line '+problem.loc.line+', Column '+(problem.loc.column||1):'');$('problemLocation').disabled=stale||!problem.loc;
+ $('problemStale').hidden=!stale;
+}
+$('problemLocation').onclick=()=>{if(problem?.loc&&problem.source===source.value)jumpTo(problem.loc.line,problem.loc.column||1);};
+$('dismissProblem').onclick=()=>{problem=null;renderProblem();};
+function showError(e){if((e.category||e.name)!=='ExecutionStopped'){problem={category:e.category||e.name||'Error',message:e.message,loc:e.loc?{...e.loc}:null,source:source.value};renderProblem();}const label=e.category||e.name||'Error',location=e.loc?'Line '+e.loc.line+', Column '+(e.loc.column||1):'';log(label+': '+e.message+(location?'\n'+location:''),'error');if(e.loc&&label!=='ExecutionStopped'){errorLine=e.loc.line;jumpTo(e.loc.line,e.loc.column||1);}setStatus(label==='ExecutionStopped'?'STOPPED':'ERROR',label==='ExecutionStopped'?'':'error');const help={KeywordCaseError:'伪代码关键字、类型名和内置函数须使用大写；Format 可修复大小写，变量名、字符串和注释保持原样。',EmptyBlockError:'此代码块需要至少一条执行语句；空行、注释和声明不算执行内容。',ForStepError:'默认 STEP 为 +1。递减请明确写负步长，其他等差增减请写对应的 STEP；方向必须朝向终点。',CounterMutationError:'FOR 计数器由循环自动更新；需要自定义更新时请改用 WHILE。',UnsupportedFeature:language!=='python'?'请检查当前课程的语法范围，详见 Reference。':/Firefox\//.test(navigator.userAgent)?'Zen / Firefox 尚未启用实时 Python 输入能力。请参考 Reference 中的 Zen 设置，启用后刷新本页；不调用 input() 的程序仍可运行。':'当前浏览器无法暂停 Python 并等待 Console 输入。请使用提供 JSPI 能力的浏览器；不调用 input() 的程序仍可运行。',ValueError:'输入转换失败。input() 返回字符串；可以检查内容或使用 try/except 处理。',IndentationError:language==='python'?'请检查缩进；同一代码块通常使用四个空格。':'伪代码每层使用四个空格，分支和结束语句与对应开头对齐。可点击 Format 修复缩进。',TabError:'同一代码块不要混用 Tab 和空格。',NameError:language==='python'?'此名称尚未定义，或大小写与前面不一致。':'请先声明此名称，并检查拼写与大小写。num、Num 和 NUM 是不同的变量名。',IndexError:'下标超出范围；Python 列表从 0 开始。',EOFError:'测试输入已用完，请补充此测试用例的输入序列。',FileNotFoundError:'请在当前语言的 Files 面板创建或导入这个文件。',ExecutionStopped:language==='python'?'已停止；本轮尚未提交的虚拟文件改动已丢弃。':''};if(help[label])log(help[label],'system');flushConsole();if(e.traceback){const details=node('details',undefined,'traceback');details.append(node('summary','Traceback'),node('pre',e.traceback));$('console').append(details);}}
 function absorb(r,commitFiles=true){if(!r)return;result=r;if(commitFiles&&r.files&&typeof r.files==='object'){state.files=r.files;persist();renderFiles();}renderVariables();renderTrace();$('executionStats').textContent=(r.steps||0).toLocaleString()+(language==='python'?' line events':' execution steps');}
-async function run(config={}){if(busy||document.querySelector('dialog[open]'))return;clearTimeout(historyTimer);checkpoint();clearConsole();errorLine=0;resultSource=source.value;result={trace:[],variables:[],output:[],stdout:''};symbols=[];renderTrace();renderVariables();updateStale();tab('console');controller=new AbortController();const signal=controller.signal;setBusy(true);setStatus(language==='python'?'PREPARING':'RUNNING','running');$('executionStats').textContent='';const started=performance.now(),runId='ui-'+(++runSerial);try{if(language!=='python')symbols=adapters[language].check(source.value).symbols;const r=await adapters[language].run({runId,source:source.value,filename:state.name,files:state.files,signal,input:askInput,inputMode:config.inputMode||'interactive',inputs:Array.isArray(config.inputs)?config.inputs:[],limits:{maxSteps:1000000,maxTrace:5000,maxOutputBytes:1048576,maxOutputLines:10000,maxTimeMs:30000}},event=>{if(signal.aborted)return;if(event.type==='pseudoOutput')log(event.text);else if(event.type==='stdout'||event.type==='stderr')log(event.text,event.type);else if(event.type==='traceBatch'){result.trace.push(...(event.entries||[]));traceDirty=true;}else if(event.type==='variables'){result.variables=event.variables||[];}else if(event.type==='ready'){pythonCapabilities=event.capabilities||pythonCapabilities;probeError='';renderCapabilities();setStatus('RUNNING','running');}else if(event.type==='running')setStatus('RUNNING','running');});absorb(r);for(const warning of r.warnings||[])log(warning,'warning');log('Program finished successfully.','system success');setStatus('FINISHED');$('executionStats').textContent=(r.steps||0).toLocaleString()+' '+(language==='python'?'line events':'steps')+' · '+((performance.now()-started)/1000).toFixed(2)+' s';}catch(e){hideInput();setBusy(false);absorb(e.result,e.category!=='ExecutionStopped'||language!=='python');tab('console');showError(e);}finally{hideInput();setBusy(false);controller=null;flushConsole();paintPosition();updateStale();}}
+async function run(config={}){if(busy||document.querySelector('dialog[open]'))return;clearTimeout(historyTimer);checkpoint();clearConsole();problem=null;renderProblem();errorLine=0;resultSource=source.value;result={trace:[],variables:[],output:[],stdout:''};symbols=[];renderTrace();renderVariables();updateStale();tab('console');controller=new AbortController();const signal=controller.signal;setBusy(true);setStatus(language==='python'?'PREPARING':'RUNNING','running');$('executionStats').textContent='';const started=performance.now(),runId='ui-'+(++runSerial);try{if(language!=='python')symbols=adapters[language].check(source.value).symbols;const r=await adapters[language].run({runId,source:source.value,filename:state.name,files:state.files,signal,input:askInput,inputMode:config.inputMode||'interactive',inputs:Array.isArray(config.inputs)?config.inputs:[],limits:{maxSteps:1000000,maxTrace:5000,maxOutputBytes:1048576,maxOutputLines:10000,maxTimeMs:30000}},event=>{if(signal.aborted)return;if(event.type==='pseudoOutput')log(event.text);else if(event.type==='stdout'||event.type==='stderr')log(event.text,event.type);else if(event.type==='traceBatch'){result.trace.push(...(event.entries||[]));traceDirty=true;}else if(event.type==='variables'){result.variables=event.variables||[];}else if(event.type==='ready'){pythonCapabilities=event.capabilities||pythonCapabilities;probeError='';renderCapabilities();setStatus('RUNNING','running');}else if(event.type==='running')setStatus('RUNNING','running');});absorb(r);for(const warning of r.warnings||[])log(warning,'warning');log('Program finished successfully.','system success');setStatus('FINISHED');$('executionStats').textContent=(r.steps||0).toLocaleString()+' '+(language==='python'?'line events':'steps')+' · '+((performance.now()-started)/1000).toFixed(2)+' s';}catch(e){hideInput();setBusy(false);absorb(e.result,e.category!=='ExecutionStopped'||language!=='python');tab('console');showError(e);}finally{hideInput();setBusy(false);controller=null;flushConsole();paintPosition();updateStale();}}
 function stop(){if(controller){controller.abort();hideInput();setStatus('STOPPING');}}
 function renderTrace(){const headers=language==='python'?['Step','Line','Event · before line','Scope','Snapshot']:['Step','Line','Action','Variable','New value'];const head=node('tr');headers.forEach(h=>head.append(node('th',h)));$('traceHead').replaceChildren(head);const rows=$('traceRows'),frag=document.createDocumentFragment();for(const entry of result?.trace||[]){const tr=node('tr');const go=()=>{if(resultSource!==source.value){notice('这是上次运行的追踪，请重新运行当前代码后定位。');return;}jumpTo(entry.line);};tr.addEventListener('click',go);tr.append(node('td',String(entry.step)));const td=node('td'),b=node('button',String(entry.line),'line-link');b.onclick=e=>{e.stopPropagation();go();};td.append(b);const snapshot=entry.variable?entry.variable+' = '+(entry.value??''):entry.value??(entry.variables?entry.variables.map(v=>v.name+' = '+v.value).join('; '):'');tr.append(td,node('td',entry.action||entry.event||''),node('td',language==='python'?entry.scope||'global':entry.variable||'—'),node('td',snapshot));frag.append(tr);}rows.replaceChildren(frag);$('traceEmpty').hidden=Boolean(result?.trace?.length);$('traceEmpty').textContent=language==='python'?'Python 行事件显示执行该行前的状态；调用、返回与异常单独记录。':'Run a program to follow its changes, one statement at a time.';$('traceCount').textContent=(result?.trace?.length||0).toLocaleString()+' recorded '+(language==='python'?'events':'changes');traceDirty=false;}
 function renderVariables(){const identifiers=language!=='python'&&$('identifierMode').checked;const head=node('tr');(identifiers?['Identifier','Kind','Data type','Scope','Description']:['Identifier','Type / scope','Value']).forEach(s=>head.append(node('th',s)));$('variableHead').replaceChildren(head);const data=identifiers?symbols:result?.variables||[],frag=document.createDocumentFragment();for(const item of data){const tr=node('tr');if(identifiers){[item.name,item.kind,typeof item.type==='string'?item.type:P.typeName(item.type),item.scope,''].forEach(v=>tr.append(node('td',v)));}else{tr.append(node('td',item.name));const typeCell=node('td');typeCell.append(node('div',item.type),node('div',item.kind+' · '+item.scope,'muted'));tr.append(typeCell);const val=node('td');if(item.children?.length){const details=node('details',undefined,'value-details');details.append(node('summary',item.value));const table=node('table');for(const child of item.children){const row=node('tr');row.append(node('td',child.name),node('td',child.value));table.append(row);}details.append(table);val.append(details);}else val.textContent=item.value;tr.append(val);}frag.append(tr);}$('variableRows').replaceChildren(frag);$('variablesEmpty').hidden=data.length>0;}
@@ -5586,19 +5633,36 @@ async function runTests(){if(busy||document.querySelector('dialog[open]'))return
 // Source editing: preserve native selection and IME; custom history makes indentation undoable.
 source.addEventListener('compositionstart',()=>composing=true);source.addEventListener('compositionend',()=>{composing=false;markEdited();});source.addEventListener('input',()=>{if(!composing)markEdited();});source.addEventListener('scroll',syncScroll);source.addEventListener('click',paintPosition);source.addEventListener('keyup',paintPosition);source.addEventListener('select',paintPosition);
 source.addEventListener('keydown',e=>{if(composing||e.isComposing||busy)return;if((e.ctrlKey||e.metaKey)&&!e.altKey&&(e.key==='/'||e.code==='Slash')){e.preventDefault();toggleComments();return;}if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='z'){e.preventDefault();clearTimeout(historyTimer);checkpoint();const next=historyAt+(e.shiftKey?1:-1);if(next>=0&&next<history.length){historyAt=next;const h=history[next];source.value=h.value;source.setSelectionRange(h.start,h.end,h.direction||'none');dirty=true;$('dirtyDot').hidden=false;updateSourceTabState();queueSave();paintEditor();}return;}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'){e.preventDefault();clearTimeout(historyTimer);checkpoint();if(historyAt+1<history.length){const h=history[++historyAt];source.value=h.value;source.setSelectionRange(h.start,h.end,h.direction||'none');dirty=true;$('dirtyDot').hidden=false;updateSourceTabState();queueSave();paintEditor();}return;}if(e.key==='Backspace'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!e.shiftKey){const edit=indentationBackspace(source.value,source.selectionStart,source.selectionEnd,source.selectionDirection);if(edit.text!==source.value){e.preventDefault();applyEditorCommand(indentationBackspace);}return;}if(e.key==='Tab'){e.preventDefault();clearTimeout(historyTimer);checkpoint();const start=source.selectionStart,end=source.selectionEnd,text=source.value,lineStart=text.lastIndexOf('\n',start-1)+1;if(start===end&&!e.shiftKey){const spaces=4-((start-lineStart)%4);source.setRangeText(' '.repeat(spaces),start,end,'end');}else{const selectedEnd=end>start&&text[end-1]==='\n'?end-1:end;let lineEnd=text.indexOf('\n',selectedEnd);if(lineEnd<0)lineEnd=text.length;const block=text.slice(lineStart,lineEnd),lines=block.split('\n');let removed=0;const changed=lines.map((l,i)=>{if(e.shiftKey){const n=l.startsWith('\t')?1:Math.min(4,l.match(/^ */)[0].length);if(i===0)removed=n;return l.slice(n);}return '    '+l;}).join('\n');source.setRangeText(changed,lineStart,lineEnd,'select');const delta=changed.length-block.length;source.setSelectionRange(Math.max(lineStart,start+(e.shiftKey?-removed:4)),Math.max(lineStart,end+delta));}checkpoint();markEdited();paintEditor();}else if(e.key==='Enter'&&!e.metaKey&&!e.ctrlKey){e.preventDefault();applyEditorCommand(adapters[language].commands.newline);}});
-document.addEventListener('keydown',e=>{if(e.isComposing)return;if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();run();}else if(e.key==='Escape'&&fullscreenElement()&&!document.querySelector('dialog[open]')){e.preventDefault();toggleFullscreen();}else if(e.key==='Escape'||(e.ctrlKey||e.metaKey)&&e.key==='.'){if(busy){e.preventDefault();stop();}}else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveInBrowser();}});
+document.addEventListener('keydown',e=>{if(e.defaultPrevented||e.isComposing)return;if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();run();}else if(e.key==='Escape'&&fullscreenElement()&&!document.querySelector('dialog[open]')){e.preventDefault();toggleFullscreen();}else if(e.key==='Escape'||(e.ctrlKey||e.metaKey)&&e.key==='.'){if(busy){e.preventDefault();stop();}}else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveInBrowser();}});
 $('fullscreenBtn').onclick=toggleFullscreen;document.addEventListener('fullscreenchange',syncFullscreen);document.addEventListener('webkitfullscreenchange',syncFullscreen);$('commentBtn').onclick=toggleComments;
 $('runBtn').onclick=run;$('stopBtn').onclick=stop;$('saveBtn').onclick=saveSource;$('clearBtn').onclick=clearConsole;
 $('inputForm').onsubmit=e=>{e.preventDefault();if(!inputResolve)return;const resolve=inputResolve,raw=$('consoleInput').value;hideInput();log('> '+raw,'input');setStatus('RUNNING','running');resolve(raw);};
 $('formatBtn').onclick=async()=>{if(busy)return;controller=new AbortController();setBusy(true);setStatus('FORMATTING','running');try{const original=source.value,formatted=await adapters[language].format(original,{signal:controller.signal});checkpoint();const at=source.selectionStart;source.value=formatted;source.setSelectionRange(Math.min(at,formatted.length),Math.min(at,formatted.length));checkpoint();markEdited();paintEditor();notice('Formatted safely with four-space indentation.');setStatus('READY');}catch(e){showError(e);}finally{controller=null;setBusy(false);}};
-$('newBtn').onclick=async()=>{if(source.value.trim()&&!await confirmAction('New program?','Replace the current '+languageNames[language]+' source? Other workspaces and virtual files remain.','New program'))return;applySource('',defaultFilename(language));source.focus();};
+$('newBtn').onclick=()=>addSourceTab();
 $('openBtn').onclick=()=>{$('sourceUpload').value='';$('sourceUpload').click();};
-$('sourceUpload').onchange=async()=>{const f=$('sourceUpload').files[0],originId=state.id;if(!f||busy)return;if(f.size>1000000){notice('Choose a source file smaller than 1 MB.');return;}let target=/\.py$/i.test(f.name)?'python':/\.igcse\.(pseudo|txt)$/i.test(f.name)?'igcse':/\.as\.(pseudo|txt)$/i.test(f.name)?'pseudo':language;if(/\.pseudo$/i.test(f.name)&&!(/\.(igcse|as)\.pseudo$/i.test(f.name))&&language==='python'){target=await choosePseudocodeDialect(f.name);if(!target)return;}const targetId=activeDocument(target).id;if((target===language?source.value:activeDocument(target).source).trim()&&!await confirmAction('Open '+f.name+'?','Replace the saved '+languageNames[target]+' source? Other workspaces stay unchanged.','Open'))return;if(busy)return;const originSource=source.value,originName=state.name,targetSource=target===language?source.value:activeDocument(target).source,targetName=activeDocument(target).name;try{const value=(await f.text()).replace(/^\uFEFF/,'').replace(/\r\n?/g,'\n');if(busy)return;if(document.querySelector('dialog[open]')||state.id!==originId||activeDocument(target).id!==targetId||source.value!==originSource||state.name!==originName||(target===language?source.value:activeDocument(target).source)!==targetSource||activeDocument(target).name!==targetName){notice('Open cancelled because the workspace changed while reading the file.');return;}if(target!==language)switchLanguage(target);if(language!==target||state.id!==targetId)return;applySource(value,f.name);}catch(e){notice('Could not read this source file: '+e.message);}};
+let openBatch=0;
+$('sourceUpload').onchange=async()=>{
+ if(busy||document.querySelector('dialog[open]'))return;
+ const files=[...$('sourceUpload').files],originLanguage=language,batch=++openBatch,pending=[];
+ for(const file of files){
+  if(busy||batch!==openBatch)return;
+  if(document.querySelector('dialog[open]')){notice('Open cancelled while another dialog is open.');return;}
+  if(file.size>1000000){notice(file.name+' exceeds the 1 MB source limit.');continue;}
+  let target=/\.py$/i.test(file.name)?'python':/\.igcse\.(pseudo|txt)$/i.test(file.name)?'igcse':/\.as\.(pseudo|txt)$/i.test(file.name)?'pseudo':originLanguage;
+  if(/\.pseudo$/i.test(file.name)&&!/\.(igcse|as)\.pseudo$/i.test(file.name)&&originLanguage==='python'){target=await choosePseudocodeDialect(file.name);if(!target)continue;}
+  try{const value=(await file.text()).replace(/^\uFEFF/,'').replace(/\r\n?/g,'\n');if(busy||batch!==openBatch)return;if(document.querySelector('dialog[open]')){notice('Open cancelled while another dialog is open.');return;}pending.push({language:target,document:{...freshDocument(target),name:file.name,source:value}});}catch(e){notice('Could not read '+file.name+': '+e.message);}
+ }
+ if(!pending.length||busy||batch!==openBatch)return;
+ captureDocumentSession();
+ for(const entry of pending){const group=app.workspaces[entry.language];entry.document.name=uniqueDocumentName(entry.document.name,entry.language);group.documents.push(entry.document);group.activeId=entry.document.id;}
+ language=pending.at(-1).language;restoreDocument();focusSourceTab();source.focus({preventScroll:true});
+};
 let currentGroup='';function populateExamples(){$('examples').replaceChildren(node('option','Examples…'));$('examples').firstElementChild.value='';let groupName='',group;for(const lesson of LabLessons){if(!lesson.variants[language])continue;if(groupName!==lesson.group){groupName=lesson.group;group=node('optgroup');group.label=groupName;$('examples').append(group);}const option=node('option',lesson.variants[language].title||lesson.title);option.value=lesson.id;group.append(option);}if(language==='pseudo'){const legacy=node('optgroup');legacy.label='AS original examples';for(const [i,e]of P.examples.entries()){const o=node('option',e.name);o.value='legacy:'+i;legacy.append(o);}$('examples').append(legacy);}}
 $('examples').onchange=()=>{const id=$('examples').value;$('examples').value='';if(!id||busy)return;if(id.startsWith('legacy:')){const e=P.examples[Number(id.split(':')[1])];currentLesson={id,title:e.name,group:'AS original examples',objective:'保留原 AS 示例；与旧版使用相同语法和规则。',prerequisites:[],pitfalls:[],differences:[],provenance:'Original AS 9618 example library',variants:{pseudo:{source:e.source,files:e.files||{},inputs:e.inputs||[],expected:''}}};}else currentLesson=LabLessons.find(x=>x.id===id);showLesson();};
 $('themeBtn').onclick=()=>{state.theme=state.theme==='dark'?'light':'dark';setTheme();persist();};$('fontSize').onchange=()=>{state.fontSize=Number($('fontSize').value);setFont();persist();};
 document.querySelectorAll('[data-tab]').forEach((button,index,buttons)=>{button.onclick=()=>tab(button.dataset.tab);button.onkeydown=e=>{let next;if(e.key==='ArrowRight')next=(index+1)%buttons.length;if(e.key==='ArrowLeft')next=(index+buttons.length-1)%buttons.length;if(e.key==='Home')next=0;if(e.key==='End')next=buttons.length-1;if(next!==undefined){e.preventDefault();tab(buttons[next].dataset.tab);buttons[next].focus();}};});
-$('identifierMode').onchange=renderVariables;$('inspectBtn').onclick=async()=>{if(busy)return;controller=new AbortController();setBusy(true);try{const checked=await adapters[language].check(source.value,{signal:controller.signal});if(language!=='python'){symbols=checked.symbols;$('identifierMode').checked=true;renderVariables();notice('Syntax and types checked. Runtime errors may still occur.');}else notice('Python 语法检查通过。变量与类型将在运行时确定。');}catch(e){tab('console');showError(e);}finally{controller=null;setBusy(false);}};
+$('identifierMode').onchange=renderVariables;const checkSource=async()=>{if(busy||document.querySelector('dialog[open]'))return;controller=new AbortController();setBusy(true);setStatus('CHECKING','running');try{const checked=await adapters[language].check(source.value,{signal:controller.signal});problem=null;errorLine=0;renderProblem();setStatus('READY');paintPosition();if(language!=='python'){symbols=checked.symbols;$('identifierMode').checked=true;renderVariables();notice('Syntax and types checked. Runtime errors may still occur.');}else notice('Python 语法检查通过。变量与类型将在运行时确定。');}catch(e){tab('console');showError(e);}finally{controller=null;setBusy(false);}};
+$('inspectBtn').onclick=checkSource;$('checkBtn').onclick=checkSource;$('innerCheck').onclick=checkSource;
 $('newFileBtn').onclick=()=>{const name=validFilename($('newFileName').value);if(!name)return;if(Object.hasOwn(state.files,name)){notice('A virtual file with that name already exists.');return;}Object.defineProperty(state.files,name,{value:'',writable:true,enumerable:true,configurable:true});selectedFile=name;$('newFileName').value='';persist();renderFiles();$('fileText').focus();};
 $('fileList').onchange=()=>{selectedFile=$('fileList').value;renderFiles();};$('fileText').oninput=()=>{if(selectedFile&&!busy){state.files[selectedFile]=$('fileText').value;queueSave();}};
 $('renameFileBtn').onclick=()=>{const name=validFilename($('fileName').value);if(!name||!selectedFile||name===selectedFile)return;if(Object.hasOwn(state.files,name)){notice('A virtual file with that name already exists.');return;}Object.defineProperty(state.files,name,{value:state.files[selectedFile],writable:true,enumerable:true,configurable:true});delete state.files[selectedFile];selectedFile=name;persist();renderFiles();};
@@ -5618,21 +5682,21 @@ $('closeLesson').onclick=()=>$('lessonDialog').close();$('loadLesson').onclick=l
 window.visualViewport?.addEventListener('resize',syncViewport);window.addEventListener('resize',syncViewport);
 function syncViewport(){const height=window.visualViewport?.height||window.innerHeight;document.documentElement.style.setProperty('--usable-vh',height+'px');document.documentElement.classList.toggle('keyboard-compact',height<600);}
 function invalidateTest(test,index){delete test.pass;test.result='Changed · Run tests again';$('testSummary').textContent='Tests changed · Run tests again';const n=$('test-result-'+index);if(n){n.textContent=test.result;n.className='test-result';}}
-function updateStale(){if(typeof state!=='undefined')for(const [i,t]of state.tests.entries())if(t.source!==undefined&&(t.source!==source.value||t.fileSnapshot!==JSON.stringify(state.files)))invalidateTest(t,i);const n=$('staleNotice');if(n)n.hidden=resultSource===null||resultSource===source.value;}
+function updateStale(){renderProblem();if(typeof state!=='undefined')for(const [i,t]of state.tests.entries())if(t.source!==undefined&&(t.source!==source.value||t.fileSnapshot!==JSON.stringify(state.files)))invalidateTest(t,i);const n=$('staleNotice');if(n)n.hidden=resultSource===null||resultSource===source.value;}
 function showReference(lang){$('pythonReference').hidden=lang!=='python';$('igcseReference').hidden=lang!=='igcse';$('asReference').hidden=lang!=='pseudo';$('referenceTitle').textContent=languageNames[lang]+' reference';for(const [id,key]of [['referencePython','python'],['referenceIGCSE','igcse'],['referenceAS','pseudo']])$(id).setAttribute('aria-pressed',String(lang===key));}
 function renderCapabilities(){if(probeError)notice('Python 初始化未完成：'+probeError+'。可继续编辑、保存或使用 Pseudocode；Run 会重试。',true);}
 
-function updateLanguageUI(){$('commentBtn').textContent=(language==='python'?'#':'//')+' Comment';$('openBtn').title='Open .py, .igcse.txt, .as.txt, .pseudo or .txt source';$('saveBtn').title='Download source as a local '+(language==='python'?'.py':'.txt')+' file';$('formatBtn').title=language==='python'?'Safe Python formatting · AST and comments preserved':'Format using Cambridge indentation';$('languageSelect').value=language;$('sourceName').textContent=state.name;renderSourceTabs();$('source').setAttribute('aria-label',languageNames[language]+' source code');$('identifierLabel').hidden=language==='python';$('pythonVariablesLabel').hidden=language!=='python';$('inspectBtn').textContent=language==='python'?'Check syntax':'Check source';$('filesHelp').textContent=language==='python'?'open() 使用当前标签页的虚拟文本文件。正常结束或异常后同步；强制 Stop 丢弃本轮未提交修改。':'OPENFILE 使用此 '+(language==='igcse'?'IGCSE':'AS')+' 标签页的文件。各标签页分别保存。';$('testOutputHelp').textContent=language==='python'?'预期输出包含 print 的末尾换行和 input 提示。空格不自动忽略；输入回显和状态不参与比较。':'每次测试使用独立文件副本；输出按行连接比较。';$('variablesEmpty').textContent=language==='python'?'Run a program to inspect Python runtime values.':'Variables appear after a run. Check source to view declared identifiers.';populateExamples();renderCapabilities();}
+function updateLanguageUI(){$('commentBtn').textContent=(language==='python'?'#':'//')+' Comment';$('openBtn').title='Open .py, .igcse.txt, .as.txt, .pseudo or .txt source';$('saveBtn').title='Download source as a local '+(language==='python'?'.py':'.txt')+' file';$('formatBtn').title=language==='python'?'Safe Python formatting · AST and comments preserved':'Format using Cambridge indentation';$('languageSelect').value=language;$('sourceName').textContent=state.name;renderSourceTabs();$('source').setAttribute('aria-label',languageNames[language]+' source code');$('identifierLabel').hidden=language==='python';$('pythonVariablesLabel').hidden=language!=='python';$('inspectBtn').textContent=language==='python'?'Check syntax':'Check source';$('checkBtn').title=language==='python'?'Check Python syntax':'Check pseudocode syntax, types and teaching rules';$('filesHelp').textContent=language==='python'?'open() 使用当前标签页的虚拟文本文件。正常结束或异常后同步；强制 Stop 丢弃本轮未提交修改。':'OPENFILE 使用此 '+(language==='igcse'?'IGCSE':'AS')+' 标签页的文件。各标签页分别保存。';$('testOutputHelp').textContent=language==='python'?'预期输出包含 print 的末尾换行和 input 提示。空格不自动忽略；输入回显和状态不参与比较。':'每次测试使用独立文件副本；输出按行连接比较。';$('variablesEmpty').textContent=language==='python'?'Run a program to inspect Python runtime values.':'Variables appear after a run. Check source to view declared identifiers.';populateExamples();renderCapabilities();}
 function captureDocumentSession(){
  clearTimeout(historyTimer);clearTimeout(saveTimer);clearTimeout(paintTimer);checkpoint();flushConsole();persist();
- sessions.set(state.id,{history,historyAt,result,symbols,selectedFile,errorLine,dirty,resultSource,activeTab,status:$('runStatus').textContent,statusClass:$('runStatus').className,stats:$('executionStats').textContent,console:[...$('console').childNodes].map(n=>n.cloneNode(true))});
+ sessions.set(state.id,{problem,history,historyAt,result,symbols,selectedFile,errorLine,dirty,resultSource,activeTab,status:$('runStatus').textContent,statusClass:$('runStatus').className,stats:$('executionStats').textContent,console:[...$('console').childNodes].map(n=>n.cloneNode(true))});
 }
 function restoreDocument(){
  state=Object.assign(activeDocument(language),app.settings);const previous=sessions.get(state.id);
  source.value=state.source;source.setSelectionRange(Math.min(state.selectionStart,source.value.length),Math.min(state.selectionEnd,source.value.length),state.selectionDirection);source.scrollTop=state.scrollTop;source.scrollLeft=state.scrollLeft;
- history=previous?.history||[];historyAt=previous?.historyAt??-1;result=previous?.result||null;symbols=previous?.symbols||[];selectedFile=previous?.selectedFile||'';errorLine=previous?.errorLine||0;dirty=previous?.dirty||false;resultSource=previous?.resultSource??null;traceDirty=false;
+ history=previous?.history||[];historyAt=previous?.historyAt??-1;result=previous?.result||null;symbols=previous?.symbols||[];selectedFile=previous?.selectedFile||'';errorLine=previous?.errorLine||0;dirty=previous?.dirty||false;resultSource=previous?.resultSource??null;problem=previous?.problem||null;traceDirty=false;
  $('console').replaceChildren(...(previous?.console||emptyConsoleContent).map(n=>n.cloneNode(true)));setStatus(previous?.status||'READY');if(previous)$('runStatus').className=previous.statusClass;$('executionStats').textContent=previous?.stats||'';$('dirtyDot').hidden=!dirty;
- hideInput();updateLanguageUI();setTheme();setFont();renderFiles();renderTests();renderVariables();renderTrace();tab(previous?.activeTab||'console');checkpoint();updateStale();persist();
+ hideInput();updateLanguageUI();setTheme();setFont();renderFiles();renderTests();renderVariables();renderTrace();tab(previous?.activeTab||'console');checkpoint();updateStale();persist();emitUI('document-change',{id:state.id,language});
 }
 function switchLanguage(next){
  if(busy||document.querySelector('dialog[open]')||next===language||!adapters[next]){$('languageSelect').value=language;return;}
@@ -5649,20 +5713,59 @@ function updateSourceTabState(){
 function renderSourceTabs(){
  const list=$('sourceTabs'),scroll=list.scrollLeft,fragment=document.createDocumentFragment();
  for(const doc of app.workspaces[language].documents){
-  const button=node('button',undefined,'source-tab'),active=doc.id===state.id;button.type='button';button.dataset.documentId=doc.id;button.setAttribute('role','tab');button.setAttribute('aria-selected',String(active));button.setAttribute('aria-controls','editorBody');button.tabIndex=active?0:-1;button.disabled=busy;button.title=doc.name+' · '+(active?'Click to rename':'Click to switch · Double-click to rename');const dot=node('span','●','tab-dirty');dot.setAttribute('aria-hidden','true');button.append(node('span',doc.name,'tab-name'),dot);
+  const button=node('button',undefined,'source-tab'),active=doc.id===state.id;button.draggable=!busy;button.type='button';button.dataset.documentId=doc.id;button.setAttribute('role','tab');button.setAttribute('aria-selected',String(active));button.setAttribute('aria-controls','editorBody');button.tabIndex=active?0:-1;button.disabled=busy;button.title=doc.name+' · '+(active?'Click to rename':'Click to switch · Double-click to rename');const dot=node('span','●','tab-dirty');dot.setAttribute('aria-hidden','true');button.append(node('span',doc.name,'tab-name'),dot);const close=node('span','×','tab-close');close.title='Close '+doc.name;close.setAttribute('aria-label','Close '+doc.name);close.onclick=e=>{e.stopPropagation();closeDocument(doc.id);};button.append(close);
+  button.onauxclick=e=>{if(e.button===1){e.preventDefault();closeDocument(doc.id);}};
+  button.ondragstart=e=>{if(busy){e.preventDefault();return;}dragDocumentId=doc.id;e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',doc.id);};
+  button.ondragover=e=>{if(!busy&&dragDocumentId){e.preventDefault();e.dataTransfer.dropEffect='move';button.classList.add('drag-over');}};button.ondragleave=()=>button.classList.remove('drag-over');
+  button.ondrop=e=>{e.preventDefault();button.classList.remove('drag-over');if(dragDocumentId&&!busy){const docs=app.workspaces[language].documents;moveDocument(dragDocumentId,docs.findIndex(item=>item.id===doc.id));}dragDocumentId=null;};button.ondragend=()=>{dragDocumentId=null;document.querySelectorAll('.drag-over').forEach(n=>n.classList.remove('drag-over'));};
   button.onclick=e=>{if(busy)return;if(doc.id!==state.id){switchDocument(doc.id);focusSourceTab();}else openSourceTabRename();};
   button.ondblclick=()=>{if(busy)return;if(doc.id!==state.id)switchDocument(doc.id);openSourceTabRename();};
   button.onkeydown=e=>{const docs=app.workspaces[language].documents,index=docs.findIndex(item=>item.id===state.id);let next;if(e.key==='ArrowRight')next=(index+1)%docs.length;else if(e.key==='ArrowLeft')next=(index+docs.length-1)%docs.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=docs.length-1;else if(e.key==='F2'){e.preventDefault();openSourceTabRename();return;}if(next!==undefined){e.preventDefault();switchDocument(docs[next].id);focusSourceTab();}};
   fragment.append(button);
  }
- list.replaceChildren(fragment);list.scrollLeft=scroll;updateSourceTabState();
+ list.replaceChildren(fragment);list.scrollLeft=scroll;updateSourceTabState();updateTabActions();
 }
 function focusSourceTab(){const button=[...$('sourceTabs').children].find(item=>item.dataset.documentId===state.id);button?.focus({preventScroll:true});button?.scrollIntoView({block:'nearest',inline:'nearest'});}
-function addSourceTab(){
- if(busy||document.querySelector('dialog[open]'))return;const group=app.workspaces[language],suffix=language==='python'?'.py':language==='igcse'?'.igcse.txt':'.as.txt';let n=1,name;
- do{name='program'+(n===1?'':'-'+n)+suffix;n++;}while(group.documents.some(doc=>doc.name.toLowerCase()===name.toLowerCase()));
- const doc={...freshDocument(language),source:'',name};group.documents.push(doc);switchDocument(doc.id);focusSourceTab();source.focus({preventScroll:true});
+function uniqueDocumentName(name,lang=language){
+ name=String(name).trim().replace(/[\u0000-\u001f\u007f/\\]/g,'_');if(!name||/^[.]+$/.test(name))name=defaultFilename(lang);
+ const names=new Set(app.workspaces[lang].documents.map(doc=>doc.name.toLowerCase())),match=name.match(/^(.*?)(\.(?:igcse|as)\.(?:txt|pseudo)|\.[A-Za-z0-9]{1,16})$/i),stem=match?match[1]:name,suffix=match?match[2]:'';
+ const shorten=(value,length)=>value.slice(0,length).replace(/[\uD800-\uDBFF]$/,'');
+ let candidate=shorten(stem,180-suffix.length)+suffix,number=2;
+ while(names.has(candidate.toLowerCase())){const tail='-'+(number++);candidate=shorten(stem,180-suffix.length-tail.length)+tail+suffix;}return candidate;
 }
+function addSourceTab(){
+ if(busy||document.querySelector('dialog[open]'))return;
+ const doc={...freshDocument(language),source:'',name:uniqueDocumentName(defaultFilename(language))};app.workspaces[language].documents.push(doc);switchDocument(doc.id);focusSourceTab();source.focus({preventScroll:true});
+}
+function closeDocument(id=state.id){
+ if(busy||document.querySelector('dialog[open]'))return;
+ const group=app.workspaces[language],index=group.documents.findIndex(doc=>doc.id===id);if(index<0)return;
+ captureDocumentSession();const [closedDoc]=group.documents.splice(index,1);(group.closedDocuments||=[]).push({document:closedDoc,index});
+ if(group.closedDocuments.length>20){const expired=group.closedDocuments.shift();sessions.delete(expired.document.id);}
+ if(!group.documents.length)group.documents.push({...freshDocument(language),source:''});
+ if(group.activeId===id)group.activeId=group.documents[Math.min(index,group.documents.length-1)].id;
+ restoreDocument();focusSourceTab();
+}
+function reopenDocument(){
+ if(busy||document.querySelector('dialog[open]'))return;const group=app.workspaces[language];if(!group.closedDocuments?.length)return;
+ captureDocumentSession();const entry=group.closedDocuments.pop();entry.document.name=uniqueDocumentName(entry.document.name);group.documents.splice(Math.min(entry.index,group.documents.length),0,entry.document);group.activeId=entry.document.id;restoreDocument();focusSourceTab();
+}
+function duplicateDocument(id=state.id){
+ if(busy||document.querySelector('dialog[open]'))return;captureDocumentSession();const group=app.workspaces[language],index=group.documents.findIndex(doc=>doc.id===id);if(index<0)return;
+ const doc={...JSON.parse(JSON.stringify(serialiseDocument(group.documents[index]))),id:newDocumentId()};doc.name=uniqueDocumentName(doc.name);group.documents.splice(index+1,0,doc);group.activeId=doc.id;restoreDocument();focusSourceTab();
+}
+function moveDocument(id,toIndex){
+ if(busy||document.querySelector('dialog[open]'))return;const group=app.workspaces[language],from=group.documents.findIndex(doc=>doc.id===id);if(from<0||!Number.isInteger(toIndex))return;
+ const to=Math.min(Math.max(toIndex,0),group.documents.length-1);if(from===to)return;const [doc]=group.documents.splice(from,1);group.documents.splice(to,0,doc);renderSourceTabs();persist();focusSourceTab();
+}
+function updateTabActions(){
+ const group=app.workspaces[language],index=group.documents.findIndex(doc=>doc.id===state.id);
+ $('reopenTabBtn').disabled=busy||!group.closedDocuments?.length;$('moveTabLeftBtn').disabled=busy||index===0;$('moveTabRightBtn').disabled=busy||index===group.documents.length-1;
+}
+$('tabActionsBtn').onclick=()=>{if(busy)return;updateTabActions();$('tabActionsMenu').hidden=!$('tabActionsMenu').hidden;$('tabActionsBtn').setAttribute('aria-expanded',String(!$('tabActionsMenu').hidden));};
+for(const [id,action]of [['closeTabBtn',()=>closeDocument()],['duplicateTabBtn',()=>duplicateDocument()],['reopenTabBtn',reopenDocument],['moveTabLeftBtn',()=>moveDocument(state.id,app.workspaces[language].documents.findIndex(doc=>doc.id===state.id)-1)],['moveTabRightBtn',()=>moveDocument(state.id,app.workspaces[language].documents.findIndex(doc=>doc.id===state.id)+1)]])$(id).onclick=()=>{$('tabActionsMenu').hidden=true;$('tabActionsBtn').setAttribute('aria-expanded','false');action();};
+document.addEventListener('click',e=>{if(!e.target.closest('.tab-actions')){$('tabActionsMenu').hidden=true;$('tabActionsBtn').setAttribute('aria-expanded','false');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('tabActionsMenu').hidden){e.preventDefault();$('tabActionsMenu').hidden=true;$('tabActionsBtn').setAttribute('aria-expanded','false');$('tabActionsBtn').focus();}},true);
 let renameDocumentId=null;
 function openSourceTabRename(){
  if(busy||document.querySelector('dialog[open]'))return;renameDocumentId=state.id;$('sourceTabName').value=state.name;$('sourceTabNameError').textContent='';$('renameSourceDialog').showModal();$('sourceTabName').focus();$('sourceTabName').select();
@@ -5715,10 +5818,491 @@ function choosePseudocodeDialect(filename){
 
 function probePython(){probeController=new AbortController();probePromise=LabPython.probe({signal:probeController.signal}).then(c=>{pythonCapabilities=c;probeError='';renderCapabilities();}).catch(e=>{if(e.category!=='ExecutionStopped'){probeError=e.message;renderCapabilities();}}).finally(()=>{probeController=null;});}
 probePython();
-Lab.editor={run,stop,check:()=>adapters[language].check(source.value),getLanguage:()=>language,getSource:()=>source.value,setSource:text=>{if(busy)throw new Error('Stop execution before editing.');if(typeof text!=='string'||text.length>1000000)throw new Error('Source must be text no longer than 1 MB.');applySource(text);},getResult:()=>result,switchLanguage};
+function exportWorkspace(){
+ persist();const snapshot={version:3,activeLanguage:language,settings:{...app.settings},workspaces:{}};
+ for(const lang of LANGUAGES){const group=app.workspaces[lang];snapshot.workspaces[lang]={activeId:group.activeId,documents:group.documents.map(serialiseDocument)};}return JSON.parse(JSON.stringify(snapshot));
+}
+function importWorkspace(snapshot){
+ if(busy)throw new Error('Stop execution before importing a workspace.');
+ if(!snapshot||snapshot.version!==3||!snapshot.workspaces)throw new Error('Invalid workspace backup.');
+ if(globalThis.LabWorkspaceBackup)snapshot=LabWorkspaceBackup.validate({format:LabWorkspaceBackup.format,version:LabWorkspaceBackup.version,exportedAt:new Date().toISOString(),workspace:snapshot});
+ const pending=[];for(const lang of LANGUAGES){const group=snapshot.workspaces[lang];if(!Array.isArray(group?.documents))throw new Error('Missing '+lang+' documents.');for(const item of group.documents){if(typeof item.source!=='string'||typeof item.name!=='string'||!Array.isArray(item.tests)||!item.files)throw new Error('Invalid document.');pending.push({lang,originalId:item.id,document:{...cleanWorkspace(JSON.parse(JSON.stringify(item)),lang),id:newDocumentId()}});}}
+ if(!pending.length)throw new Error('Backup has no documents.');captureDocumentSession();
+ for(const entry of pending){entry.document.name=uniqueDocumentName(entry.document.name,entry.lang);app.workspaces[entry.lang].documents.push(entry.document);}
+ for(const lang of LANGUAGES){const preferred=pending.find(entry=>entry.lang===lang&&entry.originalId===snapshot.workspaces[lang].activeId)||pending.find(entry=>entry.lang===lang);if(preferred)app.workspaces[lang].activeId=preferred.document.id;}
+ language=LANGUAGES.includes(snapshot.activeLanguage)?snapshot.activeLanguage:language;restoreDocument();focusSourceTab();return pending.length;
+}
+Lab.editor={getViewOptions:()=>({indentGuides:app.settings.indentGuides,showWhitespace:app.settings.showWhitespace,blockPairs:app.settings.blockPairs}),setViewOptions:options=>{for(const key of ['indentGuides','showWhitespace','blockPairs'])if(typeof options[key]==='boolean')app.settings[key]=options[key];persist();},isBusy:()=>busy,isComposing:()=>composing,getDocumentId:()=>state.id,getDocuments:()=>app.workspaces[language].documents.map(doc=>({id:doc.id,name:doc.name,source:doc.id===state.id?source.value:doc.source})),closeDocument,reopenDocument,duplicateDocument,moveDocument,exportWorkspace,importWorkspace,notice,download,jumpTo,applyEdit:edit=>{if(!edit||typeof edit.text!=='string'||edit.text.length>1000000)throw new Error('Source must be text no longer than 1 MB.');applyEditorCommand(()=>edit);},run,stop,check:()=>adapters[language].check(source.value),getLanguage:()=>language,getSource:()=>source.value,setSource:text=>{if(busy)throw new Error('Stop execution before editing.');if(typeof text!=='string'||text.length>1000000)throw new Error('Source must be text no longer than 1 MB.');applySource(text);},getResult:()=>result,switchLanguage};
 
 
 })(globalThis.Pseudo);
+
+
+/* Local editor aids. Display and text edits only; language execution is unchanged. */
+(function(root){
+'use strict';
+const wordCharacter=/[\p{L}\p{N}\p{M}\p{Pc}\u200c\u200d]/u;
+const before=(s,i)=>i>1&&/[\uDC00-\uDFFF]/.test(s[i-1])?s.slice(i-2,i):s.slice(Math.max(0,i-1),i);
+const after=(s,i)=>String.fromCodePoint(s.codePointAt(i)||0);
+function findMatches(text,query,options={}){
+ text=String(text);query=String(query);if(!query)return [];
+ const range=options.range,start=Math.max(0,Math.min(text.length,range?.start??0)),end=Math.max(start,Math.min(text.length,range?.end??text.length));
+ const escaped=query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),pattern=new RegExp(escaped,options.caseSensitive?'gu':'giu'),matches=[];
+ pattern.lastIndex=start;let m;
+ while((m=pattern.exec(text))&&m.index+m[0].length<=end){
+  if(m.index<start)continue;
+  const finish=m.index+m[0].length;
+  if(!options.wholeWord||(!wordCharacter.test(before(text,m.index))&&!wordCharacter.test(after(text,finish))))matches.push({start:m.index,end:finish});
+ }
+ return matches;
+}
+function replaceMatches(text,matches,replacement){
+ let at=0,delta=0;const parts=[];
+ for(const match of matches){if(match.start<at||match.end<match.start||match.end>text.length)throw new Error('Invalid replacement range');parts.push(text.slice(at,match.start),replacement);at=match.end;delta+=replacement.length-(match.end-match.start);}
+ parts.push(text.slice(at));return {text:parts.join(''),count:matches.length,delta};
+}
+function remapRange(range,oldText,newText){
+ if(!range)return null;let start=0,oldEnd=oldText.length,newEnd=newText.length;
+ while(start<oldEnd&&start<newEnd&&oldText[start]===newText[start])start++;
+ while(oldEnd>start&&newEnd>start&&oldText[oldEnd-1]===newText[newEnd-1]){oldEnd--;newEnd--;}
+ const delta=newEnd-oldEnd;
+ const left=range.start<=start?range.start:range.start>=oldEnd?range.start+delta:start;
+ const right=range.end<start?range.end:range.end>=oldEnd?range.end+delta:newEnd;
+ return {start:Math.max(0,Math.min(left,newText.length)),end:Math.max(0,Math.min(right,newText.length))};
+}
+function maskPseudocode(text){
+ const chars=text.split('');let quote='',comment=false;
+ for(let i=0;i<text.length;i++){
+  const ch=text[i];if(ch==='\n'||ch==='\r'){quote='';comment=false;continue;}
+  if(comment){chars[i]=' ';continue;}
+  if(quote){chars[i]=' ';if(ch==='\\'&&i+1<text.length&&text[i+1]!=='\n'&&text[i+1]!=='\r'){chars[++i]=' ';continue;}if(ch===quote){if(text[i+1]===quote){chars[++i]=' ';}else quote='';}continue;}
+  if(ch==='/'&&text[i+1]==='/'){chars[i]=' ';comment=true;continue;}
+  if(ch==='"'||ch==="'"){quote=ch;chars[i]=' ';}
+ }
+ return chars.join('');
+}
+function blockPairs(text){
+ const masked=maskPseudocode(text),openers={IF:'ENDIF',CASE:'ENDCASE',FOR:'NEXT',WHILE:'ENDWHILE',REPEAT:'UNTIL',PROCEDURE:'ENDPROCEDURE',FUNCTION:'ENDFUNCTION',TYPE:'ENDTYPE'},closers=new Set(Object.values(openers));
+ const token=/\b(?:ENDPROCEDURE|ENDFUNCTION|ENDWHILE|OTHERWISE|PROCEDURE|FUNCTION|ENDCASE|ENDTYPE|REPEAT|ENDIF|WHILE|UNTIL|CASE|NEXT|ELSE|TYPE|FOR|IF)\b/gi;
+ const stack=[],pairs=[];let match,line=1,lineStart=0,scanned=0;
+ while((match=token.exec(masked))){
+  // A keyword touching a Unicode identifier is part of that identifier.
+  if(wordCharacter.test(before(masked,match.index))||wordCharacter.test(after(masked,token.lastIndex)))continue;
+  for(let p=scanned;p<match.index;p++)if(masked[p]==='\n'){line++;lineStart=p+1;}scanned=match.index;
+  // FOR in OPENFILE ... FOR READ is not a block. Keywords only start
+  // statements; a CASE label may precede a statement on the same line.
+  const prefix=masked.slice(lineStart,match.index).trim();
+  if(prefix&&!(stack.some(item=>item.open.keyword==='CASE')&&/^[^:]*:\s*$/.test(prefix)&&!/^(?:DECLARE|CONSTANT|TYPE)\b/i.test(prefix)))continue;
+  const keyword=match[0].toUpperCase(),entry={keyword,start:match.index,end:token.lastIndex,line,column:match.index-lineStart+1};
+  if(openers[keyword])stack.push({open:entry,branches:[],expected:openers[keyword]});
+  else if(keyword==='ELSE'||keyword==='OTHERWISE'){
+   const wanted=keyword==='ELSE'?'IF':'CASE';for(let i=stack.length-1;i>=0;i--)if(stack[i].open.keyword===wanted){stack[i].branches.push(entry);break;}
+  }else if(closers.has(keyword)){
+   const index=stack.findLastIndex?stack.findLastIndex(item=>item.expected===keyword):(()=>{for(let i=stack.length-1;i>=0;i--)if(stack[i].expected===keyword)return i;return -1;})();
+   if(index>=0){const group=stack[index];stack.splice(index);pairs.push({open:group.open,close:entry,branches:group.branches});}
+  }
+ }
+ return pairs;
+}
+function pairAt(pairs,offset){
+ let found=null;for(const pair of pairs)if(pair.open.start<=offset&&pair.close.end>=offset&&(!found||pair.close.end-pair.open.start<found.close.end-found.open.start))found=pair;return found;
+}
+const api={findMatches,replaceMatches,remapRange,maskPseudocode,blockPairs,pairAt};root.LabEditorAids=api;
+if(typeof module!=='undefined'&&module.exports)module.exports=api;
+if(typeof document==='undefined')return;
+const editor=root.Lab?.editor,source=document.getElementById('source'),body=document.getElementById('editorBody');if(!editor||!source||!body)return;
+const $=id=>document.getElementById(id),el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
+const button=(id,text,title)=>{const b=el('button',text,'small quiet');b.id=id;b.type='button';if(title)b.title=title;return b;};
+const check=(id,text,checked=false)=>{const l=el('label'),i=el('input');i.id=id;i.type='checkbox';i.checked=checked;l.append(i,document.createTextNode(text));return {label:l,input:i};};
+const bar=el('section',undefined,'editor-aids-bar');bar.id='editorAidsBar';bar.hidden=true;bar.setAttribute('aria-label','Find, replace and editor view');
+const row=el('div',undefined,'ea-search-row'),find=el('input');find.id='findText';find.type='text';find.placeholder='Find in code';find.autocomplete='off';find.spellcheck=false;find.setAttribute('aria-label','Find in code');
+const previous=button('findPrevious','↑','Previous match · Shift Enter'),next=button('findNext','↓','Next match · Enter'),count=el('span','0 matches','ea-count');count.id='findCount';count.setAttribute('role','status');count.setAttribute('aria-live','polite');
+const replaceToggle=button('toggleReplace','Replace','Show or hide replacement'),close=button('closeFind','×','Close editor tools · Escape');close.setAttribute('aria-label','Close editor tools');replaceToggle.setAttribute('aria-expanded','false');row.append(find,previous,next,count,replaceToggle,close);
+const replaceRow=el('div',undefined,'ea-replace-row');replaceRow.hidden=true;const replacement=el('input');replacement.id='replaceText';replacement.type='text';replacement.placeholder='Replace with';replacement.autocomplete='off';replacement.spellcheck=false;replacement.setAttribute('aria-label','Replace with');
+const replaceOne=button('replaceCurrent','Replace'),replaceAll=button('replaceAll','Replace all (0)');replaceRow.append(replacement,replaceOne,replaceAll);
+const options=el('div',undefined,'ea-options'),matchCase=check('findMatchCase','Match case'),whole=check('findWholeWord','Whole word'),selection=check('findInSelection','In selection');options.append(matchCase.label,whole.label,selection.label);
+const initialView=editor.getViewOptions?.()||{};
+const view=el('div',undefined,'ea-view-options'),guides=check('showIndentGuides','Indent guides',initialView.indentGuides!==false),whitespace=check('showWhitespace','Whitespace',initialView.showWhitespace===true),pairsToggle=check('showBlockPairs','Block pairs',initialView.blockPairs!==false);view.append(el('span','View','ea-view-label'),guides.label,whitespace.label,pairsToggle.label);
+const message=el('div','','ea-message');message.id='editorAidsMessage';message.setAttribute('role','status');message.setAttribute('aria-live','polite');bar.append(row,replaceRow,options,view,message);body.before(bar);
+const findButton=button('findBtn','Find','Find in code · Ctrl/⌘ F');document.querySelector('.toolbar')?.insertBefore(findButton,$('commentBtn'));
+const innerButton=button('editorAidsBtn','Find / View','Find, replace and editor view');innerButton.setAttribute('aria-expanded','false');document.querySelector('.editor-footer')?.append(innerButton);
+const surface=body.querySelector('.code-surface'),overlay=el('div',undefined,'editor-aids-overlay');overlay.id='editorAidsOverlay';overlay.setAttribute('aria-hidden','true');surface.append(overlay);
+let composing=false,applying=false,frame=0,matches=[],index=-1,scope=null,lastText=source.value,scopeCandidate=null,cachedPairs=[],parsedSource=null,searchSource=null,searchOptions='';
+const selectionRange=()=>({start:source.selectionStart,end:source.selectionEnd});
+const busy=()=>editor.isBusy?.()||source.readOnly;
+function updateControls(){
+ const isBusy=busy();replaceOne.disabled=isBusy||!matches.length;replaceAll.disabled=isBusy||!matches.length;replacement.disabled=isBusy;previous.disabled=next.disabled=!matches.length;
+ selection.input.disabled=!scopeCandidate||scopeCandidate.start===scopeCandidate.end;
+ pairsToggle.input.disabled=editor.getLanguage()==='python';
+ count.textContent=matches.length?(index>=0?(index+1)+' / '+matches.length:matches.length+' matches'):'0 matches';replaceAll.textContent='Replace all ('+matches.length+')';
+}
+function refresh(){
+ try{const settings={caseSensitive:matchCase.input.checked,wholeWord:whole.input.checked,range:selection.input.checked?scope:null},key=JSON.stringify([find.value,settings]);if(searchSource!==source.value||searchOptions!==key){matches=findMatches(source.value,find.value,settings);searchSource=source.value;searchOptions=key;}index=matches.findIndex(m=>m.start===source.selectionStart&&m.end===source.selectionEnd);updateControls();schedule();}catch(_){matches=[];index=-1;updateControls();}
+}
+function open(showReplace=false){
+ if(document.querySelector('dialog[open]'))return;
+ if(bar.hidden){scopeCandidate=selectionRange();if(scopeCandidate.start===scopeCandidate.end)scopeCandidate=null;scope=scopeCandidate?{...scopeCandidate}:null;selection.input.checked=false;
+  if(scopeCandidate){const selected=source.value.slice(scopeCandidate.start,scopeCandidate.end);if(!selected.includes('\n')&&selected.length<250)find.value=selected;}
+ }
+ bar.hidden=false;innerButton.setAttribute('aria-expanded','true');if(showReplace){replaceRow.hidden=false;replaceToggle.setAttribute('aria-expanded','true');}message.textContent='';refresh();find.focus();find.select();
+}
+function closeBar(){bar.hidden=true;innerButton.setAttribute('aria-expanded','false');source.focus({preventScroll:true});schedule();}
+function revealMatch(i){
+ if(!matches.length)return;index=(i+matches.length)%matches.length;const m=matches[index];source.setSelectionRange(m.start,m.end,'forward');
+ const prefix=source.value.slice(0,m.start),line=prefix.split('\n').length-1,style=getComputedStyle(source),height=parseFloat(style.lineHeight)||26,y=20+line*height;
+ if(y<source.scrollTop||y+height>source.scrollTop+source.clientHeight)source.scrollTop=Math.max(0,y-source.clientHeight/2);
+ const lineStart=prefix.lastIndexOf('\n')+1,x=22+measure(prefix.slice(lineStart));if(x<source.scrollLeft+22||x>source.scrollLeft+source.clientWidth-60)source.scrollLeft=Math.max(0,x-40);
+ updateControls();source.dispatchEvent(new Event('select'));schedule();
+}
+function move(direction){
+ refresh();if(!matches.length)return;let wanted=index+direction;
+ if(index<0){if(direction>0){wanted=matches.findIndex(m=>m.start>=source.selectionEnd);if(wanted<0)wanted=0;}else{wanted=matches.length-1;for(let i=matches.length-1;i>=0;i--)if(matches[i].end<=source.selectionStart){wanted=i;break;}}}
+ revealMatch(wanted);
+}
+function replace(all){
+ if(composing||editor.isComposing?.()||busy())return;refresh();if(!matches.length)return;
+ if(!all&&index<0){move(1);message.textContent='已选中匹配项；再次点 Replace 替换。';return;}
+ const chosen=all?matches:[matches[index]],edit=replaceMatches(source.value,chosen,replacement.value),first=chosen[0],last=chosen[chosen.length-1],end=all?last.end+edit.delta:first.start+replacement.value.length;
+ const originalScope=scope,originalCandidate=scopeCandidate,focus=document.activeElement;
+ if(selection.input.checked&&scope)scope={start:scope.start,end:scope.end+edit.delta};
+ if(scopeCandidate)scopeCandidate=remapRange(scopeCandidate,source.value,edit.text);
+ applying=true;try{editor.applyEdit({text:edit.text,selectionStart:all?first.start:end,selectionEnd:end,selectionDirection:'forward'});}catch(error){scope=originalScope;scopeCandidate=originalCandidate;message.textContent=error.message||'Could not apply this replacement.';return;}finally{applying=false;if(bar.contains(focus))focus.focus({preventScroll:true});}
+ lastText=source.value;message.textContent='Replaced '+edit.count+' match'+(edit.count===1?'':'es')+'. Ctrl/⌘ Z to undo.';refresh();if(!all&&matches.length)move(1);
+}
+findButton.onclick=()=>open();innerButton.onclick=()=>bar.hidden?open():closeBar();close.onclick=closeBar;previous.onclick=()=>move(-1);next.onclick=()=>move(1);replaceOne.onclick=()=>replace(false);replaceAll.onclick=()=>replace(true);
+replaceToggle.onclick=()=>{replaceRow.hidden=!replaceRow.hidden;replaceToggle.setAttribute('aria-expanded',String(!replaceRow.hidden));if(!replaceRow.hidden)replacement.focus();};
+find.addEventListener('input',()=>{if(!composing){message.textContent='';refresh();}});for(const item of [matchCase,whole])item.input.onchange=refresh;
+selection.input.onchange=()=>{scope=selection.input.checked&&scopeCandidate?{...scopeCandidate}:null;refresh();};
+function syncViewOptions(){const options=editor.getViewOptions?.();if(!options)return;guides.input.checked=options.indentGuides!==false;whitespace.input.checked=options.showWhitespace===true;pairsToggle.input.checked=options.blockPairs!==false;}
+for(const [item,key]of [[guides,'indentGuides'],[whitespace,'showWhitespace'],[pairsToggle,'blockPairs']])item.input.onchange=()=>{editor.setViewOptions?.({[key]:item.input.checked});schedule();};
+bar.addEventListener('compositionstart',()=>composing=true);bar.addEventListener('compositionend',()=>{composing=false;refresh();});
+bar.addEventListener('keydown',e=>{if(composing||e.isComposing)return;if(e.key==='Escape'){e.preventDefault();e.stopPropagation();closeBar();}else if(e.key==='Enter'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&[find,replacement].includes(e.target)){e.preventDefault();e.stopPropagation();if(e.target===replacement)replace(false);else move(e.shiftKey?-1:1);}});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'&&e.target===source&&!bar.hidden&&!busy()&&!e.isComposing&&!composing&&!document.querySelector('dialog[open]')){e.preventDefault();e.stopPropagation();closeBar();return;}
+ if(e.isComposing||composing||!(e.ctrlKey||e.metaKey)||e.altKey||e.shiftKey||document.querySelector('dialog[open]'))return;
+ const key=e.key.toLowerCase();if(!['f','h'].includes(key))return;
+ if(e.target!==source&&!bar.contains(e.target))return;e.preventDefault();e.stopPropagation();open(key==='h');
+},true);
+const canvas=document.createElement('canvas'),context=canvas.getContext('2d');
+function measure(text){const style=getComputedStyle(source);if(context)context.font=style.fontWeight+' '+style.fontSize+' '+style.fontFamily;const width=s=>context?context.measureText(s).width:Array.from(s).length*(parseFloat(style.fontSize)||15)*.6,tab=width(' ')*4,parts=text.split('\t');let x=0;for(let i=0;i<parts.length;i++){x+=width(parts[i]);if(i<parts.length-1)x+=tab-x%tab;}return x;}
+function marker(fragment,cls,start,end,lines,starts,first,last,lineHeight){
+ let row=0;while(row+1<starts.length&&starts[row+1]<=start)row++;
+ for(let i=row;i<lines.length&&starts[i]<end;i++){
+  if(i<first)continue;if(i>last)break;const left=Math.max(start-starts[i],0),right=Math.min(end-starts[i],lines[i].length);if(right<=left)continue;
+  const n=el('span',undefined,cls),x=measure(lines[i].slice(0,left)),width=measure(lines[i].slice(0,right))-x;n.style.cssText='left:'+(22+x-source.scrollLeft)+'px;top:'+(20+i*lineHeight-source.scrollTop)+'px;width:'+Math.max(width,2)+'px;height:'+lineHeight+'px';fragment.append(n);
+ }
+}
+function paint(){
+ frame=0;try{
+  const text=source.value,lines=text.split('\n'),style=getComputedStyle(source),height=parseFloat(style.lineHeight)||26,first=Math.max(0,Math.floor((source.scrollTop-20)/height)),last=Math.min(lines.length-1,Math.ceil((source.scrollTop+source.clientHeight-20)/height)),fragment=document.createDocumentFragment(),charWidth=measure('0');
+  if(guides.input.checked||whitespace.input.checked)for(let i=first;i<=last;i++){
+   const line=lines[i],top=20+i*height-source.scrollTop;
+   if(guides.input.checked){let indent=0;for(const c of line){if(c===' ')indent++;else if(c==='\t')indent+=4-indent%4;else break;}const left=Math.max(4,Math.ceil((source.scrollLeft-22)/charWidth/4)*4),right=Math.min(indent,Math.ceil((source.scrollLeft+source.clientWidth)/charWidth));for(let column=left;column<=right;column+=4){const guide=el('i',undefined,'ea-indent-guide');guide.style.cssText='left:'+(22+column*charWidth-source.scrollLeft)+'px;top:'+top+'px;height:'+height+'px';fragment.append(guide);}}
+   if(whitespace.input.checked&&line.length<=20000){const pre=el('pre',undefined,'ea-whitespace-line');pre.style.top=top+'px';pre.style.left=(22-source.scrollLeft)+'px';for(const part of line.split(/( +|\t)/)){if(/^ +$/.test(part))pre.append(el('span','·'.repeat(part.length),'ea-space'));else if(part==='\t')pre.append(el('span','\t','ea-tab'));else pre.append(document.createTextNode(part));}fragment.append(pre);}
+  }
+  const starts=[];let offset=0;for(const line of lines){starts.push(offset);offset+=line.length+1;}
+  if(!bar.hidden)for(let i=0;i<matches.length;i++){const m=matches[i];if(m.end<starts[first]||m.start>(starts[last]+lines[last]?.length))continue;marker(fragment,'ea-find-match'+(i===index?' ea-current-match':''),m.start,m.end,lines,starts,first,last,height);}
+  if(pairsToggle.input.checked&&editor.getLanguage()!=='python'){
+   if(parsedSource!==text){cachedPairs=blockPairs(text);parsedSource=text;}const pair=pairAt(cachedPairs,source.selectionStart);
+   if(pair)for(const token of [pair.open,...pair.branches,pair.close])marker(fragment,'ea-block-pair',token.start,token.end,lines,starts,first,last,height);
+  }
+  overlay.replaceChildren(fragment);
+ }catch(_){overlay.replaceChildren();}
+}
+function schedule(){if(!frame)frame=requestAnimationFrame(paint);}
+function sourceChanged(){
+ if(!applying&&source.value!==lastText){scope=remapRange(scope,lastText,source.value);scopeCandidate=remapRange(scopeCandidate,lastText,source.value);}lastText=source.value;refresh();
+}
+source.addEventListener('input',sourceChanged);source.addEventListener('scroll',schedule);for(const name of ['click','keyup','select'])source.addEventListener(name,()=>{if(!bar.hidden)refresh();else schedule();});
+document.addEventListener('lab:source-change',sourceChanged);document.addEventListener('lab:paint',schedule);document.addEventListener('lab:busy-change',updateControls);
+document.addEventListener('lab:document-change',()=>{lastText=source.value;scope=scopeCandidate=null;selection.input.checked=false;parsedSource=null;message.textContent='';syncViewOptions();refresh();});
+document.addEventListener('lab:view-options-change',()=>{syncViewOptions();schedule();});
+window.addEventListener('resize',schedule);if(typeof ResizeObserver==='function')new ResizeObserver(schedule).observe(body);$('fontSize')?.addEventListener('change',schedule);$('themeBtn')?.addEventListener('click',schedule);
+api.open=open;api.close=closeBar;api.refresh=refresh;updateControls();schedule();
+})(globalThis);
+
+
+/* Versioned workspace backups. Validation is pure and available without a DOM. */
+(function (root) {
+  'use strict';
+  const FORMAT = 'programming-lab-workspace', VERSION = 1, MAX_BYTES = 20 * 1024 * 1024;
+  const LANGUAGES = ['python', 'igcse', 'pseudo'];
+  const LABELS = {python: 'Python', igcse: 'IGCSE Pseudocode', pseudo: 'AS Pseudocode'};
+  const MAX_DOCUMENTS = 1000, MAX_ITEMS = 1000, MAX_TOTAL_ITEMS = 10000;
+  const unsafeKeys = new Set(['__proto__', 'prototype', 'constructor']);
+  const own = (value, key) => Object.prototype.hasOwnProperty.call(value, key);
+  const bytes = value => new TextEncoder().encode(value).byteLength;
+  function invalid(where, reason) { throw new Error(where + ': ' + reason); }
+  function object(value, where, required, optional = []) {
+    if (!value || typeof value !== 'object' || Array.isArray(value) || ![Object.prototype, null].includes(Object.getPrototypeOf(value))) invalid(where, 'expected an object.');
+    const allowed = new Set([...required, ...optional]);
+    for (const key of Reflect.ownKeys(value)) {
+      const descriptor = Object.getOwnPropertyDescriptor(value, key);
+      if (typeof key !== 'string' || unsafeKeys.has(key) || !allowed.has(key) || !descriptor.enumerable || !own(descriptor, 'value')) invalid(where, 'contains an unsupported field.');
+    }
+    for (const key of required) if (!own(value, key)) invalid(where, 'missing ' + key + '.');
+    return value;
+  }
+  function text(value, where, maxLength = MAX_BYTES) {
+    if (typeof value !== 'string' || value.length > maxLength) invalid(where, 'expected text no longer than ' + maxLength.toLocaleString('en-US') + ' characters.');
+    return value;
+  }
+  function name(value, where) {
+    text(value, where, 180);
+    if (!value || value !== value.trim() || /[\u0000-\u001f\u007f/\\]/.test(value) || ['.', '..'].includes(value)) invalid(where, 'use a nonempty name without path separators or control characters.');
+    return value;
+  }
+  function identifier(value, where) {
+    if (typeof value !== 'string' || !/^[A-Za-z0-9_-]{1,80}$/.test(value) || unsafeKeys.has(value)) invalid(where, 'invalid document ID.');
+    return value;
+  }
+  function number(value, where, minimum, maximum, integer = true) {
+    if (!Number.isFinite(value) || (integer && !Number.isSafeInteger(value)) || value < minimum || value > maximum) invalid(where, 'number is outside the supported range.');
+    return value;
+  }
+  function choice(value, choices, where) {
+    if (!choices.includes(value)) invalid(where, 'unsupported value.');
+    return value;
+  }
+  function list(value, where, minimum, maximum) {
+    if (!Array.isArray(value) || value.length < minimum || value.length > maximum || Reflect.ownKeys(value).length !== value.length + 1) invalid(where, 'expected a complete array with ' + minimum + ' to ' + maximum.toLocaleString('en-US') + ' entries.');
+    for (let index = 0; index < value.length; index++) {
+      const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
+      if (!descriptor || !descriptor.enumerable || !own(descriptor, 'value')) invalid(where, 'expected a complete JSON array.');
+    }
+    return value;
+  }
+  function path(value, where) {
+    text(value, where, 240);
+    if (!value || /[\u0000-\u001f\u007f\\:]/.test(value) || value.startsWith('/') || value.split('/').some(part => !part || part !== part.trim() || part === '.' || part === '..' || unsafeKeys.has(part))) invalid(where, 'virtual files must have safe relative paths without empty, dot, or parent segments.');
+    return value;
+  }
+  function validate(envelope) {
+    object(envelope, 'Backup', ['format', 'version', 'exportedAt', 'workspace']);
+    if (envelope.format !== FORMAT) invalid('Backup', 'not a Programming Lab workspace backup.');
+    if (envelope.version !== VERSION) invalid('Backup', 'unsupported backup version.');
+    if (typeof envelope.exportedAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(envelope.exportedAt) || !Number.isFinite(Date.parse(envelope.exportedAt)) || new Date(envelope.exportedAt).toISOString() !== envelope.exportedAt) invalid('Backup', 'exportedAt must be a valid UTC timestamp.');
+    const source = object(envelope.workspace, 'Workspace', ['version', 'activeLanguage', 'settings', 'workspaces']);
+    if (source.version !== 3) invalid('Workspace', 'unsupported workspace version.');
+    const settings = object(source.settings, 'Settings', ['theme', 'fontSize', 'editorShare'], ['indentGuides', 'showWhitespace', 'blockPairs']);
+    const result = {
+      version: 3,
+      activeLanguage: choice(source.activeLanguage, LANGUAGES, 'Active language'),
+      settings: {
+        theme: choice(settings.theme, ['light', 'dark'], 'Theme'),
+        fontSize: choice(settings.fontSize, [13, 14, 15, 16, 18, 20], 'Font size'),
+        editorShare: number(settings.editorShare, 'Editor width', 0.2, 0.8, false)
+      },
+      workspaces: {}
+    };
+    for (const key of ['indentGuides', 'showWhitespace', 'blockPairs']) if (own(settings, key)) {
+      if (typeof settings[key] !== 'boolean') invalid('Settings', key + ' must be true or false.');
+      result.settings[key] = settings[key];
+    }
+    object(source.workspaces, 'Languages', LANGUAGES);
+    const ids = new Set();
+    let documentCount = 0, fileCount = 0, testCount = 0, textBytes = 0;
+    function content(value, where, maxLength = MAX_BYTES) {
+      text(value, where, maxLength); textBytes += bytes(value);
+      if (textBytes > MAX_BYTES) invalid('Backup', 'content exceeds the 20 MiB limit.');
+      return value;
+    }
+    for (const language of LANGUAGES) {
+      const where = LABELS[language], group = object(source.workspaces[language], where, ['activeId', 'documents']);
+      identifier(group.activeId, where + ' active document');
+      list(group.documents, where + ' documents', 1, MAX_DOCUMENTS);
+      documentCount += group.documents.length;
+      if (documentCount > MAX_DOCUMENTS) invalid('Backup', 'contains more than 1,000 documents.');
+      const documents = group.documents.map((value, index) => {
+        const at = where + ' document ' + (index + 1);
+        object(value, at, ['id', 'name', 'source', 'files', 'tests', 'selectionStart', 'selectionEnd', 'selectionDirection', 'scrollTop', 'scrollLeft']);
+        const id = identifier(value.id, at);
+        if (ids.has(id)) invalid(at, 'duplicate document ID.');
+        ids.add(id);
+        const document = {id, name: name(value.name, at + ' name'), source: content(value.source, at + ' source', 1000000), files: {}, tests: []};
+        if (!value.files || typeof value.files !== 'object' || Array.isArray(value.files) || ![Object.prototype, null].includes(Object.getPrototypeOf(value.files))) invalid(at + ' files', 'expected an object.');
+        const fileNames = Reflect.ownKeys(value.files);
+        if (fileNames.length > MAX_ITEMS || (fileCount += fileNames.length) > MAX_TOTAL_ITEMS) invalid(at, 'contains too many virtual files (1,000 per document; 10,000 per backup).');
+        for (const filename of fileNames) {
+          path(filename, at + ' file path');
+          const descriptor = Object.getOwnPropertyDescriptor(value.files, filename);
+          if (!descriptor.enumerable || !own(descriptor, 'value')) invalid(at + ' files', 'expected JSON text values.');
+          const fileText = content(descriptor.value, at + ' file content', 2000000);
+          if (bytes(fileText) > 2000000) invalid(at + ' files', 'each virtual file must be no larger than 2,000,000 UTF-8 bytes.');
+          Object.defineProperty(document.files, filename, {value: fileText, writable: true, enumerable: true, configurable: true});
+        }
+        list(value.tests, at + ' tests', 0, MAX_ITEMS);
+        if ((testCount += value.tests.length) > MAX_TOTAL_ITEMS) invalid(at, 'contains too many tests (1,000 per document; 10,000 per backup).');
+        document.tests = value.tests.map((test, index) => {
+          const testAt = at + ' test ' + (index + 1);
+          object(test, testAt, ['name', 'inputs', 'expected', 'label', 'blankInput'], ['randomSeed']);
+          if (typeof test.blankInput !== 'boolean') invalid(testAt, 'blankInput must be true or false.');
+          const copy = {name: text(test.name, testAt + ' name', 1000), inputs: content(test.inputs, testAt + ' inputs'), expected: content(test.expected, testAt + ' expected output'), label: choice(test.label, ['Normal', 'Abnormal', 'Boundary / Extreme'], testAt + ' label'), blankInput: test.blankInput};
+          if (/[\u0000-\u001f\u007f]/.test(copy.name)) invalid(testAt, 'test name cannot contain control characters.');
+          if (own(test, 'randomSeed')) copy.randomSeed = number(test.randomSeed, testAt + ' random seed', Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
+          return copy;
+        });
+        document.selectionStart = number(value.selectionStart, at + ' caret start', 0, document.source.length);
+        document.selectionEnd = number(value.selectionEnd, at + ' caret end', document.selectionStart, document.source.length);
+        document.selectionDirection = choice(value.selectionDirection, ['none', 'forward', 'backward'], at + ' selection direction');
+        document.scrollTop = number(value.scrollTop, at + ' vertical scroll', 0, 1000000000, false);
+        document.scrollLeft = number(value.scrollLeft, at + ' horizontal scroll', 0, 1000000000, false);
+        return document;
+      });
+      if (!documents.some(document => document.id === group.activeId)) invalid(where, 'active document ID is missing from its documents.');
+      result.workspaces[language] = {activeId: group.activeId, documents};
+    }
+    if (bytes(JSON.stringify(envelope)) > MAX_BYTES) invalid('Backup', 'JSON exceeds the 20 MiB limit.');
+    return result;
+  }
+  // Native JSON parsing ignores duplicate keys. Reject them before accepting a backup.
+  function rejectDuplicateKeys(json) {
+    let at = 0;
+    const whitespace = () => { while (/\s/.test(json[at] || '') && at < json.length) at++; };
+    function string() {
+      const start = at++;
+      while (at < json.length) { const char = json[at++]; if (char === '\\') at++; else if (char === '"') break; }
+      return JSON.parse(json.slice(start, at));
+    }
+    function value(depth) {
+      if (depth > 16) invalid('Backup', 'JSON nesting is too deep.');
+      whitespace();
+      if (json[at] === '{') {
+        at++; whitespace(); const keys = new Set();
+        if (json[at] === '}') { at++; return; }
+        while (at < json.length) {
+          whitespace(); const key = string();
+          if (keys.has(key)) invalid('Backup', 'JSON contains a duplicate field.');
+          keys.add(key); whitespace(); at++; value(depth + 1); whitespace();
+          if (json[at++] === '}') return;
+        }
+      } else if (json[at] === '[') {
+        at++; whitespace();
+        if (json[at] === ']') { at++; return; }
+        while (at < json.length) { value(depth + 1); whitespace(); if (json[at++] === ']') return; }
+      } else if (json[at] === '"') string();
+      else while (at < json.length && !/[\s,}\]]/.test(json[at])) at++;
+    }
+    value(0);
+  }
+  function parse(json) {
+    text(json, 'Backup JSON');
+    if (bytes(json) > MAX_BYTES) invalid('Backup', 'file exceeds the 20 MiB limit.');
+    let envelope;
+    try { envelope = JSON.parse(json); } catch (_) { invalid('Backup', 'file is not valid JSON.'); }
+    rejectDuplicateKeys(json);
+    return {envelope, workspace: validate(envelope)};
+  }
+  function create(snapshot, exportedAt = new Date().toISOString()) {
+    const envelope = {format: FORMAT, version: VERSION, exportedAt, workspace: JSON.parse(JSON.stringify(snapshot))};
+    envelope.workspace = validate(envelope);
+    return envelope;
+  }
+  root.LabWorkspaceBackup = Object.freeze({format: FORMAT, version: VERSION, maxBytes: MAX_BYTES, validate, parse, create});
+  if (typeof document === 'undefined') return;
+  const editor = root.Lab && root.Lab.editor, toolbar = document.querySelector('.toolbar');
+  if (!editor || !toolbar) return;
+  const element = (tag, text, className) => {
+    const node = document.createElement(tag);
+    if (text !== undefined) node.textContent = text;
+    if (className) node.className = className;
+    return node;
+  };
+  const button = (label, className) => { const node = element('button', label, className); node.type = 'button'; return node; };
+  const opener = button('Workspace'); opener.id = 'workspaceBackupBtn';
+  opener.setAttribute('aria-haspopup', 'dialog'); opener.title = 'Export or import all Programming Lab documents';
+  toolbar.insertBefore(opener, toolbar.querySelector('.toolbar-spacer'));
+  const picker = element('input'); picker.type = 'file'; picker.accept = '.programming-lab.json,.json,application/json'; picker.hidden = true;
+  const dialog = element('dialog', undefined, 'lab-backup-dialog'); dialog.id = 'workspaceBackupDialog'; dialog.setAttribute('aria-labelledby', 'workspaceBackupTitle');
+  const heading = element('div', undefined, 'dialog-heading'), headingText = element('div');
+  headingText.append(element('span', 'PROGRAMMING LAB', 'eyebrow'));
+  const title = element('h2', 'Workspace backup'); title.id = 'workspaceBackupTitle'; headingText.append(title);
+  const close = button('×', 'quiet'); close.setAttribute('aria-label', 'Close workspace backup');
+  heading.append(headingText, close);
+  const body = element('div', undefined, 'lab-backup-body');
+  const home = element('div'); home.append(element('p', 'Keep a backup of every open document in Python, IGCSE Pseudocode, and AS Pseudocode, including virtual files, tests, and editor positions.'));
+  const actions = element('div', undefined, 'lab-backup-choices'), exportButton = button('Export backup', 'primary'), importButton = button('Import backup');
+  exportButton.id = 'workspaceBackupExport'; importButton.id = 'workspaceBackupImport'; actions.append(exportButton, importButton);
+  home.append(actions, element('p', 'Import a Programming Lab JSON backup up to 20 MiB. You can review its contents before adding documents.', 'lab-backup-muted'));
+  const preview = element('div'); preview.hidden = true;
+  const summary = element('p'), groups = element('div', undefined, 'lab-backup-groups');
+  const appendNote = element('p', 'Import adds these documents as new tabs. Existing documents and your current theme, font size, and panel width are kept. Code is not run. Duplicate names receive a suffix.', 'lab-backup-muted');
+  const previewActions = element('div', undefined, 'dialog-actions'), cancel = button('Cancel'), confirm = button('Add documents', 'primary'); confirm.id = 'workspaceBackupConfirm';
+  previewActions.append(cancel, confirm); preview.append(summary, groups, appendNote, previewActions);
+  const error = element('p', undefined, 'lab-backup-error'); error.id = 'workspaceBackupError'; error.setAttribute('role', 'alert'); error.hidden = true;
+  body.append(error, home, preview); dialog.append(heading, body); document.body.append(dialog, picker);
+  let pending = null, reading = false, sequence = 0;
+  const busy = () => editor.isBusy();
+  function syncBusy() { const disabled = busy() || reading; opener.disabled = disabled; exportButton.disabled = disabled; importButton.disabled = disabled; confirm.disabled = disabled || !pending; }
+  function clearError() { error.textContent = ''; error.hidden = true; }
+  function showError(message) {
+    error.textContent = message; error.hidden = false;
+    if (!dialog.open && !busy() && !document.querySelector('dialog[open]')) dialog.showModal();
+    else if (!dialog.open) editor.notice(message);
+  }
+  function render() {
+    home.hidden = Boolean(pending); preview.hidden = !pending;
+    if (pending) {
+      const workspace = pending.workspace, count = LANGUAGES.reduce((n, language) => n + workspace.workspaces[language].documents.length, 0);
+      summary.textContent = count + ' documents · exported ' + new Date(pending.envelope.exportedAt).toLocaleString() + '. Active language: ' + LABELS[workspace.activeLanguage] + '.';
+      groups.replaceChildren();
+      for (const language of LANGUAGES) {
+        const group = workspace.workspaces[language], section = element('section'), list = element('ol');
+        section.append(element('h3', LABELS[language] + ' · ' + group.documents.length));
+        for (const document of group.documents) list.append(element('li', document.name + (document.id === group.activeId ? ' (active)' : '')));
+        section.append(list); groups.append(section);
+      }
+      confirm.textContent = 'Add ' + count + ' documents';
+    }
+    syncBusy();
+  }
+  function dismiss() { sequence++; pending = null; picker.value = ''; clearError(); dialog.close(); render(); }
+  close.onclick = cancel.onclick = dismiss;
+  dialog.addEventListener('cancel', event => { event.preventDefault(); dismiss(); });
+  opener.onclick = () => { if (busy() || reading || document.querySelector('dialog[open]')) return; render(); dialog.showModal(); };
+  exportButton.onclick = () => {
+    if (busy() || reading) return;
+    clearError();
+    try {
+      const envelope = create(editor.exportWorkspace());
+      let json = JSON.stringify(envelope, null, 2) + '\n';
+      if (bytes(json) > MAX_BYTES) json = JSON.stringify(envelope);
+      const filename = 'programming-lab-' + envelope.exportedAt.replace(/:/g, '-').replace(/\.\d{3}Z$/, 'Z') + '.programming-lab.json';
+      editor.download(json, filename); dialog.close(); editor.notice('Workspace backup downloaded.');
+    } catch (failure) { showError('Could not export backup. ' + failure.message); }
+  };
+  importButton.onclick = () => { if (busy() || reading) return; clearError(); picker.value = ''; picker.click(); };
+  picker.onchange = async () => {
+    const file = picker.files && picker.files[0]; picker.value = '';
+    if (!file || busy()) return;
+    pending = null; render(); clearError();
+    if (file.size > MAX_BYTES) { showError('Choose a backup no larger than 20 MiB.'); return; }
+    const selected = ++sequence; reading = true; syncBusy(); dialog.close(); editor.notice('Reading workspace backup… You can continue editing.');
+    try {
+      const buffer = await file.arrayBuffer();
+      if (selected !== sequence) return;
+      if (buffer.byteLength > MAX_BYTES) invalid('Backup', 'file exceeds the 20 MiB limit.');
+      let json;
+      try { json = new TextDecoder('utf-8', {fatal: true}).decode(buffer); } catch (_) { invalid('Backup', 'file must contain valid UTF-8 text.'); }
+      pending = parse(json); render();
+      if (!busy() && !document.querySelector('dialog[open]')) dialog.showModal();
+      else editor.notice('Backup is ready to review. Open Workspace when you are ready.');
+    } catch (failure) { if (selected === sequence) showError('Could not import backup. ' + failure.message); }
+    finally { if (selected === sequence) { reading = false; render(); } }
+  };
+  confirm.onclick = () => {
+    if (busy() || reading || !pending) return;
+    confirm.disabled = true;
+    try {
+      const snapshot = pending.workspace;
+      // Appending syncs the latest editor state and checks busy again inside the controller.
+      const count = editor.importWorkspace(snapshot);
+      pending = null; dialog.close(); render(); editor.notice('Added ' + count + ' documents from the workspace backup.');
+    } catch (failure) { showError('Could not add documents. ' + failure.message); syncBusy(); }
+  };
+  document.addEventListener('lab:busy-change', syncBusy);
+  syncBusy();
+})(globalThis);
 
 </script>
 </body>
