@@ -62,7 +62,7 @@ html.workspace-fullscreen.keyboard-compact.input-active #inputForm{padding:8px 1
 .source-tab:focus-visible{outline-offset:-3px}
 .source-tab .tab-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .source-tab .tab-dirty{color:var(--accent);font-size:10px;flex:none}
-#addSourceTab{align-self:center;flex:0 0 34px;width:34px;height:34px;padding:0;margin:0 5px;font-size:22px;line-height:1;color:var(--accent)}
+#addSourceTab{align-self:flex-start;flex:0 0 34px;width:34px;height:34px;padding:0;margin:7px 5px;font-size:22px;line-height:1;color:var(--muted)}
 .pane-heading .pane-controls{flex:0 1 auto;flex-wrap:wrap;align-content:center;justify-content:flex-end;min-height:48px;max-width:100%;padding-top:5px;padding-bottom:5px;margin-left:auto}
 .pane-heading .pane-controls select{min-width:0}
 .pane-heading .fullscreen-actions{flex-shrink:0}
@@ -73,7 +73,7 @@ html.workspace-fullscreen.keyboard-compact.input-active #inputForm{padding:8px 1
 #sourceTabNameError{margin:8px 0 0;color:var(--danger);font-size:13px;overflow-wrap:anywhere}
 #sourceTabNameError:empty{display:none}
 @media(max-width:500px){.source-tab{min-width:82px;max-width:180px;padding:0 11px}.workspace-fullscreen .pane-heading .pane-controls{width:auto}}
-@media(pointer:coarse){#addSourceTab{flex-basis:40px;width:40px;height:40px}.source-tab{min-height:40px}}
+@media(pointer:coarse){#addSourceTab{flex-basis:40px;width:40px;height:40px;margin-top:4px;margin-bottom:4px}.source-tab{min-height:40px}}
 
 /* Document management and actionable diagnostics. */
 .tab-close{flex:none;margin-left:2px;padding:1px 4px;border-radius:3px;font-size:16px;color:var(--muted)}.tab-close:hover{background:var(--hover);color:var(--danger)}.source-tab.drag-over{box-shadow:inset 3px 0 var(--accent)}
@@ -81,13 +81,16 @@ html.workspace-fullscreen.keyboard-compact.input-active #inputForm{padding:8px 1
 .problem-card{flex:none;max-height:180px;overflow:auto;padding:8px 14px;border-bottom:1px solid var(--border);border-left:3px solid var(--danger);background:var(--surface2);font-size:12px}.problem-heading{display:flex;align-items:center;justify-content:space-between;color:var(--danger)}.problem-heading button{padding:0 6px}.problem-location{font-size:12px;padding:1px 0;border:0;background:none;color:var(--accent);white-space:normal;text-align:left;text-decoration:underline}.problem-card p{margin:5px 0;white-space:pre-wrap;overflow-wrap:anywhere}.problem-location:disabled{text-decoration:none}
 
 /* Fold overflow tabs into one scrollable row, or expand them into a compact grid. */
-#toggleSourceTabs{align-self:flex-start;flex:0 0 34px;width:34px;height:38px;margin:5px 4px 5px 0;padding:0;font-size:24px;line-height:1;color:var(--muted)}
+#toggleSourceTabs{display:flex;align-items:center;justify-content:center;align-self:flex-start;flex:0 0 34px;width:34px;height:34px;margin:7px 4px 7px 0;padding:0;color:var(--muted)}
+#toggleSourceTabs svg{display:block;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .15s ease}
+#toggleSourceTabs[aria-expanded="true"] svg{transform:rotate(180deg)}
+@media(prefers-reduced-motion:reduce){#toggleSourceTabs svg{transition:none}}
 #toggleSourceTabs[aria-expanded="true"]{color:var(--accent);background:var(--line)}
 .code-tabs-wrap.tabs-expanded{height:auto;align-items:flex-start}
 .code-tabs-wrap.tabs-expanded #sourceTabs{flex-wrap:wrap;align-content:flex-start;height:auto;max-height:min(192px,30vh);min-height:48px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;touch-action:pan-y;scrollbar-gutter:stable}
 .code-tabs-wrap.tabs-expanded .source-tab{max-width:min(220px,100%);border-bottom:1px solid var(--border)}
 .pane-heading:has(.tabs-expanded) .pane-controls{align-self:flex-start}
-@media(pointer:coarse){#toggleSourceTabs{flex-basis:40px;width:40px;height:40px;margin-top:4px}}
+@media(pointer:coarse){#toggleSourceTabs{flex-basis:40px;width:40px;height:40px;margin-top:4px;margin-bottom:4px}}
 
 /* Editor aids stay inside the workspace in full screen. */
 .editor-aids-bar{flex:none;background:var(--surface);border-bottom:1px solid var(--border);padding:8px 12px;font-size:12px;max-height:42%;overflow:auto}
@@ -153,7 +156,7 @@ html.workspace-fullscreen.keyboard-compact.input-active #inputForm{padding:8px 1
 <div id="notice" class="notice" role="status" hidden></div>
 <main class="workspace" id="workspace">
   <section class="editor-pane" id="editorPane" aria-label="Code editor">
-    <div class="pane-heading"><div class="code-tabs-wrap"><div id="sourceTabs" role="tablist" aria-label="Code files"></div><button id="addSourceTab" type="button" class="quiet" aria-label="New code tab" title="New code tab">+</button><button id="toggleSourceTabs" type="button" class="quiet" aria-label="Expand code tabs" aria-controls="sourceTabs" aria-expanded="false" title="Expand code tabs" hidden>⌄</button><span class="current-file-meta sr-only"><span id="sourceName">program.py</span><span id="dirtyDot" aria-label="Modified" hidden>●</span></span></div><div class="pane-controls"><label class="sr-only" for="languageSelect">Programming language</label><select id="languageSelect" aria-label="Programming language"><option value="python">Python</option><option value="igcse">IGCSE Pseudocode</option><option value="pseudo">AS Pseudocode</option></select><div class="fullscreen-actions"><button id="innerCheck" class="small" title="Check source">Check</button><button id="innerRun" class="small primary" title="Run program">▶ Run</button><button id="innerStop" class="small" disabled>■ Stop</button><button id="innerExit" class="small quiet" aria-label="Exit full screen">↙</button></div></div></div>
+    <div class="pane-heading"><div class="code-tabs-wrap"><div id="sourceTabs" role="tablist" aria-label="Code files"></div><button id="addSourceTab" type="button" class="quiet" aria-label="New code tab" title="New code tab">+</button><button id="toggleSourceTabs" type="button" class="quiet" aria-label="Expand code tabs" aria-controls="sourceTabs" aria-expanded="false" title="Show all tabs" hidden><svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><path d="m5 7.5 5 5 5-5"/></svg></button><span class="current-file-meta sr-only"><span id="sourceName">program.py</span><span id="dirtyDot" aria-label="Modified" hidden>●</span></span></div><div class="pane-controls"><label class="sr-only" for="languageSelect">Programming language</label><select id="languageSelect" aria-label="Programming language"><option value="python">Python</option><option value="igcse">IGCSE Pseudocode</option><option value="pseudo">AS Pseudocode</option></select><div class="fullscreen-actions"><button id="innerCheck" class="small" title="Check source">Check</button><button id="innerRun" class="small primary" title="Run program">▶ Run</button><button id="innerStop" class="small" disabled>■ Stop</button><button id="innerExit" class="small quiet" aria-label="Exit full screen">↙</button></div></div></div>
     <div class="editor-body" id="editorBody"><div class="gutter" aria-hidden="true"><div id="lineNumbers"></div></div><div class="code-surface"><div id="currentLine" aria-hidden="true"></div><pre id="highlight" aria-hidden="true"></pre><textarea id="source" aria-label="Source code" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" wrap="off"></textarea></div></div>
     <div class="editor-footer"><span id="cursorPosition">Ln 1, Col 1</span><span>4 spaces</span><span>UTF-8</span></div>
   </section>
@@ -6083,7 +6086,7 @@ function updateSourceTabsLayout(){
  const addStyle=getComputedStyle(add),available=wrap.clientWidth-add.getBoundingClientRect().width-parseFloat(addStyle.marginLeft)-parseFloat(addStyle.marginRight);
  // Measure the natural row against space without the toggle to avoid appearing/disappearing oscillation.
  const contentWidth=[...list.children].reduce((sum,item)=>sum+item.getBoundingClientRect().width,0),overflow=contentWidth>available+1,expanded=overflow&&expandedSourceTabs[language];
- toggle.hidden=!overflow;toggle.textContent=expanded?'⌃':'⌄';toggle.setAttribute('aria-expanded',String(expanded));toggle.setAttribute('aria-label',expanded?'Collapse code tabs':'Expand code tabs');toggle.title=(expanded?'Collapse':'Expand')+' code tabs ('+list.children.length+')';wrap.classList.toggle('tabs-expanded',expanded);list.setAttribute('aria-label','Code files · '+list.children.length+' tabs'+(expanded?' · expanded':''));
+ toggle.hidden=!overflow;toggle.setAttribute('aria-expanded',String(expanded));toggle.setAttribute('aria-label',expanded?'Collapse code tabs':'Expand code tabs');toggle.title=expanded?'Show fewer tabs':'Show all '+list.children.length+' tabs';wrap.classList.toggle('tabs-expanded',expanded);list.setAttribute('aria-label','Code files · '+list.children.length+' tabs'+(expanded?' · expanded':''));
  revealSourceTab();
 }
 function uniqueDocumentName(name,lang=language){
